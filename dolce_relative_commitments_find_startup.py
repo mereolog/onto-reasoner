@@ -11,7 +11,7 @@ subsumption_leaf_predicates = (
         theory_file_path=dolce_file_path,
         reasoner_artifacts_path=reasoner_artifacts_path))
 print(subsumption_leaf_predicates)
-sys.exit(-1)
+
 find_relative_commitments(
     theory_file_path=dolce_file_path,
     reasoner_artifacts_path=reasoner_artifacts_path,

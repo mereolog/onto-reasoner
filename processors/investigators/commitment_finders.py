@@ -1,3 +1,5 @@
+from tqdm import tqdm
+
 from objects.fol_logic.objects.atomic_formula import AtomicFormula
 from objects.fol_logic.objects.conjunction import Conjunction
 from objects.fol_logic.objects.identity import Identity
@@ -21,7 +23,7 @@ def find_absolute_commitments(theory_file_path: str, reasoner_artifacts_path: st
     cl_theory_axioms = extended_parse_clif(cl_theory_text)
     cl_theory = Theory(parts=cl_theory_axioms)
     unary_predicates = cl_theory.get_n_ary_predicates_map()[1]
-    for unary_predicate in unary_predicates:
+    for unary_predicate in tqdm(unary_predicates, desc='checked predicates'):
         extended_cl_theory_axioms = cl_theory_axioms.copy()
         variable = Variable.get_next_variable()
         atomic_formula = AtomicFormula(predicate=unary_predicate, arguments=[variable])
@@ -45,10 +47,8 @@ def find_absolute_commitments(theory_file_path: str, reasoner_artifacts_path: st
                 vampire_output_file_path=vampire_output_file_path))
         if result == ProverResult.INCONSISTENT:
             print('Predicate', str(unary_predicate), 'is found as commiting.')
-        if result == ProverResult.CONSISTENT:
-            print('Predicate', str(unary_predicate), 'is found as non-commiting.')
         if result == ProverResult.UNDECIDED:
-            print('Predicate', str(unary_predicate), 'is found as neither commiting or non-commiting.', 'I spent', str(time), 'seconds.')
+            print('Predicate', str(unary_predicate), 'is found as neither commiting or non-commiting.', 'I spent', str(time), 'seconds on this.')
 
 
 def find_relative_commitments(theory_file_path: str, reasoner_artifacts_path: str, subsumption_leaf_predicates: set):
