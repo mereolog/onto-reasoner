@@ -1,0 +1,9 @@
+ply
+PyGithub
+gitpython
+pyparsing
+lark
+pandas
+openpyxl
+tqdm
+bidict

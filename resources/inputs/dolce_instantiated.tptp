@@ -1,0 +1,231 @@
+fof( axiom856e2c2013444b178dee161251f3e16a,axiom,((! [ X0 ] : ((ab(X0) | (ed(X0) | (pd(X0) | q(X0)))) <=> pt(X0))))).
+fof( axiom4f7a97ff3aaa41fbb554bc5703734f7c,axiom,((! [ X1 ] : ((as(X1) | (nped(X1) | ped(X1))) <=> ed(X1))))).
+fof( axiomb6772fe95fe442e5a508ad24c650e49c,axiom,((! [ X10 ] : (arc(X10) => c(X10))))).
+fof( axiomc63b3961023f4d3692bfdf8d036a660e,axiom,((! [ X100 ] : (! [ X101 ] : (! [ X102 ] : (! [ X103 ] : ((tp(X100,X101,X103) & tp(X101,X102,X103)) => tp(X100,X102,X103)))))))).
+fof( axiom0a3c20490e5c42dda43353a282d1aec8,axiom,((! [ X104 ] : (! [ X105 ] : (! [ X106 ] : (tov(X104,X105,X106) <=> (? [ X107 ] : (tp(X107,X104,X106) & tp(X107,X105,X106))))))))).
+fof( axiom6969d83352c04e95b9ec32769cd7941e,axiom,((! [ X108 ] : (! [ X109 ] : (! [ X110 ] : (tpp(X108,X109,X110) <=> (tp(X108,X109,X110) & (~tp(X109,X108,X110))))))))).
+fof( axiom8e157374ca7040499e73771918b488d7,axiom,((! [ X11 ] : ((sob(X11) | mob(X11)) <=> npob(X11))))).
+fof( axiom36c5b735f9ab4f7cb5c07851ee61921f,axiom,((! [ X111 ] : (! [ X112 ] : (tat(X111,X112) <=> (ed(X111) & (t(X112) & (~(? [ X113 ] : tpp(X113,X111,X112)))))))))).
+fof( axiomd2955f4a5e524e09ac1dcf3b34ec3b27,axiom,((! [ X114 ] : (! [ X115 ] : (! [ X116 ] : (tatp(X114,X115,X116) <=> (tp(X114,X115,X116) & tat(X114,X116)))))))).
+fof( axiom202d284db7684b9980c14ee9608df9d1,axiom,((! [ X117 ] : (! [ X118 ] : (! [ X119 ] : (tsum(X119,X117,X118) <=> (((ped(X119) & (ped(X117) & ped(X118))) | (nped(X119) & (nped(X117) & nped(X118)))) & (! [ X120 ] : (! [ X121 ] : (tov(X120,X119,X121) <=> (tov(X120,X117,X121) | tov(X120,X118,X121)))))))))))).
+fof( axiom1b24348a39da47cead7faa2a3ec23ca5,axiom,((! [ X12 ] : ((ar(X12) | (pr(X12) | tr(X12))) <=> r(X12))))).
+fof( axiom2ba773a9697f40ac83ec8a1eb0239eaa,axiom,((! [ X122 ] : (! [ X123 ] : ((ed(X122) & pre(X122,X123)) => tp(X122,X122,X123)))))).
+fof( axiom55e4d6d39a5541f5a9a9ac255d15cb0e,axiom,((! [ X124 ] : (! [ X125 ] : (! [ X126 ] : (tp(X124,X125,X126) => (pre(X124,X126) & pre(X125,X126)))))))).
+fof( axiomafd329ef130340aba1cc90ba2ac80a26,axiom,((! [ X127 ] : (! [ X128 ] : (! [ X129 ] : (tp(X127,X128,X129) => (! [ X130 ] : (p(X130,X129) => tp(X127,X128,X130))))))))).
+fof( axiom358188fea1514a9f96a5ae035d1ceba0,axiom,((! [ X13 ] : (r(X13) => ab(X13))))).
+fof( axiomd5e3656583934b029732c9400c88c2a8,axiom,((! [ X131 ] : (! [ X132 ] : (temporalpart(X131,X132) <=> (pd(X131) & (pd(X132) & (p(X131,X132) & (! [ X133 ] : ((pd(X133) & (p(X133,X132) & (! [ X134 ] : (pre(X133,X134) => pre(X131,X134))))) => p(X133,X131))))))))))).
+fof( axiom8b1be0d7ce794d568e6bad5599d5f08a,axiom,((! [ X135 ] : (! [ X136 ] : (! [ X137 ] : (k(X135,X136,X137) => ((ed(X135) | pd(X135)) & ((ed(X136) | pd(X136)) & t(X137))))))))).
+fof( axiom73c4408bbb1142a089b01e3a894ac8e4,axiom,((! [ X138 ] : (! [ X139 ] : (! [ X140 ] : (k(X138,X139,X140) => (ped(X138) <=> ped(X139)))))))).
+fof( axiom87e506ec6c334f2eb0cb548ec4721f1e,axiom,((! [ X14 ] : ((f(X14) | (m(X14) | pob(X14))) <=> ped(X14))))).
+fof( axiom2e5413d5b6014c6992179e6b1f3d39e0,axiom,((! [ X141 ] : (! [ X142 ] : (! [ X143 ] : (k(X141,X142,X143) => (nped(X141) <=> nped(X142)))))))).
+fof( axiomd7dd3615bad34da48b2d5b30df158c98,axiom,((! [ X144 ] : (! [ X145 ] : (! [ X146 ] : (k(X144,X145,X146) => (pd(X144) <=> pd(X145)))))))).
+fof( axiomc1a0ec113b6c4720aa2624f921cc37dc,axiom,((! [ X147 ] : (! [ X148 ] : (! [ X149 ] : (k(X147,X148,X149) => (~k(X148,X147,X149)))))))).
+fof( axiom63d7b7dfcad04dfbbdfeecb6a67d3ae4,axiom,((! [ X15 ] : (npob(X15) => nped(X15))))).
+fof( axiomd7d8aafa747f43b098129aff29db1792,axiom,((! [ X150 ] : (! [ X151 ] : (! [ X152 ] : (! [ X153 ] : ((k(X150,X151,X153) & k(X151,X152,X153)) => k(X150,X152,X153)))))))).
+fof( axiomef8c96dfc9c649608233e221324411a0,axiom,((! [ X154 ] : (! [ X155 ] : (! [ X156 ] : (k(X154,X155,X156) => (pre(X154,X156) & pre(X155,X156)))))))).
+fof( axiombc80c3e2ca224a838079c821be8fc84a,axiom,((! [ X157 ] : (! [ X158 ] : (! [ X159 ] : (k(X157,X158,X159) => (! [ X160 ] : (p(X160,X159) => k(X157,X158,X160))))))))).
+fof( axiomf98decc89fc541e0886b0836982cbc29,axiom,((! [ X16 ] : (s(X16) => pr(X16))))).
+fof( axiom0f22e1b914034a41a74ab6554e3b4bf1,axiom,((! [ X161 ] : (! [ X162 ] : (! [ X163 ] : (pc(X161,X162,X163) => (ed(X161) & (pd(X162) & t(X163))))))))).
+fof( axiom68e255ee41d946bbb578fd106c899848,axiom,((! [ X164 ] : (! [ X165 ] : ((pd(X164) & pre(X164,X165)) => (? [ X166 ] : pc(X166,X164,X165))))))).
+fof( axiome2f296ee95a24677a7cae687622bdff2,axiom,((! [ X167 ] : (ed(X167) => (? [ X168 ] : (? [ X169 ] : pc(X167,X168,X169))))))).
+fof( axiom298e22c8c50140bca81f92ce9d3f19a0,axiom,((! [ X17 ] : (sl(X17) => pq(X17))))).
+fof( axiom0493f5166e07430d8dc328fb34a84d77,axiom,((! [ X170 ] : (! [ X171 ] : (! [ X172 ] : (pc(X170,X171,X172) => (pre(X170,X172) & pre(X171,X172)))))))).
+fof( axiom87711240400e4271aab6ac821bcd2eea,axiom,((! [ X173 ] : (! [ X174 ] : (! [ X175 ] : (pc(X173,X174,X175) => (! [ X176 ] : (p(X176,X175) => pc(X173,X174,X176))))))))).
+fof( axiom18e2a84062cb40f5b9ac2e7b00a41b5c,axiom,((! [ X177 ] : (! [ X178 ] : (dqt(X177,X178) => (q(X177) & (ed(X178) | pd(X178)))))))).
+fof( axiomd3490f8f975b4ba0ad8f08e978f9cad0,axiom,((! [ X179 ] : (! [ X180 ] : (dqt(X179,X180) => (tq(X179) <=> pd(X180))))))).
+fof( axiom80ce3f6f964e4d229c2febabc1b0f6c3,axiom,((! [ X18 ] : (t(X18) => tr(X18))))).
+fof( axiom18fcf2d0e7254c47a11deeb91f88c4eb,axiom,((! [ X181 ] : (! [ X182 ] : (dqt(X181,X182) => (pq(X181) <=> ped(X182))))))).
+fof( axiom6d679cd0f1b442c2ab44afb7d03aa6d5,axiom,((! [ X183 ] : (! [ X184 ] : (dqt(X183,X184) => (aq(X183) <=> nped(X184))))))).
+fof( axiom9dbb103ebdff40f08ed546798b634b1c,axiom,((! [ X185 ] : (! [ X186 ] : (! [ X187 ] : ((dqt(X185,X186) & dqt(X185,X187)) => (X186=X187))))))).
+fof( axiom27e07e011c074330956dee41ba5167da,axiom,((! [ X188 ] : (! [ X189 ] : (! [ X190 ] : ((dqt(X188,X190) & (dqt(X189,X190) & (tl(X188) & tl(X189)))) => (X188=X189))))))).
+fof( axiome97d4b715b634fae82ad70db5e884977,axiom,((! [ X19 ] : (tl(X19) => tq(X19))))).
+fof( axiom9d3fb4b4520c4cfe8fc6c1149bd795b9,axiom,((! [ X191 ] : (! [ X192 ] : (! [ X193 ] : ((dqt(X191,X193) & (dqt(X192,X193) & (sl(X191) & sl(X192)))) => (X191=X192))))))).
+fof( axiomf83b677c67ac461490ea860c52342924,axiom,((! [ X194 ] : (tq(X194) => (? [ X195 ] : (dqt(X194,X195) & pd(X195))))))).
+fof( axiome57bc27f6d014e56a22d603a518db1bb,axiom,((! [ X196 ] : (pq(X196) => (? [ X197 ] : (dqt(X196,X197) & ped(X197))))))).
+fof( axiome9c52faf12024755b160e81263ab5438,axiom,((! [ X198 ] : (aq(X198) => (? [ X199 ] : (dqt(X198,X199) & nped(X199))))))).
+fof( axiombc569c35faae415e8ebb60b9f7eb3dbb,axiom,((! [ X2 ] : ((pro(X2) | st(X2)) <=> stv(X2))))).
+fof( axiom9de816f8ba134ebaa42de4f004829a12,axiom,((! [ X200 ] : (pd(X200) => (? [ X201 ] : (dqt(X201,X200) & tl(X201))))))).
+fof( axiom0ff6b206a99a42a288d99ea36dabe301,axiom,((! [ X202 ] : (ped(X202) => (? [ X203 ] : (dqt(X203,X202) & sl(X203))))))).
+fof( axioma5772c9e7cac4a96a96e682a7248c56d,axiom,((! [ X204 ] : (nped(X204) => (? [ X205 ] : (dqt(X205,X204) & aq(X205))))))).
+fof( axiombb86bfd8328a424b8e120c3d8b1f4ed2,axiom,((! [ X206 ] : (! [ X207 ] : (ql(X206,X207) => (tr(X206) & tq(X207))))))).
+fof( axiom7759ab0f20244820be5213e875a39675,axiom,((! [ X208 ] : (! [ X209 ] : ((ql(X208,X209) & tl(X209)) => t(X208)))))).
+fof( axiombfbc0e2cdff149d3ad798170ca10c70c,axiom,((! [ X210 ] : (! [ X211 ] : (! [ X212 ] : ((ql(X210,X211) & ql(X212,X211)) => (X210=X212))))))).
+fof( axiom9ea7b3e0b73e48459cd37ceca5f7b8b2,axiom,((! [ X213 ] : (tq(X213) => (? [ X214 ] : ql(X214,X213)))))).
+fof( axiom48077d51339d4941af917d66dfa61efe,axiom,((! [ X215 ] : (! [ X216 ] : (! [ X217 ] : (tql(X215,X216,X217) => ((pr(X215) | ar(X215)) & ((pq(X216) | aq(X216)) & t(X217))))))))).
+fof( axiome0fef92983ff4305ae57d77e0a265c24,axiom,((! [ X218 ] : (! [ X219 ] : (! [ X220 ] : (tql(X218,X219,X220) => (pr(X218) <=> pq(X219)))))))).
+fof( axiom2e4069f46c064504abbd547bf60f923a,axiom,((! [ X221 ] : (! [ X222 ] : (! [ X223 ] : (tql(X221,X222,X223) => (ar(X221) <=> aq(X222)))))))).
+fof( axiom85abc596fb5a4ed79550256ce8223f30,axiom,((! [ X224 ] : (! [ X225 ] : (! [ X226 ] : ((tql(X224,X225,X226) & sl(X225)) => s(X224))))))).
+fof( axiom253f9da1c11d4840aa1b3894f72c513c,axiom,((! [ X227 ] : (! [ X228 ] : (((pq(X227) | aq(X227)) & pre(X227,X228)) => (? [ X229 ] : tql(X229,X227,X228))))))).
+fof( axiomf7928820818a47b3904cd97fc08eb803,axiom,((! [ X230 ] : (! [ X231 ] : (! [ X232 ] : (tql(X230,X231,X232) => pre(X231,X232))))))).
+fof( axiom9eef3923578a409db3174f6da189f5ea,axiom,((! [ X233 ] : (! [ X234 ] : (! [ X235 ] : (tql(X233,X234,X235) => (! [ X236 ] : (p(X236,X235) => tql(X233,X234,X236))))))))).
+fof( axiom77d19d8daec645acad07fcb16dead0ae,axiom,((! [ X237 ] : (! [ X238 ] : (sd(X237,X238) <=> ((? [ X239 ] : pre(X237,X239)) & (! [ X240 ] : (pre(X237,X240) => pre(X238,X240))))))))).
+fof( axiom0cc035deb3754d088bb0df981f1e4b19,axiom,((! [ X241 ] : (! [ X242 ] : (! [ X243 ] : (cf(X241,X242,X243) => (ed(X241) & (c(X242) & t(X243))))))))).
+fof( axiom16b40a0ce10a4359b0811e5862970b49,axiom,((! [ X244 ] : (! [ X245 ] : (! [ X246 ] : (cf(X244,X245,X246) => pre(X244,X246))))))).
+fof( axiom50f6a6a2a2ff4ff6b3e0fe4b35c48477,axiom,((! [ X247 ] : (! [ X248 ] : (! [ X249 ] : (cf(X247,X248,X249) => (~cf(X248,X247,X249)))))))).
+fof( axiom402eec4f20314ae6823438655e25a2b0,axiom,((! [ X250 ] : (! [ X251 ] : (! [ X252 ] : (! [ X253 ] : ((cf(X251,X252,X253) & cf(X252,X250,X253)) => (~cf(X251,X250,X253))))))))).
+fof( axioma3c293c5f0e24288ade432b6c94ecb45,axiom,((! [ X254 ] : (arc(X254) <=> (c(X254) & (! [ X255 ] : (! [ X256 ] : (cf(X255,X254,X256) => (? [ X257 ] : (pre(X255,X257) & (~cf(X255,X254,X257)))))))))))).
+fof( axiomeff3867939994bccb2c77b621bd36def,axiom,((! [ X258 ] : (ds(X258) => naso(X258))))).
+fof( axiom046a8450954041a99b04ef359d289f34,axiom,((! [ X260 ] : (! [ X261 ] : (us(X260,X261) => (c(X260) & ds(X261))))))).
+fof( axiomeafbceb4674b496da6c3fe90d75364cd,axiom,((! [ X262 ] : (! [ X263 ] : (df(X262,X263) => us(X262,X263)))))).
+fof( axiom38d8415f7f5f499784370c6934164d92,axiom,((! [ X264 ] : (c(X264) => (? [ X265 ] : df(X264,X265)))))).
+fof( axiomd96bc75282c04b46ae84a2eb65015674,axiom,((! [ X266 ] : (ds(X266) => (? [ X267 ] : us(X267,X266)))))).
+fof( axiomfd1cb5b00aea493c96bcc356b8844eba,axiom,((! [ X268 ] : (! [ X269 ] : (! [ X270 ] : ((df(X268,X269) & df(X268,X270)) => (X269=X270))))))).
+fof( axiom27c4c6466dd6485982d9faf15234ff93,axiom,((! [ X271 ] : (! [ X272 ] : (! [ X273 ] : (us(X271,X272) => (pre(X272,X273) => pre(X271,X273)))))))).
+fof( axiomc671758a787a49928a9f6f537fd05bb2,axiom,((! [ X274 ] : (! [ X275 ] : (! [ X276 ] : (df(X274,X275) => (pre(X274,X276) => pre(X275,X276)))))))).
+fof( axiombb2f46712391445290fee7a3f63788ef,axiom,((! [ X277 ] : (fd(X277) <=> (? [ X278 ] : (? [ X279 ] : (df(X277,X279) & (us(X278,X279) & (! [ X280 ] : (! [ X281 ] : (cf(X280,X277,X281) => (? [ X282 ] : (cf(X282,X278,X281) & ((~tp(X280,X282,X281)) & (~tp(X282,X280,X281)))))))))))))))).
+fof( axiom1c542e4aac75414ab887e06872448a2b,axiom,((! [ X283 ] : (rl(X283) <=> (arc(X283) & fd(X283)))))).
+fof( axiom37c92591eb784557b9ebe799e91019f2,axiom,((! [ X3 ] : ((ev(X3) | stv(X3)) <=> pd(X3))))).
+fof( axiome076b6b0af744aa0a2506fb5e4f179a7,axiom,((! [ X4 ] : ((aq(X4) | (pq(X4) | tq(X4))) <=> q(X4))))).
+fof( axiomc2ad18cfaad744638d2240fec25000ab,axiom,((! [ X45 ] : (! [ X46 ] : (p(X45,X46) => ((ab(X45) | pd(X45)) & (ab(X46) | pd(X46)))))))).
+fof( axiom4ad1b08d28be4ff1816a41260f5d2ca4,axiom,((! [ X47 ] : (! [ X48 ] : (p(X47,X48) => (pd(X47) <=> pd(X48))))))).
+fof( axiome096a9fa69ef43979b39f48fd0cb4442,axiom,((! [ X49 ] : (! [ X50 ] : (p(X49,X50) => (ab(X49) <=> ab(X50))))))).
+fof( axiom145bf1d5d3bc4c9faa4d167bd6bcd4b3,axiom,((! [ X5 ] : ((acc(X5) | ach(X5)) <=> ev(X5))))).
+fof( axiom48f25d8b38ba4422b68006f8026169a1,axiom,((! [ X51 ] : (! [ X52 ] : (p(X51,X52) => (t(X51) <=> t(X52))))))).
+fof( axiom69e8700af027492e97023f019b31ac6a,axiom,((! [ X53 ] : (! [ X54 ] : (p(X53,X54) => (s(X53) <=> s(X54))))))).
+fof( axiomfd82acb205d34116bb0ec285272e97d2,axiom,((! [ X55 ] : (! [ X56 ] : (p(X55,X56) => (ar(X55) <=> ar(X56))))))).
+fof( axiom4fde817cc7474413bddfcb52188cbde2,axiom,((! [ X57 ] : ((ab(X57) | pd(X57)) => p(X57,X57))))).
+fof( axiom3e10ec1e0fb248b0b35a3c4fd27de9c7,axiom,((! [ X58 ] : (! [ X59 ] : ((p(X58,X59) & p(X59,X58)) => (X58=X59)))))).
+fof( axiom1884ef070985447bb916dd9291c7f912,axiom,((! [ X6 ] : ((apo(X6) | napo(X6)) <=> pob(X6))))).
+fof( axiomc70634c9b86c4d9d89465c0709105bf6,axiom,((! [ X60 ] : (! [ X61 ] : (! [ X62 ] : ((p(X60,X61) & p(X61,X62)) => p(X60,X62))))))).
+fof( axiomdd5b273e0b3047e3b067f3e98ab26c4c,axiom,((! [ X63 ] : (! [ X64 ] : (pp(X63,X64) <=> (p(X63,X64) & (~p(X64,X63)))))))).
+fof( axioma95aa85f162d42c2b41cf9de24d97866,axiom,((! [ X65 ] : (! [ X66 ] : (ov(X65,X66) <=> (? [ X67 ] : (p(X67,X65) & p(X67,X66)))))))).
+fof( axiom0a7b5190725f4dce94d1f0988f5abc7f,axiom,((! [ X68 ] : (at(X68) <=> ((pd(X68) | ab(X68)) & (~(? [ X69 ] : pp(X69,X68)))))))).
+fof( axioma7c52da4fba34405a5811bde9ee9284a,axiom,((! [ X7 ] : ((sag(X7) | sc(X7)) <=> aso(X7))))).
+fof( axiomfd69c5e700df48998e35e8157f95fd84,axiom,((! [ X70 ] : (! [ X71 ] : (atp(X70,X71) <=> (p(X70,X71) & at(X70))))))).
+fof( axiom752d9516587f4cff8480e51842cb745a,axiom,((! [ X72 ] : (! [ X73 ] : (! [ X74 ] : (sum(X74,X72,X73) <=> (((ab(X74) & (ab(X72) & ab(X73))) | (pd(X74) & (pd(X72) & pd(X73)))) & (! [ X75 ] : (ov(X75,X74) <=> (ov(X75,X72) | ov(X75,X73))))))))))).
+fof( axiom0f3c31825011417081da8feb715ef6c3,axiom,((! [ X76 ] : (! [ X77 ] : (! [ X78 ] : (dif(X78,X76,X77) <=> (((ab(X78) & (ab(X76) & ab(X77))) | (pd(X78) & (pd(X76) & pd(X77)))) & (! [ X79 ] : (p(X79,X78) <=> (p(X79,X76) & (~ov(X79,X77)))))))))))).
+fof( axiomb4f444a38b814a3a93d6a2177b239e58,axiom,((! [ X8 ] : ((aso(X8) | naso(X8)) <=> sob(X8))))).
+fof( axiomaac5f717c76a419785e749e9f2af2490,axiom,((! [ X80 ] : (! [ X81 ] : ((ab(X80) & (ab(X81) & (~p(X80,X81)))) => (? [ X82 ] : dif(X82,X80,X81))))))).
+fof( axiom2176f3f5d18a46138b1842ac89fb050a,axiom,((! [ X83 ] : (! [ X84 ] : ((pd(X83) & (pd(X84) & (~p(X83,X84)))) => (? [ X85 ] : dif(X85,X83,X84))))))).
+fof( axiom98b3d9b33b9241f484860c54cfe3c4f7,axiom,((! [ X86 ] : (! [ X87 ] : (pre(X86,X87) => ((ed(X86) | (pd(X86) | q(X86))) & t(X87))))))).
+fof( axiom349f85b261774576989263e1f1dd4d6f,axiom,((! [ X88 ] : (! [ X89 ] : (! [ X90 ] : ((pre(X88,X89) & p(X90,X89)) => pre(X88,X90))))))).
+fof( axiomf505d8ca93414729a3a6959d41c36a37,axiom,((! [ X9 ] : (c(X9) => naso(X9))))).
+fof( axiom8aaa8b92c4394b16b59615240f2ac641,axiom,((! [ X91 ] : (! [ X92 ] : (! [ X93 ] : (tp(X91,X92,X93) => (ed(X91) & (ed(X92) & t(X93))))))))).
+fof( axiom59cf881c79dc4a7db6371cfd6b1063e5,axiom,((! [ X94 ] : (! [ X95 ] : (! [ X96 ] : (tp(X94,X95,X96) => (ped(X94) <=> ped(X95)))))))).
+fof( axiom1e2513d7e09140c283f67081e611d0e0,axiom,((! [ X97 ] : (! [ X98 ] : (! [ X99 ] : (tp(X97,X98,X99) => (nped(X97) <=> nped(X98)))))))).
+fof( axiom513471c7c73a4d08a3ccd8dc04aa8cbc,axiom,(aq(iaq1))).
+fof( axioma2ca584e4c244d61890cbe5964b62116,axiom,(ar(iar1))).
+fof( axiombdb8f3863aae486eb09fcaaf979c3e08,axiom,(arc(c1))).
+fof( axiom5d1d90fa58f246da94829084d98e3f50,axiom,(c(c1))).
+fof( axiom81f31f862163443a8721e463403bdb31,axiom,(cf(inped1,c1,t1))).
+fof( axiom654612ac331245639dcae2775947b1ca,axiom,(dif(i4,i5,i6))).
+fof( axiom6ea188b4f75c42649ffdb8aa3e90e50b,axiom,(dqt(itq1,ie1))).
+fof( axiom37f692cf1aeb425b8818c6a4dd120d0a,axiom,(ev(ie1))).
+fof( axiombdcfa49955a34a1db62d3ae505c6bb7b,axiom,(ev(ie2))).
+fof( axiomf8e5e4a1363e4b38b05cd9d03748a2d8,axiom,(ev(ie3))).
+fof( axiom53ea5843929e43d99f82fa2b543857c7,axiom,(fd(c1))).
+fof( axiom8164b8b1f6f24ac8ba7ff4b0e2c3d194,axiom,(k(ie1,ie4,it1))).
+fof( axiom4bb4f4dcc0ee45cf9b9703165d2a6ed5,axiom,(k(inped1,inped2,it1))).
+fof( axiom9332197b6d0247d8a4c6658a0d6ec994,axiom,(k(iped1,iped2,it1))).
+fof( axiom915b9b61cc0d4461a1db702b9b28e4e6,axiom,((~(? [ X20 ] : (ab(X20) & ed(X20)))))).
+fof( axiomd6843f2bea5b4b03836ee25866e58a0c,axiom,((~(? [ X21 ] : (ab(X21) & pd(X21)))))).
+fof( axiom46d1a69c85f649bcb5f485746f81bd70,axiom,((~(? [ X22 ] : (ab(X22) & q(X22)))))).
+fof( axioma0e1ba40f57f45a18a138f139c01e9ec,axiom,((~(? [ X23 ] : (ed(X23) & pd(X23)))))).
+fof( axiom903e3b49079042338e8485bf879c1db4,axiom,((~(? [ X24 ] : (pd(X24) & q(X24)))))).
+fof( axiom9b7cd41f686040cab1aa28e3e0c641b8,axiom,((~(? [ X25 ] : (ed(X25) & q(X25)))))).
+fof( axiom908250f6125e4664995f0e0d993ab86a,axiom,((~(? [ X259 ] : (ds(X259) & c(X259)))))).
+fof( axiom00cc859483b64bf5b5e308aebc50231d,axiom,((~(? [ X26 ] : (ped(X26) & nped(X26)))))).
+fof( axiom26ee2f3a5c7c4441ac0a9c219f564760,axiom,((~(? [ X27 ] : (ped(X27) & as(X27)))))).
+fof( axiom62b470cf36b04503be05d8c844277a8b,axiom,((~(? [ X28 ] : (nped(X28) & as(X28)))))).
+fof( axiom472fbce6cd5c4cdb8ec50a1aaaa4ca8f,axiom,((~(? [ X29 ] : (m(X29) & f(X29)))))).
+fof( axiombb079af32d724f46bf6f9793f79f88c5,axiom,((~(? [ X30 ] : (f(X30) & pob(X30)))))).
+fof( axiomba1c4a08505643a4a732c9fb5525dc10,axiom,((~(? [ X31 ] : (m(X31) & pob(X31)))))).
+fof( axiom31cfc361658b4288be24ad2927e8b8f5,axiom,((~(? [ X32 ] : (mob(X32) & sob(X32)))))).
+fof( axiom1238818d8d0a4fa8868500d7c73e1503,axiom,((~(? [ X33 ] : (aso(X33) & naso(X33)))))).
+fof( axiom2e69411849ea4f508e805238b993df6f,axiom,((~(? [ X34 ] : (sag(X34) & sc(X34)))))).
+fof( axiom1cae44b1abb54e94809dc1ce7ed048ad,axiom,((~(? [ X35 ] : (apo(X35) & napo(X35)))))).
+fof( axiom3064a291932b4452a20b0358a9ef41e5,axiom,((~(? [ X36 ] : (ev(X36) & stv(X36)))))).
+fof( axiomfa11baaac3ab4e70ac2482eed0be9a85,axiom,((~(? [ X37 ] : (ach(X37) & acc(X37)))))).
+fof( axiom304592e401484dcdaa835544dd91327d,axiom,((~(? [ X38 ] : (st(X38) & pro(X38)))))).
+fof( axiomfab2315948e044d6b535d437ca35d69e,axiom,((~(? [ X39 ] : (tq(X39) & pq(X39)))))).
+fof( axiom24afb496dda54ca3a189d41f1bda019c,axiom,((~(? [ X40 ] : (pq(X40) & aq(X40)))))).
+fof( axiom37469af5c42e4c5f9d240f4783deee27,axiom,((~(? [ X41 ] : (tq(X41) & aq(X41)))))).
+fof( axiom31583d7f9a944cc9994e05e94eeec03b,axiom,((~(? [ X42 ] : (tr(X42) & pr(X42)))))).
+fof( axiomce5680201a8e4ca5b3ac8a0a987e596b,axiom,((~(? [ X43 ] : (pr(X43) & ar(X43)))))).
+fof( axiom1e68a5be0e4f40f2a03063702f602af3,axiom,((~(? [ X44 ] : (tr(X44) & ar(X44)))))).
+fof( axiom53047f4b4bbb4fe19019ff5d840a2f15,axiom,(nped(inped1))).
+fof( axiomb371d443eab54027b199bcdfbb95652a,axiom,(nped(inped2))).
+fof( axiom2e8bdb693a6c439f91086d80de0374bf,axiom,(nped(inped3))).
+fof( axiom3e18ad3b0566401e8a71f49cd868edd6,axiom,(p(ie1,ie2))).
+fof( axiom9ce5a5adad604c3c9d5436e81e921482,axiom,(pc(iped1,ie1,it1))).
+fof( axiomef26ff13238d409d99afb269982ac6e8,axiom,(ped(iped1))).
+fof( axiome0ba575ce947419e8374974b6dd3126e,axiom,(ped(iped2))).
+fof( axioma35b60f354944d39970583aa75640e89,axiom,(pq(ipq1))).
+fof( axiom54cb9ecf8a33469d84aca6bd52c11a33,axiom,(ql(it1,itq1))).
+fof( axiomc4ddb78213a842d4a4cb75f12b80d413,axiom,(r(ir1))).
+fof( axiom2ad2cc0930164e98b37e858e08eab98c,axiom,(rl(c1))).
+fof( axiombf254ee56547431b84491cae680f1e9f,axiom,(sd(iped1,iped2))).
+fof( axiomb595d0bc06f444c4bad072c240824e9e,axiom,(sum(ie2,ie3,ie1))).
+fof( axiom265dee53d2644decaea656583ff42d15,axiom,(t(it1))).
+fof( axiom02657317271241de8334039892130046,axiom,(tatp(inped1,inped3,it1))).
+fof( axiom118a143f6f77490997bff9f2a89ea484,axiom,(temporalpart(ie4,ie5))).
+fof( axiom237ee1719c304505a420d77b37c4dbf2,axiom,(tpp(inped1,inped3,it1))).
+fof( axiom8c1c8cc75ebe4e49b12afc919de5accf,axiom,(tq(itq1))).
+fof( axiom33978801972b41be89de42dc4740af29,axiom,(tql(iar1,iaq1,it1))).
+fof( axioma2272e5e2cc740db91a1012c7c457240,axiom,((? [ X ] : pd(X)))).
+fof( axiomcbea6802411e4c3589183d66f0c06429,axiom,((? [ Y ] : ach(Y)))).
+fof( axiome3ecb08a01a04e6686ebf546aaee2c39,axiom,((? [ Z ] : st(Z)))).
+fof( axiombf465b3f2a1740edb15596fe8e05b531,axiom,((? [ Z1 ] : ed(Z1)))).
+fof( axiomb18b1d3f951c48ebaeab8c7d8b8cda43,axiom,((? [ Z2 ] : aq(Z2)))).
+fof( axiomf61c6f6743c84eb49cdc18fdf53f1031,axiom,((? [ Z3 ] : pro(Z3)))).
+fof( axiom0dbfb881713644c28f7df09f4e6b1ec0,axiom,((? [ Z4,Z5,Z6 ] : sum(Z4,Z5,Z6)))).
+fof( axiomb29412abb1eb44af88179443252bcd5f,axiom,((? [ Z7 ] : tq(Z7)))).
+fof( axiombf4f101927694335be3da35605d3c417,axiom,((? [ Z8 ] : m(Z8)))).
+fof( axiom3a4be492a71d4fd59523493ccc745618,axiom,((? [ Z9 ] : pob(Z9)))).
+fof( axiomb67e7943ddee41b2a257f13b8e93fd9b,axiom,((? [ Z10,Z11,Z12 ] : tsum(Z10,Z11,Z12)))).
+fof( axiom53565bdf3ff245788448b31fe5e5c41f,axiom,((? [ Z13,Z14 ] : atp(Z13,Z14)))).
+fof( axiom5b3b38f0d00e4a66a80dbc10e6d7b8a5,axiom,((? [ Z15,Z16,Z17 ] : tp(Z15,Z16,Z17)))).
+fof( axiomd43873a8085b4846bf8f42c15475d787,axiom,((? [ Z18 ] : r(Z18)))).
+fof( axioma3ab0c778862469ea8b6df394d44f8ea,axiom,((? [ Z19 ] : at(Z19)))).
+fof( axioma4df03afb2954f61ac2702bba0d70fc6,axiom,((? [ Z20,Z21 ] : ql(Z20,Z21)))).
+fof( axiomb707116327f64e4e967c6741936519a6,axiom,((? [ Z22,Z23 ] : p(Z22,Z23)))).
+fof( axiom2647a244b4094b70bc269da165dadad7,axiom,((? [ Z24 ] : tr(Z24)))).
+fof( axiom38803102cda5488ab400fe1c943cc7fc,axiom,((? [ Z25,Z26 ] : temporalpart(Z25,Z26)))).
+fof( axiombdbace76371e498fa5712afdb48ab73a,axiom,((? [ Z27 ] : naso(Z27)))).
+fof( axiome367c58642f244cfb9a48efbbc7c4c14,axiom,((? [ Z28 ] : ab(Z28)))).
+fof( axiom5d5a072920504375a689342f4a269d2e,axiom,((? [ Z29,Z30 ] : us(Z29,Z30)))).
+fof( axiom5e836b23a72440acba01085d1d49cb45,axiom,((? [ Z31 ] : aso(Z31)))).
+fof( axiom7968a60b87c14da19615a91aa4bfdc69,axiom,((? [ Z32,Z33,Z34 ] : cf(Z32,Z33,Z34)))).
+fof( axiom6bc28225040f42059537116032ba5aa0,axiom,((? [ Z35,Z36 ] : tat(Z35,Z36)))).
+fof( axiomcb6c3a35f39b4e939916c9d191826c48,axiom,((? [ Z37 ] : napo(Z37)))).
+fof( axiom778a81d2def040c190cb28a8285bfd41,axiom,((? [ Z38,Z39,Z40 ] : tpp(Z38,Z39,Z40)))).
+fof( axiomc3bd9244e6d54508b8ee3890d0419638,axiom,((? [ Z41 ] : pq(Z41)))).
+fof( axiomca304cc20a0e45808e48d6824331062c,axiom,((? [ Z42 ] : t(Z42)))).
+fof( axiom8ed20155f75c4b01a98502fd662074fb,axiom,((? [ Z43 ] : mob(Z43)))).
+fof( axiom8183910b0ac44a139f6794455be64990,axiom,((? [ Z44 ] : f(Z44)))).
+fof( axiom8e146664dd2945efb2ce9ea3af13f1b5,axiom,((? [ Z45 ] : nped(Z45)))).
+fof( axiomdbd52d8f36dc405f8660739fa1ce831f,axiom,((? [ Z46 ] : acc(Z46)))).
+fof( axiomb6647e6d1e604bf5ab26e76ca90dda23,axiom,((? [ Z47 ] : rl(Z47)))).
+fof( axiomb232a332a55a4e46b94ddc76d20c8f51,axiom,((? [ Z48,Z49 ] : dqt(Z48,Z49)))).
+fof( axiomdd1ab8b203f44f238b0d18d9ef1e3348,axiom,((? [ Z50 ] : stv(Z50)))).
+fof( axiom7d7626077701428c935978d249f94393,axiom,((? [ Z51,Z52 ] : pp(Z51,Z52)))).
+fof( axiom57cf9fb93c764224bf3752c82542ba60,axiom,((? [ Z53 ] : fd(Z53)))).
+fof( axiom2d76ef1503f646668739ab6c956742a6,axiom,((? [ Z54 ] : ped(Z54)))).
+fof( axiomebece3224d724ae4beb028e30dc0b2ff,axiom,((? [ Z55 ] : arc(Z55)))).
+fof( axiomfb5b6728db8446b09b97a2e3901a273b,axiom,((? [ Z56 ] : sl(Z56)))).
+fof( axiome4a627c0abec4e15bdc2988be0b1c4b4,axiom,((? [ Z57,Z58 ] : (Z57=Z58)))).
+fof( axiomac061d0162804a02b8f8c5dae0c43398,axiom,((? [ Z59 ] : ds(Z59)))).
+fof( axiom4414a1c480d0462d96dd381716ba7f12,axiom,((? [ Z60 ] : ev(Z60)))).
+fof( axiom58b183ddf1bb4e28b87b2a9dab09dd97,axiom,((? [ Z61 ] : pt(Z61)))).
+fof( axiome56602b797484d55b90020db4ed2d28a,axiom,((? [ Z62 ] : tl(Z62)))).
+fof( axiom3a66bd1fc2a6425fb1b29c4be26b3611,axiom,((? [ Z63,Z64 ] : ov(Z63,Z64)))).
+fof( axiom9106bc00c5fa419fb096161be5854441,axiom,((? [ Z65,Z66 ] : sd(Z65,Z66)))).
+fof( axiom83e07bfd4d5b43d180d8468ab544afd8,axiom,((? [ Z67 ] : sc(Z67)))).
+fof( axiom6b5a7c52903c4a498be87fe2acbb7445,axiom,((? [ Z68,Z69,Z70 ] : k(Z68,Z69,Z70)))).
+fof( axiom18c7e16a0c0143bc90d3587f331cc79d,axiom,((? [ Z71 ] : as(Z71)))).
+fof( axiom65820747740942c0871d48fad0955c38,axiom,((? [ Z72 ] : c(Z72)))).
+fof( axiom8c449bd327e24f458c388755cd996b70,axiom,((? [ Z73,Z74,Z75 ] : tov(Z73,Z74,Z75)))).
+fof( axiom17c1cedf7fa2437b9ffaef0b7bbee150,axiom,((? [ Z76 ] : ar(Z76)))).
+fof( axiom3192c14a38e24d21ac998e5d0e4c0345,axiom,((? [ Z77 ] : pr(Z77)))).
+fof( axiom1d5dd571b7104ee780d79bc83d88598c,axiom,((? [ Z78 ] : s(Z78)))).
+fof( axiom52d5f39a6d604e9bb0310781be7d2954,axiom,((? [ Z79,Z80 ] : df(Z79,Z80)))).
+fof( axiom9773819f26864d65a7c897129e3e6668,axiom,((? [ Z81,Z82,Z83 ] : dif(Z81,Z82,Z83)))).
+fof( axiomb324214eb90d41d6be5b6a183907ed82,axiom,((? [ Z84 ] : sob(Z84)))).
+fof( axiom8690d6c030ef4f138dc49dfa10196cda,axiom,((? [ Z85,Z86,Z87 ] : tql(Z85,Z86,Z87)))).
+fof( axiom9e4debc0b0c14c41a717b626638cc389,axiom,((? [ Z88 ] : apo(Z88)))).
+fof( axiom90f07824baec4226a2c25c9a82c6511c,axiom,((? [ Z89 ] : npob(Z89)))).
+fof( axiom86bb82a360234207bb783e483bf755c9,axiom,((? [ Z90 ] : sag(Z90)))).
+fof( axiom8326ddb1840c46288ec2e74c16466a31,axiom,((? [ Z91,Z92,Z93 ] : pc(Z91,Z92,Z93)))).
+fof( axiom053e684005f047528805f2dc86e6d614,axiom,((? [ Z94,Z95 ] : pre(Z94,Z95)))).
+fof( axiomf7cddda398494226a91cf71335b747da,axiom,((? [ Z96 ] : q(Z96)))).
+fof( axiom6c9c4fe3212b4ba88be8767e519843ce,axiom,((? [ Z97,Z98,Z99 ] : tatp(Z97,Z98,Z99)))).

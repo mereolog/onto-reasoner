@@ -1,0 +1,3290 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    BACKSLASH
+    CHAR
+    HEXA
+    ID
+    INNERBACKSLASH
+    INNERNAMEQUOTE
+    INNERSTRINGQUOTE
+    NAMEQUOTE
+    STRINGQUOTE
+
+Grammar
+
+Rule 0     S' -> extended_text
+Rule 1     extended_text -> texts
+Rule 2     extended_text -> statements
+Rule 3     extended_text -> sentences
+Rule 4     texts -> text texts
+Rule 5     texts -> text
+Rule 6     text -> textconstruction
+Rule 7     text -> domainrestriction
+Rule 8     text -> importation
+Rule 9     text -> commenttext
+Rule 10    textconstruction -> OPEN TEXT constructed_texts CLOSE
+Rule 11    constructed_texts -> constructed_text constructed_texts
+Rule 12    constructed_texts -> constructed_text
+Rule 13    constructed_text -> sentence
+Rule 14    constructed_text -> statement
+Rule 15    constructed_text -> text
+Rule 16    statements -> statement statements
+Rule 17    statements -> statement
+Rule 18    statement -> titling
+Rule 19    statement -> discoursestatement
+Rule 20    statement -> OPEN COMMENT QUOTEDSTRING statement CLOSE
+Rule 21    discoursestatement -> indiscourse
+Rule 22    discoursestatement -> outdiscourse
+Rule 23    indiscourse -> OPEN INDISCOURSE terms CLOSE
+Rule 24    outdiscourse -> OPEN OUTDISCOURSE terms CLOSE
+Rule 25    domainrestriction -> OPEN RESTRICT term text CLOSE
+Rule 26    importation -> OPEN IMPORTS interpretablename CLOSE
+Rule 27    commenttext -> OPEN COMMENT QUOTEDSTRING texts CLOSE
+Rule 28    commenttext -> OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+Rule 29    prefixdeclarations -> prefixdeclaration prefixdeclarations
+Rule 30    prefixdeclarations -> prefixdeclaration
+Rule 31    prefixdeclaration -> OPEN PREFIX QUOTEDSTRING interpretablename CLOSE
+Rule 32    titling -> OPEN TITLING interpretablename text CLOSE
+Rule 33    sentence -> atomsent
+Rule 34    sentence -> boolsent
+Rule 35    sentence -> existential_quantsent
+Rule 36    sentence -> universal_quantsent
+Rule 37    sentence -> commentsent
+Rule 38    atomsent -> equation
+Rule 39    atomsent -> atom
+Rule 40    boolsent -> and_sent
+Rule 41    boolsent -> or_sent
+Rule 42    boolsent -> if_sent
+Rule 43    boolsent -> iff_sent
+Rule 44    boolsent -> not_sent
+Rule 45    and_sent -> OPEN AND sentences CLOSE
+Rule 46    or_sent -> OPEN OR sentences CLOSE
+Rule 47    if_sent -> OPEN IF sentence sentence CLOSE
+Rule 48    iff_sent -> OPEN IFF sentence sentence CLOSE
+Rule 49    not_sent -> OPEN NOT sentence CLOSE
+Rule 50    commentsent -> OPEN COMMENT QUOTEDSTRING sentence CLOSE
+Rule 51    sentences -> sentence sentences
+Rule 52    sentences -> sentence
+Rule 53    equation -> OPEN EQUAL term term CLOSE
+Rule 54    atom -> OPEN term termseq CLOSE
+Rule 55    universal_quantsent -> OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+Rule 56    existential_quantsent -> OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+Rule 57    bvar_list -> bvar bvar_list
+Rule 58    bvar_list -> bvar
+Rule 59    bvar -> interpretablename
+Rule 60    bvar -> cseqmark
+Rule 61    bvar -> OPEN interpretablename term CLOSE
+Rule 62    bvar -> OPEN cseqmark term CLOSE
+Rule 63    terms -> term terms
+Rule 64    terms -> term
+Rule 65    termseq -> termseq term
+Rule 66    termseq -> termseq SEQMARK
+Rule 67    termseq -> term
+Rule 68    termseq -> SEQMARK
+Rule 69    term -> name
+Rule 70    term -> OPEN term termseq CLOSE
+Rule 71    term -> OPEN COMMENT QUOTEDSTRING term CLOSE
+Rule 72    name -> interpretedname
+Rule 73    name -> interpretablename
+Rule 74    interpretedname -> NUMERAL
+Rule 75    interpretedname -> QUOTEDSTRING
+Rule 76    interpretedname -> OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+Rule 77    interpretedname -> OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+Rule 78    interpretablename -> NAMECHARSEQUENCE
+Rule 79    interpretablename -> ENCLOSEDNAME
+Rule 80    interpretablename -> OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+Rule 81    cseqmark -> SEQMARK
+Rule 82    cseqmark -> OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE
+
+Terminals, with rules where they appear
+
+AND                  : 45
+BACKSLASH            : 
+CHAR                 : 
+CLOSE                : 10 20 23 24 25 26 27 28 31 32 45 46 47 48 49 50 53 54 55 55 56 56 61 62 70 71 76 77 80 82
+COMMENT              : 20 27 28 50 71 76 77 80 82
+ENCLOSEDNAME         : 79
+EQUAL                : 53
+EXISTS               : 56
+FORALL               : 55
+HEXA                 : 
+ID                   : 
+IF                   : 47
+IFF                  : 48
+IMPORTS              : 26
+INDISCOURSE          : 23
+INNERBACKSLASH       : 
+INNERNAMEQUOTE       : 
+INNERSTRINGQUOTE     : 
+NAMECHARSEQUENCE     : 78
+NAMEQUOTE            : 
+NOT                  : 49
+NUMERAL              : 74 76
+OPEN                 : 10 20 23 24 25 26 27 28 31 32 45 46 47 48 49 50 53 54 55 55 56 56 61 62 70 71 76 77 80 82
+OR                   : 46
+OUTDISCOURSE         : 24
+PREFIX               : 31
+QUOTEDSTRING         : 20 27 28 31 50 71 75 76 77 77 80 82
+RESTRICT             : 25
+SEQMARK              : 66 68 81 82
+STRINGQUOTE          : 
+TEXT                 : 10
+TITLING              : 32
+error                : 
+
+Nonterminals, with rules where they appear
+
+and_sent             : 40
+atom                 : 39
+atomsent             : 33
+boolsent             : 34
+bvar                 : 57 58
+bvar_list            : 55 56 57
+commentsent          : 37
+commenttext          : 9
+constructed_text     : 11 12
+constructed_texts    : 10 11
+cseqmark             : 60 62
+discoursestatement   : 19
+domainrestriction    : 7
+equation             : 38
+existential_quantsent : 35
+extended_text        : 0
+if_sent              : 42
+iff_sent             : 43
+importation          : 8
+indiscourse          : 21
+interpretablename    : 26 31 32 59 61 73 80
+interpretedname      : 72
+name                 : 69
+not_sent             : 44
+or_sent              : 41
+outdiscourse         : 22
+prefixdeclaration    : 29 30
+prefixdeclarations   : 28 29
+sentence             : 13 47 47 48 48 49 50 51 52 55 56
+sentences            : 3 45 46 51
+statement            : 14 16 17 20
+statements           : 2 16
+term                 : 25 53 53 54 61 62 63 64 65 67 70 71
+terms                : 23 24 63
+termseq              : 54 65 66 70
+text                 : 4 5 15 25 32
+textconstruction     : 6
+texts                : 1 4 27 28
+titling              : 18
+universal_quantsent  : 36
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . extended_text
+    (1) extended_text -> . texts
+    (2) extended_text -> . statements
+    (3) extended_text -> . sentences
+    (4) texts -> . text texts
+    (5) texts -> . text
+    (16) statements -> . statement statements
+    (17) statements -> . statement
+    (51) sentences -> . sentence sentences
+    (52) sentences -> . sentence
+    (6) text -> . textconstruction
+    (7) text -> . domainrestriction
+    (8) text -> . importation
+    (9) text -> . commenttext
+    (18) statement -> . titling
+    (19) statement -> . discoursestatement
+    (20) statement -> . OPEN COMMENT QUOTEDSTRING statement CLOSE
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (10) textconstruction -> . OPEN TEXT constructed_texts CLOSE
+    (25) domainrestriction -> . OPEN RESTRICT term text CLOSE
+    (26) importation -> . OPEN IMPORTS interpretablename CLOSE
+    (27) commenttext -> . OPEN COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> . OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+    (32) titling -> . OPEN TITLING interpretablename text CLOSE
+    (21) discoursestatement -> . indiscourse
+    (22) discoursestatement -> . outdiscourse
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (23) indiscourse -> . OPEN INDISCOURSE terms CLOSE
+    (24) outdiscourse -> . OPEN OUTDISCOURSE terms CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    OPEN            shift and go to state 14
+
+    extended_text                  shift and go to state 1
+    texts                          shift and go to state 2
+    statements                     shift and go to state 3
+    sentences                      shift and go to state 4
+    text                           shift and go to state 5
+    statement                      shift and go to state 6
+    sentence                       shift and go to state 7
+    textconstruction               shift and go to state 8
+    domainrestriction              shift and go to state 9
+    importation                    shift and go to state 10
+    commenttext                    shift and go to state 11
+    titling                        shift and go to state 12
+    discoursestatement             shift and go to state 13
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    indiscourse                    shift and go to state 20
+    outdiscourse                   shift and go to state 21
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 1
+
+    (0) S' -> extended_text .
+
+
+
+state 2
+
+    (1) extended_text -> texts .
+
+    $end            reduce using rule 1 (extended_text -> texts .)
+
+
+state 3
+
+    (2) extended_text -> statements .
+
+    $end            reduce using rule 2 (extended_text -> statements .)
+
+
+state 4
+
+    (3) extended_text -> sentences .
+
+    $end            reduce using rule 3 (extended_text -> sentences .)
+
+
+state 5
+
+    (4) texts -> text . texts
+    (5) texts -> text .
+    (4) texts -> . text texts
+    (5) texts -> . text
+    (6) text -> . textconstruction
+    (7) text -> . domainrestriction
+    (8) text -> . importation
+    (9) text -> . commenttext
+    (10) textconstruction -> . OPEN TEXT constructed_texts CLOSE
+    (25) domainrestriction -> . OPEN RESTRICT term text CLOSE
+    (26) importation -> . OPEN IMPORTS interpretablename CLOSE
+    (27) commenttext -> . OPEN COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> . OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+
+    $end            reduce using rule 5 (texts -> text .)
+    CLOSE           reduce using rule 5 (texts -> text .)
+    OPEN            shift and go to state 30
+
+    text                           shift and go to state 5
+    texts                          shift and go to state 29
+    textconstruction               shift and go to state 8
+    domainrestriction              shift and go to state 9
+    importation                    shift and go to state 10
+    commenttext                    shift and go to state 11
+
+state 6
+
+    (16) statements -> statement . statements
+    (17) statements -> statement .
+    (16) statements -> . statement statements
+    (17) statements -> . statement
+    (18) statement -> . titling
+    (19) statement -> . discoursestatement
+    (20) statement -> . OPEN COMMENT QUOTEDSTRING statement CLOSE
+    (32) titling -> . OPEN TITLING interpretablename text CLOSE
+    (21) discoursestatement -> . indiscourse
+    (22) discoursestatement -> . outdiscourse
+    (23) indiscourse -> . OPEN INDISCOURSE terms CLOSE
+    (24) outdiscourse -> . OPEN OUTDISCOURSE terms CLOSE
+
+    $end            reduce using rule 17 (statements -> statement .)
+    OPEN            shift and go to state 32
+
+    statement                      shift and go to state 6
+    statements                     shift and go to state 31
+    titling                        shift and go to state 12
+    discoursestatement             shift and go to state 13
+    indiscourse                    shift and go to state 20
+    outdiscourse                   shift and go to state 21
+
+state 7
+
+    (51) sentences -> sentence . sentences
+    (52) sentences -> sentence .
+    (51) sentences -> . sentence sentences
+    (52) sentences -> . sentence
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    $end            reduce using rule 52 (sentences -> sentence .)
+    CLOSE           reduce using rule 52 (sentences -> sentence .)
+    OPEN            shift and go to state 34
+
+    sentence                       shift and go to state 7
+    sentences                      shift and go to state 33
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 8
+
+    (6) text -> textconstruction .
+
+    OPEN            reduce using rule 6 (text -> textconstruction .)
+    $end            reduce using rule 6 (text -> textconstruction .)
+    CLOSE           reduce using rule 6 (text -> textconstruction .)
+
+
+state 9
+
+    (7) text -> domainrestriction .
+
+    OPEN            reduce using rule 7 (text -> domainrestriction .)
+    $end            reduce using rule 7 (text -> domainrestriction .)
+    CLOSE           reduce using rule 7 (text -> domainrestriction .)
+
+
+state 10
+
+    (8) text -> importation .
+
+    OPEN            reduce using rule 8 (text -> importation .)
+    $end            reduce using rule 8 (text -> importation .)
+    CLOSE           reduce using rule 8 (text -> importation .)
+
+
+state 11
+
+    (9) text -> commenttext .
+
+    OPEN            reduce using rule 9 (text -> commenttext .)
+    $end            reduce using rule 9 (text -> commenttext .)
+    CLOSE           reduce using rule 9 (text -> commenttext .)
+
+
+state 12
+
+    (18) statement -> titling .
+
+    OPEN            reduce using rule 18 (statement -> titling .)
+    $end            reduce using rule 18 (statement -> titling .)
+    CLOSE           reduce using rule 18 (statement -> titling .)
+
+
+state 13
+
+    (19) statement -> discoursestatement .
+
+    OPEN            reduce using rule 19 (statement -> discoursestatement .)
+    $end            reduce using rule 19 (statement -> discoursestatement .)
+    CLOSE           reduce using rule 19 (statement -> discoursestatement .)
+
+
+state 14
+
+    (20) statement -> OPEN . COMMENT QUOTEDSTRING statement CLOSE
+    (10) textconstruction -> OPEN . TEXT constructed_texts CLOSE
+    (25) domainrestriction -> OPEN . RESTRICT term text CLOSE
+    (26) importation -> OPEN . IMPORTS interpretablename CLOSE
+    (27) commenttext -> OPEN . COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> OPEN . COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+    (32) titling -> OPEN . TITLING interpretablename text CLOSE
+    (56) existential_quantsent -> OPEN . EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> OPEN . FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> OPEN . COMMENT QUOTEDSTRING sentence CLOSE
+    (23) indiscourse -> OPEN . INDISCOURSE terms CLOSE
+    (24) outdiscourse -> OPEN . OUTDISCOURSE terms CLOSE
+    (53) equation -> OPEN . EQUAL term term CLOSE
+    (54) atom -> OPEN . term termseq CLOSE
+    (45) and_sent -> OPEN . AND sentences CLOSE
+    (46) or_sent -> OPEN . OR sentences CLOSE
+    (47) if_sent -> OPEN . IF sentence sentence CLOSE
+    (48) iff_sent -> OPEN . IFF sentence sentence CLOSE
+    (49) not_sent -> OPEN . NOT sentence CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    COMMENT         shift and go to state 36
+    TEXT            shift and go to state 38
+    RESTRICT        shift and go to state 39
+    IMPORTS         shift and go to state 41
+    TITLING         shift and go to state 43
+    EXISTS          shift and go to state 44
+    FORALL          shift and go to state 45
+    INDISCOURSE     shift and go to state 46
+    OUTDISCOURSE    shift and go to state 47
+    EQUAL           shift and go to state 48
+    AND             shift and go to state 49
+    OR              shift and go to state 50
+    IF              shift and go to state 51
+    IFF             shift and go to state 52
+    NOT             shift and go to state 53
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 40
+    interpretablename              shift and go to state 42
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+
+state 15
+
+    (33) sentence -> atomsent .
+
+    OPEN            reduce using rule 33 (sentence -> atomsent .)
+    $end            reduce using rule 33 (sentence -> atomsent .)
+    CLOSE           reduce using rule 33 (sentence -> atomsent .)
+
+
+state 16
+
+    (34) sentence -> boolsent .
+
+    OPEN            reduce using rule 34 (sentence -> boolsent .)
+    $end            reduce using rule 34 (sentence -> boolsent .)
+    CLOSE           reduce using rule 34 (sentence -> boolsent .)
+
+
+state 17
+
+    (35) sentence -> existential_quantsent .
+
+    OPEN            reduce using rule 35 (sentence -> existential_quantsent .)
+    $end            reduce using rule 35 (sentence -> existential_quantsent .)
+    CLOSE           reduce using rule 35 (sentence -> existential_quantsent .)
+
+
+state 18
+
+    (36) sentence -> universal_quantsent .
+
+    OPEN            reduce using rule 36 (sentence -> universal_quantsent .)
+    $end            reduce using rule 36 (sentence -> universal_quantsent .)
+    CLOSE           reduce using rule 36 (sentence -> universal_quantsent .)
+
+
+state 19
+
+    (37) sentence -> commentsent .
+
+    OPEN            reduce using rule 37 (sentence -> commentsent .)
+    $end            reduce using rule 37 (sentence -> commentsent .)
+    CLOSE           reduce using rule 37 (sentence -> commentsent .)
+
+
+state 20
+
+    (21) discoursestatement -> indiscourse .
+
+    OPEN            reduce using rule 21 (discoursestatement -> indiscourse .)
+    $end            reduce using rule 21 (discoursestatement -> indiscourse .)
+    CLOSE           reduce using rule 21 (discoursestatement -> indiscourse .)
+
+
+state 21
+
+    (22) discoursestatement -> outdiscourse .
+
+    OPEN            reduce using rule 22 (discoursestatement -> outdiscourse .)
+    $end            reduce using rule 22 (discoursestatement -> outdiscourse .)
+    CLOSE           reduce using rule 22 (discoursestatement -> outdiscourse .)
+
+
+state 22
+
+    (38) atomsent -> equation .
+
+    OPEN            reduce using rule 38 (atomsent -> equation .)
+    $end            reduce using rule 38 (atomsent -> equation .)
+    CLOSE           reduce using rule 38 (atomsent -> equation .)
+
+
+state 23
+
+    (39) atomsent -> atom .
+
+    OPEN            reduce using rule 39 (atomsent -> atom .)
+    $end            reduce using rule 39 (atomsent -> atom .)
+    CLOSE           reduce using rule 39 (atomsent -> atom .)
+
+
+state 24
+
+    (40) boolsent -> and_sent .
+
+    OPEN            reduce using rule 40 (boolsent -> and_sent .)
+    $end            reduce using rule 40 (boolsent -> and_sent .)
+    CLOSE           reduce using rule 40 (boolsent -> and_sent .)
+
+
+state 25
+
+    (41) boolsent -> or_sent .
+
+    OPEN            reduce using rule 41 (boolsent -> or_sent .)
+    $end            reduce using rule 41 (boolsent -> or_sent .)
+    CLOSE           reduce using rule 41 (boolsent -> or_sent .)
+
+
+state 26
+
+    (42) boolsent -> if_sent .
+
+    OPEN            reduce using rule 42 (boolsent -> if_sent .)
+    $end            reduce using rule 42 (boolsent -> if_sent .)
+    CLOSE           reduce using rule 42 (boolsent -> if_sent .)
+
+
+state 27
+
+    (43) boolsent -> iff_sent .
+
+    OPEN            reduce using rule 43 (boolsent -> iff_sent .)
+    $end            reduce using rule 43 (boolsent -> iff_sent .)
+    CLOSE           reduce using rule 43 (boolsent -> iff_sent .)
+
+
+state 28
+
+    (44) boolsent -> not_sent .
+
+    OPEN            reduce using rule 44 (boolsent -> not_sent .)
+    $end            reduce using rule 44 (boolsent -> not_sent .)
+    CLOSE           reduce using rule 44 (boolsent -> not_sent .)
+
+
+state 29
+
+    (4) texts -> text texts .
+
+    $end            reduce using rule 4 (texts -> text texts .)
+    CLOSE           reduce using rule 4 (texts -> text texts .)
+
+
+state 30
+
+    (10) textconstruction -> OPEN . TEXT constructed_texts CLOSE
+    (25) domainrestriction -> OPEN . RESTRICT term text CLOSE
+    (26) importation -> OPEN . IMPORTS interpretablename CLOSE
+    (27) commenttext -> OPEN . COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> OPEN . COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+
+    TEXT            shift and go to state 38
+    RESTRICT        shift and go to state 39
+    IMPORTS         shift and go to state 41
+    COMMENT         shift and go to state 59
+
+
+state 31
+
+    (16) statements -> statement statements .
+
+    $end            reduce using rule 16 (statements -> statement statements .)
+
+
+state 32
+
+    (20) statement -> OPEN . COMMENT QUOTEDSTRING statement CLOSE
+    (32) titling -> OPEN . TITLING interpretablename text CLOSE
+    (23) indiscourse -> OPEN . INDISCOURSE terms CLOSE
+    (24) outdiscourse -> OPEN . OUTDISCOURSE terms CLOSE
+
+    COMMENT         shift and go to state 60
+    TITLING         shift and go to state 43
+    INDISCOURSE     shift and go to state 46
+    OUTDISCOURSE    shift and go to state 47
+
+
+state 33
+
+    (51) sentences -> sentence sentences .
+
+    $end            reduce using rule 51 (sentences -> sentence sentences .)
+    CLOSE           reduce using rule 51 (sentences -> sentence sentences .)
+
+
+state 34
+
+    (56) existential_quantsent -> OPEN . EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> OPEN . FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> OPEN . COMMENT QUOTEDSTRING sentence CLOSE
+    (53) equation -> OPEN . EQUAL term term CLOSE
+    (54) atom -> OPEN . term termseq CLOSE
+    (45) and_sent -> OPEN . AND sentences CLOSE
+    (46) or_sent -> OPEN . OR sentences CLOSE
+    (47) if_sent -> OPEN . IF sentence sentence CLOSE
+    (48) iff_sent -> OPEN . IFF sentence sentence CLOSE
+    (49) not_sent -> OPEN . NOT sentence CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    EXISTS          shift and go to state 44
+    FORALL          shift and go to state 45
+    COMMENT         shift and go to state 61
+    EQUAL           shift and go to state 48
+    AND             shift and go to state 49
+    OR              shift and go to state 50
+    IF              shift and go to state 51
+    IFF             shift and go to state 52
+    NOT             shift and go to state 53
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 40
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+    interpretablename              shift and go to state 42
+
+state 35
+
+    (70) term -> OPEN . term termseq CLOSE
+    (71) term -> OPEN . COMMENT QUOTEDSTRING term CLOSE
+    (76) interpretedname -> OPEN . COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> OPEN . COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (80) interpretablename -> OPEN . COMMENT QUOTEDSTRING interpretablename CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    COMMENT         shift and go to state 63
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 62
+    interpretablename              shift and go to state 42
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+
+state 36
+
+    (20) statement -> OPEN COMMENT . QUOTEDSTRING statement CLOSE
+    (27) commenttext -> OPEN COMMENT . QUOTEDSTRING texts CLOSE
+    (28) commenttext -> OPEN COMMENT . QUOTEDSTRING prefixdeclarations texts CLOSE
+    (50) commentsent -> OPEN COMMENT . QUOTEDSTRING sentence CLOSE
+
+    QUOTEDSTRING    shift and go to state 64
+
+
+state 37
+
+    (75) interpretedname -> QUOTEDSTRING .
+
+    SEQMARK         reduce using rule 75 (interpretedname -> QUOTEDSTRING .)
+    OPEN            reduce using rule 75 (interpretedname -> QUOTEDSTRING .)
+    NUMERAL         reduce using rule 75 (interpretedname -> QUOTEDSTRING .)
+    QUOTEDSTRING    reduce using rule 75 (interpretedname -> QUOTEDSTRING .)
+    NAMECHARSEQUENCE reduce using rule 75 (interpretedname -> QUOTEDSTRING .)
+    ENCLOSEDNAME    reduce using rule 75 (interpretedname -> QUOTEDSTRING .)
+    CLOSE           reduce using rule 75 (interpretedname -> QUOTEDSTRING .)
+
+
+state 38
+
+    (10) textconstruction -> OPEN TEXT . constructed_texts CLOSE
+    (11) constructed_texts -> . constructed_text constructed_texts
+    (12) constructed_texts -> . constructed_text
+    (13) constructed_text -> . sentence
+    (14) constructed_text -> . statement
+    (15) constructed_text -> . text
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (18) statement -> . titling
+    (19) statement -> . discoursestatement
+    (20) statement -> . OPEN COMMENT QUOTEDSTRING statement CLOSE
+    (6) text -> . textconstruction
+    (7) text -> . domainrestriction
+    (8) text -> . importation
+    (9) text -> . commenttext
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (32) titling -> . OPEN TITLING interpretablename text CLOSE
+    (21) discoursestatement -> . indiscourse
+    (22) discoursestatement -> . outdiscourse
+    (10) textconstruction -> . OPEN TEXT constructed_texts CLOSE
+    (25) domainrestriction -> . OPEN RESTRICT term text CLOSE
+    (26) importation -> . OPEN IMPORTS interpretablename CLOSE
+    (27) commenttext -> . OPEN COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> . OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+    (23) indiscourse -> . OPEN INDISCOURSE terms CLOSE
+    (24) outdiscourse -> . OPEN OUTDISCOURSE terms CLOSE
+
+    OPEN            shift and go to state 65
+
+    constructed_texts              shift and go to state 66
+    constructed_text               shift and go to state 67
+    sentence                       shift and go to state 68
+    statement                      shift and go to state 69
+    text                           shift and go to state 70
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    titling                        shift and go to state 12
+    discoursestatement             shift and go to state 13
+    textconstruction               shift and go to state 8
+    domainrestriction              shift and go to state 9
+    importation                    shift and go to state 10
+    commenttext                    shift and go to state 11
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+    indiscourse                    shift and go to state 20
+    outdiscourse                   shift and go to state 21
+
+state 39
+
+    (25) domainrestriction -> OPEN RESTRICT . term text CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 71
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+    interpretablename              shift and go to state 42
+
+state 40
+
+    (54) atom -> OPEN term . termseq CLOSE
+    (65) termseq -> . termseq term
+    (66) termseq -> . termseq SEQMARK
+    (67) termseq -> . term
+    (68) termseq -> . SEQMARK
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    SEQMARK         shift and go to state 74
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 72
+    termseq                        shift and go to state 73
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+    interpretablename              shift and go to state 42
+
+state 41
+
+    (26) importation -> OPEN IMPORTS . interpretablename CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+    OPEN            shift and go to state 75
+
+    interpretablename              shift and go to state 76
+
+state 42
+
+    (73) name -> interpretablename .
+
+    SEQMARK         reduce using rule 73 (name -> interpretablename .)
+    OPEN            reduce using rule 73 (name -> interpretablename .)
+    NUMERAL         reduce using rule 73 (name -> interpretablename .)
+    QUOTEDSTRING    reduce using rule 73 (name -> interpretablename .)
+    NAMECHARSEQUENCE reduce using rule 73 (name -> interpretablename .)
+    ENCLOSEDNAME    reduce using rule 73 (name -> interpretablename .)
+    CLOSE           reduce using rule 73 (name -> interpretablename .)
+
+
+state 43
+
+    (32) titling -> OPEN TITLING . interpretablename text CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+    OPEN            shift and go to state 75
+
+    interpretablename              shift and go to state 77
+
+state 44
+
+    (56) existential_quantsent -> OPEN EXISTS . OPEN bvar_list CLOSE sentence CLOSE
+
+    OPEN            shift and go to state 78
+
+
+state 45
+
+    (55) universal_quantsent -> OPEN FORALL . OPEN bvar_list CLOSE sentence CLOSE
+
+    OPEN            shift and go to state 79
+
+
+state 46
+
+    (23) indiscourse -> OPEN INDISCOURSE . terms CLOSE
+    (63) terms -> . term terms
+    (64) terms -> . term
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    terms                          shift and go to state 80
+    term                           shift and go to state 81
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+    interpretablename              shift and go to state 42
+
+state 47
+
+    (24) outdiscourse -> OPEN OUTDISCOURSE . terms CLOSE
+    (63) terms -> . term terms
+    (64) terms -> . term
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    terms                          shift and go to state 82
+    term                           shift and go to state 81
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+    interpretablename              shift and go to state 42
+
+state 48
+
+    (53) equation -> OPEN EQUAL . term term CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 83
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+    interpretablename              shift and go to state 42
+
+state 49
+
+    (45) and_sent -> OPEN AND . sentences CLOSE
+    (51) sentences -> . sentence sentences
+    (52) sentences -> . sentence
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    OPEN            shift and go to state 34
+
+    sentences                      shift and go to state 84
+    sentence                       shift and go to state 7
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 50
+
+    (46) or_sent -> OPEN OR . sentences CLOSE
+    (51) sentences -> . sentence sentences
+    (52) sentences -> . sentence
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    OPEN            shift and go to state 34
+
+    sentences                      shift and go to state 85
+    sentence                       shift and go to state 7
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 51
+
+    (47) if_sent -> OPEN IF . sentence sentence CLOSE
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    OPEN            shift and go to state 34
+
+    sentence                       shift and go to state 86
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 52
+
+    (48) iff_sent -> OPEN IFF . sentence sentence CLOSE
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    OPEN            shift and go to state 34
+
+    sentence                       shift and go to state 87
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 53
+
+    (49) not_sent -> OPEN NOT . sentence CLOSE
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    OPEN            shift and go to state 34
+
+    sentence                       shift and go to state 88
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 54
+
+    (69) term -> name .
+
+    SEQMARK         reduce using rule 69 (term -> name .)
+    OPEN            reduce using rule 69 (term -> name .)
+    NUMERAL         reduce using rule 69 (term -> name .)
+    QUOTEDSTRING    reduce using rule 69 (term -> name .)
+    NAMECHARSEQUENCE reduce using rule 69 (term -> name .)
+    ENCLOSEDNAME    reduce using rule 69 (term -> name .)
+    CLOSE           reduce using rule 69 (term -> name .)
+
+
+state 55
+
+    (72) name -> interpretedname .
+
+    SEQMARK         reduce using rule 72 (name -> interpretedname .)
+    OPEN            reduce using rule 72 (name -> interpretedname .)
+    NUMERAL         reduce using rule 72 (name -> interpretedname .)
+    QUOTEDSTRING    reduce using rule 72 (name -> interpretedname .)
+    NAMECHARSEQUENCE reduce using rule 72 (name -> interpretedname .)
+    ENCLOSEDNAME    reduce using rule 72 (name -> interpretedname .)
+    CLOSE           reduce using rule 72 (name -> interpretedname .)
+
+
+state 56
+
+    (74) interpretedname -> NUMERAL .
+
+    SEQMARK         reduce using rule 74 (interpretedname -> NUMERAL .)
+    OPEN            reduce using rule 74 (interpretedname -> NUMERAL .)
+    NUMERAL         reduce using rule 74 (interpretedname -> NUMERAL .)
+    QUOTEDSTRING    reduce using rule 74 (interpretedname -> NUMERAL .)
+    NAMECHARSEQUENCE reduce using rule 74 (interpretedname -> NUMERAL .)
+    ENCLOSEDNAME    reduce using rule 74 (interpretedname -> NUMERAL .)
+    CLOSE           reduce using rule 74 (interpretedname -> NUMERAL .)
+
+
+state 57
+
+    (78) interpretablename -> NAMECHARSEQUENCE .
+
+    SEQMARK         reduce using rule 78 (interpretablename -> NAMECHARSEQUENCE .)
+    OPEN            reduce using rule 78 (interpretablename -> NAMECHARSEQUENCE .)
+    NUMERAL         reduce using rule 78 (interpretablename -> NAMECHARSEQUENCE .)
+    QUOTEDSTRING    reduce using rule 78 (interpretablename -> NAMECHARSEQUENCE .)
+    NAMECHARSEQUENCE reduce using rule 78 (interpretablename -> NAMECHARSEQUENCE .)
+    ENCLOSEDNAME    reduce using rule 78 (interpretablename -> NAMECHARSEQUENCE .)
+    CLOSE           reduce using rule 78 (interpretablename -> NAMECHARSEQUENCE .)
+
+
+state 58
+
+    (79) interpretablename -> ENCLOSEDNAME .
+
+    SEQMARK         reduce using rule 79 (interpretablename -> ENCLOSEDNAME .)
+    OPEN            reduce using rule 79 (interpretablename -> ENCLOSEDNAME .)
+    NUMERAL         reduce using rule 79 (interpretablename -> ENCLOSEDNAME .)
+    QUOTEDSTRING    reduce using rule 79 (interpretablename -> ENCLOSEDNAME .)
+    NAMECHARSEQUENCE reduce using rule 79 (interpretablename -> ENCLOSEDNAME .)
+    ENCLOSEDNAME    reduce using rule 79 (interpretablename -> ENCLOSEDNAME .)
+    CLOSE           reduce using rule 79 (interpretablename -> ENCLOSEDNAME .)
+
+
+state 59
+
+    (27) commenttext -> OPEN COMMENT . QUOTEDSTRING texts CLOSE
+    (28) commenttext -> OPEN COMMENT . QUOTEDSTRING prefixdeclarations texts CLOSE
+
+    QUOTEDSTRING    shift and go to state 89
+
+
+state 60
+
+    (20) statement -> OPEN COMMENT . QUOTEDSTRING statement CLOSE
+
+    QUOTEDSTRING    shift and go to state 90
+
+
+state 61
+
+    (50) commentsent -> OPEN COMMENT . QUOTEDSTRING sentence CLOSE
+
+    QUOTEDSTRING    shift and go to state 91
+
+
+state 62
+
+    (70) term -> OPEN term . termseq CLOSE
+    (65) termseq -> . termseq term
+    (66) termseq -> . termseq SEQMARK
+    (67) termseq -> . term
+    (68) termseq -> . SEQMARK
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    SEQMARK         shift and go to state 74
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 72
+    termseq                        shift and go to state 92
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+    interpretablename              shift and go to state 42
+
+state 63
+
+    (71) term -> OPEN COMMENT . QUOTEDSTRING term CLOSE
+    (76) interpretedname -> OPEN COMMENT . QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> OPEN COMMENT . QUOTEDSTRING QUOTEDSTRING CLOSE
+    (80) interpretablename -> OPEN COMMENT . QUOTEDSTRING interpretablename CLOSE
+
+    QUOTEDSTRING    shift and go to state 93
+
+
+state 64
+
+    (20) statement -> OPEN COMMENT QUOTEDSTRING . statement CLOSE
+    (27) commenttext -> OPEN COMMENT QUOTEDSTRING . texts CLOSE
+    (28) commenttext -> OPEN COMMENT QUOTEDSTRING . prefixdeclarations texts CLOSE
+    (50) commentsent -> OPEN COMMENT QUOTEDSTRING . sentence CLOSE
+    (18) statement -> . titling
+    (19) statement -> . discoursestatement
+    (20) statement -> . OPEN COMMENT QUOTEDSTRING statement CLOSE
+    (4) texts -> . text texts
+    (5) texts -> . text
+    (29) prefixdeclarations -> . prefixdeclaration prefixdeclarations
+    (30) prefixdeclarations -> . prefixdeclaration
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (32) titling -> . OPEN TITLING interpretablename text CLOSE
+    (21) discoursestatement -> . indiscourse
+    (22) discoursestatement -> . outdiscourse
+    (6) text -> . textconstruction
+    (7) text -> . domainrestriction
+    (8) text -> . importation
+    (9) text -> . commenttext
+    (31) prefixdeclaration -> . OPEN PREFIX QUOTEDSTRING interpretablename CLOSE
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (23) indiscourse -> . OPEN INDISCOURSE terms CLOSE
+    (24) outdiscourse -> . OPEN OUTDISCOURSE terms CLOSE
+    (10) textconstruction -> . OPEN TEXT constructed_texts CLOSE
+    (25) domainrestriction -> . OPEN RESTRICT term text CLOSE
+    (26) importation -> . OPEN IMPORTS interpretablename CLOSE
+    (27) commenttext -> . OPEN COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> . OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    OPEN            shift and go to state 94
+
+    statement                      shift and go to state 95
+    texts                          shift and go to state 96
+    prefixdeclarations             shift and go to state 97
+    sentence                       shift and go to state 98
+    titling                        shift and go to state 12
+    discoursestatement             shift and go to state 13
+    text                           shift and go to state 5
+    prefixdeclaration              shift and go to state 99
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    indiscourse                    shift and go to state 20
+    outdiscourse                   shift and go to state 21
+    textconstruction               shift and go to state 8
+    domainrestriction              shift and go to state 9
+    importation                    shift and go to state 10
+    commenttext                    shift and go to state 11
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 65
+
+    (20) statement -> OPEN . COMMENT QUOTEDSTRING statement CLOSE
+    (56) existential_quantsent -> OPEN . EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> OPEN . FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> OPEN . COMMENT QUOTEDSTRING sentence CLOSE
+    (32) titling -> OPEN . TITLING interpretablename text CLOSE
+    (10) textconstruction -> OPEN . TEXT constructed_texts CLOSE
+    (25) domainrestriction -> OPEN . RESTRICT term text CLOSE
+    (26) importation -> OPEN . IMPORTS interpretablename CLOSE
+    (27) commenttext -> OPEN . COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> OPEN . COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+    (53) equation -> OPEN . EQUAL term term CLOSE
+    (54) atom -> OPEN . term termseq CLOSE
+    (45) and_sent -> OPEN . AND sentences CLOSE
+    (46) or_sent -> OPEN . OR sentences CLOSE
+    (47) if_sent -> OPEN . IF sentence sentence CLOSE
+    (48) iff_sent -> OPEN . IFF sentence sentence CLOSE
+    (49) not_sent -> OPEN . NOT sentence CLOSE
+    (23) indiscourse -> OPEN . INDISCOURSE terms CLOSE
+    (24) outdiscourse -> OPEN . OUTDISCOURSE terms CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    COMMENT         shift and go to state 100
+    EXISTS          shift and go to state 44
+    FORALL          shift and go to state 45
+    TITLING         shift and go to state 43
+    TEXT            shift and go to state 38
+    RESTRICT        shift and go to state 39
+    IMPORTS         shift and go to state 41
+    EQUAL           shift and go to state 48
+    AND             shift and go to state 49
+    OR              shift and go to state 50
+    IF              shift and go to state 51
+    IFF             shift and go to state 52
+    NOT             shift and go to state 53
+    INDISCOURSE     shift and go to state 46
+    OUTDISCOURSE    shift and go to state 47
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    interpretablename              shift and go to state 42
+    term                           shift and go to state 40
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+
+state 66
+
+    (10) textconstruction -> OPEN TEXT constructed_texts . CLOSE
+
+    CLOSE           shift and go to state 101
+
+
+state 67
+
+    (11) constructed_texts -> constructed_text . constructed_texts
+    (12) constructed_texts -> constructed_text .
+    (11) constructed_texts -> . constructed_text constructed_texts
+    (12) constructed_texts -> . constructed_text
+    (13) constructed_text -> . sentence
+    (14) constructed_text -> . statement
+    (15) constructed_text -> . text
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (18) statement -> . titling
+    (19) statement -> . discoursestatement
+    (20) statement -> . OPEN COMMENT QUOTEDSTRING statement CLOSE
+    (6) text -> . textconstruction
+    (7) text -> . domainrestriction
+    (8) text -> . importation
+    (9) text -> . commenttext
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (32) titling -> . OPEN TITLING interpretablename text CLOSE
+    (21) discoursestatement -> . indiscourse
+    (22) discoursestatement -> . outdiscourse
+    (10) textconstruction -> . OPEN TEXT constructed_texts CLOSE
+    (25) domainrestriction -> . OPEN RESTRICT term text CLOSE
+    (26) importation -> . OPEN IMPORTS interpretablename CLOSE
+    (27) commenttext -> . OPEN COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> . OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+    (23) indiscourse -> . OPEN INDISCOURSE terms CLOSE
+    (24) outdiscourse -> . OPEN OUTDISCOURSE terms CLOSE
+
+    CLOSE           reduce using rule 12 (constructed_texts -> constructed_text .)
+    OPEN            shift and go to state 65
+
+    constructed_text               shift and go to state 67
+    constructed_texts              shift and go to state 102
+    sentence                       shift and go to state 68
+    statement                      shift and go to state 69
+    text                           shift and go to state 70
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    titling                        shift and go to state 12
+    discoursestatement             shift and go to state 13
+    textconstruction               shift and go to state 8
+    domainrestriction              shift and go to state 9
+    importation                    shift and go to state 10
+    commenttext                    shift and go to state 11
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+    indiscourse                    shift and go to state 20
+    outdiscourse                   shift and go to state 21
+
+state 68
+
+    (13) constructed_text -> sentence .
+
+    OPEN            reduce using rule 13 (constructed_text -> sentence .)
+    CLOSE           reduce using rule 13 (constructed_text -> sentence .)
+
+
+state 69
+
+    (14) constructed_text -> statement .
+
+    OPEN            reduce using rule 14 (constructed_text -> statement .)
+    CLOSE           reduce using rule 14 (constructed_text -> statement .)
+
+
+state 70
+
+    (15) constructed_text -> text .
+
+    OPEN            reduce using rule 15 (constructed_text -> text .)
+    CLOSE           reduce using rule 15 (constructed_text -> text .)
+
+
+state 71
+
+    (25) domainrestriction -> OPEN RESTRICT term . text CLOSE
+    (6) text -> . textconstruction
+    (7) text -> . domainrestriction
+    (8) text -> . importation
+    (9) text -> . commenttext
+    (10) textconstruction -> . OPEN TEXT constructed_texts CLOSE
+    (25) domainrestriction -> . OPEN RESTRICT term text CLOSE
+    (26) importation -> . OPEN IMPORTS interpretablename CLOSE
+    (27) commenttext -> . OPEN COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> . OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+
+    OPEN            shift and go to state 30
+
+    text                           shift and go to state 103
+    textconstruction               shift and go to state 8
+    domainrestriction              shift and go to state 9
+    importation                    shift and go to state 10
+    commenttext                    shift and go to state 11
+
+state 72
+
+    (67) termseq -> term .
+
+    CLOSE           reduce using rule 67 (termseq -> term .)
+    SEQMARK         reduce using rule 67 (termseq -> term .)
+    OPEN            reduce using rule 67 (termseq -> term .)
+    NUMERAL         reduce using rule 67 (termseq -> term .)
+    QUOTEDSTRING    reduce using rule 67 (termseq -> term .)
+    NAMECHARSEQUENCE reduce using rule 67 (termseq -> term .)
+    ENCLOSEDNAME    reduce using rule 67 (termseq -> term .)
+
+
+state 73
+
+    (54) atom -> OPEN term termseq . CLOSE
+    (65) termseq -> termseq . term
+    (66) termseq -> termseq . SEQMARK
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    CLOSE           shift and go to state 105
+    SEQMARK         shift and go to state 106
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 104
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+    interpretablename              shift and go to state 42
+
+state 74
+
+    (68) termseq -> SEQMARK .
+
+    CLOSE           reduce using rule 68 (termseq -> SEQMARK .)
+    SEQMARK         reduce using rule 68 (termseq -> SEQMARK .)
+    OPEN            reduce using rule 68 (termseq -> SEQMARK .)
+    NUMERAL         reduce using rule 68 (termseq -> SEQMARK .)
+    QUOTEDSTRING    reduce using rule 68 (termseq -> SEQMARK .)
+    NAMECHARSEQUENCE reduce using rule 68 (termseq -> SEQMARK .)
+    ENCLOSEDNAME    reduce using rule 68 (termseq -> SEQMARK .)
+
+
+state 75
+
+    (80) interpretablename -> OPEN . COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    COMMENT         shift and go to state 107
+
+
+state 76
+
+    (26) importation -> OPEN IMPORTS interpretablename . CLOSE
+
+    CLOSE           shift and go to state 108
+
+
+state 77
+
+    (32) titling -> OPEN TITLING interpretablename . text CLOSE
+    (6) text -> . textconstruction
+    (7) text -> . domainrestriction
+    (8) text -> . importation
+    (9) text -> . commenttext
+    (10) textconstruction -> . OPEN TEXT constructed_texts CLOSE
+    (25) domainrestriction -> . OPEN RESTRICT term text CLOSE
+    (26) importation -> . OPEN IMPORTS interpretablename CLOSE
+    (27) commenttext -> . OPEN COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> . OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+
+    OPEN            shift and go to state 30
+
+    text                           shift and go to state 109
+    textconstruction               shift and go to state 8
+    domainrestriction              shift and go to state 9
+    importation                    shift and go to state 10
+    commenttext                    shift and go to state 11
+
+state 78
+
+    (56) existential_quantsent -> OPEN EXISTS OPEN . bvar_list CLOSE sentence CLOSE
+    (57) bvar_list -> . bvar bvar_list
+    (58) bvar_list -> . bvar
+    (59) bvar -> . interpretablename
+    (60) bvar -> . cseqmark
+    (61) bvar -> . OPEN interpretablename term CLOSE
+    (62) bvar -> . OPEN cseqmark term CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+    (81) cseqmark -> . SEQMARK
+    (82) cseqmark -> . OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE
+
+    OPEN            shift and go to state 110
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+    SEQMARK         shift and go to state 115
+
+    bvar_list                      shift and go to state 111
+    bvar                           shift and go to state 112
+    interpretablename              shift and go to state 113
+    cseqmark                       shift and go to state 114
+
+state 79
+
+    (55) universal_quantsent -> OPEN FORALL OPEN . bvar_list CLOSE sentence CLOSE
+    (57) bvar_list -> . bvar bvar_list
+    (58) bvar_list -> . bvar
+    (59) bvar -> . interpretablename
+    (60) bvar -> . cseqmark
+    (61) bvar -> . OPEN interpretablename term CLOSE
+    (62) bvar -> . OPEN cseqmark term CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+    (81) cseqmark -> . SEQMARK
+    (82) cseqmark -> . OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE
+
+    OPEN            shift and go to state 110
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+    SEQMARK         shift and go to state 115
+
+    bvar_list                      shift and go to state 116
+    bvar                           shift and go to state 112
+    interpretablename              shift and go to state 113
+    cseqmark                       shift and go to state 114
+
+state 80
+
+    (23) indiscourse -> OPEN INDISCOURSE terms . CLOSE
+
+    CLOSE           shift and go to state 117
+
+
+state 81
+
+    (63) terms -> term . terms
+    (64) terms -> term .
+    (63) terms -> . term terms
+    (64) terms -> . term
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    CLOSE           reduce using rule 64 (terms -> term .)
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 81
+    terms                          shift and go to state 118
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+    interpretablename              shift and go to state 42
+
+state 82
+
+    (24) outdiscourse -> OPEN OUTDISCOURSE terms . CLOSE
+
+    CLOSE           shift and go to state 119
+
+
+state 83
+
+    (53) equation -> OPEN EQUAL term . term CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 120
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+    interpretablename              shift and go to state 42
+
+state 84
+
+    (45) and_sent -> OPEN AND sentences . CLOSE
+
+    CLOSE           shift and go to state 121
+
+
+state 85
+
+    (46) or_sent -> OPEN OR sentences . CLOSE
+
+    CLOSE           shift and go to state 122
+
+
+state 86
+
+    (47) if_sent -> OPEN IF sentence . sentence CLOSE
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    OPEN            shift and go to state 34
+
+    sentence                       shift and go to state 123
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 87
+
+    (48) iff_sent -> OPEN IFF sentence . sentence CLOSE
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    OPEN            shift and go to state 34
+
+    sentence                       shift and go to state 124
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 88
+
+    (49) not_sent -> OPEN NOT sentence . CLOSE
+
+    CLOSE           shift and go to state 125
+
+
+state 89
+
+    (27) commenttext -> OPEN COMMENT QUOTEDSTRING . texts CLOSE
+    (28) commenttext -> OPEN COMMENT QUOTEDSTRING . prefixdeclarations texts CLOSE
+    (4) texts -> . text texts
+    (5) texts -> . text
+    (29) prefixdeclarations -> . prefixdeclaration prefixdeclarations
+    (30) prefixdeclarations -> . prefixdeclaration
+    (6) text -> . textconstruction
+    (7) text -> . domainrestriction
+    (8) text -> . importation
+    (9) text -> . commenttext
+    (31) prefixdeclaration -> . OPEN PREFIX QUOTEDSTRING interpretablename CLOSE
+    (10) textconstruction -> . OPEN TEXT constructed_texts CLOSE
+    (25) domainrestriction -> . OPEN RESTRICT term text CLOSE
+    (26) importation -> . OPEN IMPORTS interpretablename CLOSE
+    (27) commenttext -> . OPEN COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> . OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+
+    OPEN            shift and go to state 126
+
+    texts                          shift and go to state 96
+    prefixdeclarations             shift and go to state 97
+    text                           shift and go to state 5
+    prefixdeclaration              shift and go to state 99
+    textconstruction               shift and go to state 8
+    domainrestriction              shift and go to state 9
+    importation                    shift and go to state 10
+    commenttext                    shift and go to state 11
+
+state 90
+
+    (20) statement -> OPEN COMMENT QUOTEDSTRING . statement CLOSE
+    (18) statement -> . titling
+    (19) statement -> . discoursestatement
+    (20) statement -> . OPEN COMMENT QUOTEDSTRING statement CLOSE
+    (32) titling -> . OPEN TITLING interpretablename text CLOSE
+    (21) discoursestatement -> . indiscourse
+    (22) discoursestatement -> . outdiscourse
+    (23) indiscourse -> . OPEN INDISCOURSE terms CLOSE
+    (24) outdiscourse -> . OPEN OUTDISCOURSE terms CLOSE
+
+    OPEN            shift and go to state 32
+
+    statement                      shift and go to state 95
+    titling                        shift and go to state 12
+    discoursestatement             shift and go to state 13
+    indiscourse                    shift and go to state 20
+    outdiscourse                   shift and go to state 21
+
+state 91
+
+    (50) commentsent -> OPEN COMMENT QUOTEDSTRING . sentence CLOSE
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    OPEN            shift and go to state 34
+
+    sentence                       shift and go to state 98
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 92
+
+    (70) term -> OPEN term termseq . CLOSE
+    (65) termseq -> termseq . term
+    (66) termseq -> termseq . SEQMARK
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    CLOSE           shift and go to state 127
+    SEQMARK         shift and go to state 106
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 104
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+    interpretablename              shift and go to state 42
+
+state 93
+
+    (71) term -> OPEN COMMENT QUOTEDSTRING . term CLOSE
+    (76) interpretedname -> OPEN COMMENT QUOTEDSTRING . NUMERAL CLOSE
+    (77) interpretedname -> OPEN COMMENT QUOTEDSTRING . QUOTEDSTRING CLOSE
+    (80) interpretablename -> OPEN COMMENT QUOTEDSTRING . interpretablename CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+
+    NUMERAL         shift and go to state 131
+    QUOTEDSTRING    shift and go to state 129
+    OPEN            shift and go to state 128
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 130
+    interpretablename              shift and go to state 132
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+
+state 94
+
+    (20) statement -> OPEN . COMMENT QUOTEDSTRING statement CLOSE
+    (32) titling -> OPEN . TITLING interpretablename text CLOSE
+    (31) prefixdeclaration -> OPEN . PREFIX QUOTEDSTRING interpretablename CLOSE
+    (56) existential_quantsent -> OPEN . EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> OPEN . FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> OPEN . COMMENT QUOTEDSTRING sentence CLOSE
+    (23) indiscourse -> OPEN . INDISCOURSE terms CLOSE
+    (24) outdiscourse -> OPEN . OUTDISCOURSE terms CLOSE
+    (10) textconstruction -> OPEN . TEXT constructed_texts CLOSE
+    (25) domainrestriction -> OPEN . RESTRICT term text CLOSE
+    (26) importation -> OPEN . IMPORTS interpretablename CLOSE
+    (27) commenttext -> OPEN . COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> OPEN . COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+    (53) equation -> OPEN . EQUAL term term CLOSE
+    (54) atom -> OPEN . term termseq CLOSE
+    (45) and_sent -> OPEN . AND sentences CLOSE
+    (46) or_sent -> OPEN . OR sentences CLOSE
+    (47) if_sent -> OPEN . IF sentence sentence CLOSE
+    (48) iff_sent -> OPEN . IFF sentence sentence CLOSE
+    (49) not_sent -> OPEN . NOT sentence CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    COMMENT         shift and go to state 100
+    TITLING         shift and go to state 43
+    PREFIX          shift and go to state 133
+    EXISTS          shift and go to state 44
+    FORALL          shift and go to state 45
+    INDISCOURSE     shift and go to state 46
+    OUTDISCOURSE    shift and go to state 47
+    TEXT            shift and go to state 38
+    RESTRICT        shift and go to state 39
+    IMPORTS         shift and go to state 41
+    EQUAL           shift and go to state 48
+    AND             shift and go to state 49
+    OR              shift and go to state 50
+    IF              shift and go to state 51
+    IFF             shift and go to state 52
+    NOT             shift and go to state 53
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    interpretablename              shift and go to state 42
+    term                           shift and go to state 40
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+
+state 95
+
+    (20) statement -> OPEN COMMENT QUOTEDSTRING statement . CLOSE
+
+    CLOSE           shift and go to state 134
+
+
+state 96
+
+    (27) commenttext -> OPEN COMMENT QUOTEDSTRING texts . CLOSE
+
+    CLOSE           shift and go to state 135
+
+
+state 97
+
+    (28) commenttext -> OPEN COMMENT QUOTEDSTRING prefixdeclarations . texts CLOSE
+    (4) texts -> . text texts
+    (5) texts -> . text
+    (6) text -> . textconstruction
+    (7) text -> . domainrestriction
+    (8) text -> . importation
+    (9) text -> . commenttext
+    (10) textconstruction -> . OPEN TEXT constructed_texts CLOSE
+    (25) domainrestriction -> . OPEN RESTRICT term text CLOSE
+    (26) importation -> . OPEN IMPORTS interpretablename CLOSE
+    (27) commenttext -> . OPEN COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> . OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+
+    OPEN            shift and go to state 30
+
+    texts                          shift and go to state 136
+    text                           shift and go to state 5
+    textconstruction               shift and go to state 8
+    domainrestriction              shift and go to state 9
+    importation                    shift and go to state 10
+    commenttext                    shift and go to state 11
+
+state 98
+
+    (50) commentsent -> OPEN COMMENT QUOTEDSTRING sentence . CLOSE
+
+    CLOSE           shift and go to state 137
+
+
+state 99
+
+    (29) prefixdeclarations -> prefixdeclaration . prefixdeclarations
+    (30) prefixdeclarations -> prefixdeclaration .
+    (29) prefixdeclarations -> . prefixdeclaration prefixdeclarations
+    (30) prefixdeclarations -> . prefixdeclaration
+    (31) prefixdeclaration -> . OPEN PREFIX QUOTEDSTRING interpretablename CLOSE
+
+  ! shift/reduce conflict for OPEN resolved as shift
+    OPEN            shift and go to state 139
+
+  ! OPEN            [ reduce using rule 30 (prefixdeclarations -> prefixdeclaration .) ]
+
+    prefixdeclaration              shift and go to state 99
+    prefixdeclarations             shift and go to state 138
+
+state 100
+
+    (20) statement -> OPEN COMMENT . QUOTEDSTRING statement CLOSE
+    (50) commentsent -> OPEN COMMENT . QUOTEDSTRING sentence CLOSE
+    (27) commenttext -> OPEN COMMENT . QUOTEDSTRING texts CLOSE
+    (28) commenttext -> OPEN COMMENT . QUOTEDSTRING prefixdeclarations texts CLOSE
+
+    QUOTEDSTRING    shift and go to state 140
+
+
+state 101
+
+    (10) textconstruction -> OPEN TEXT constructed_texts CLOSE .
+
+    OPEN            reduce using rule 10 (textconstruction -> OPEN TEXT constructed_texts CLOSE .)
+    $end            reduce using rule 10 (textconstruction -> OPEN TEXT constructed_texts CLOSE .)
+    CLOSE           reduce using rule 10 (textconstruction -> OPEN TEXT constructed_texts CLOSE .)
+
+
+state 102
+
+    (11) constructed_texts -> constructed_text constructed_texts .
+
+    CLOSE           reduce using rule 11 (constructed_texts -> constructed_text constructed_texts .)
+
+
+state 103
+
+    (25) domainrestriction -> OPEN RESTRICT term text . CLOSE
+
+    CLOSE           shift and go to state 141
+
+
+state 104
+
+    (65) termseq -> termseq term .
+
+    CLOSE           reduce using rule 65 (termseq -> termseq term .)
+    SEQMARK         reduce using rule 65 (termseq -> termseq term .)
+    OPEN            reduce using rule 65 (termseq -> termseq term .)
+    NUMERAL         reduce using rule 65 (termseq -> termseq term .)
+    QUOTEDSTRING    reduce using rule 65 (termseq -> termseq term .)
+    NAMECHARSEQUENCE reduce using rule 65 (termseq -> termseq term .)
+    ENCLOSEDNAME    reduce using rule 65 (termseq -> termseq term .)
+
+
+state 105
+
+    (54) atom -> OPEN term termseq CLOSE .
+
+    OPEN            reduce using rule 54 (atom -> OPEN term termseq CLOSE .)
+    $end            reduce using rule 54 (atom -> OPEN term termseq CLOSE .)
+    CLOSE           reduce using rule 54 (atom -> OPEN term termseq CLOSE .)
+
+
+state 106
+
+    (66) termseq -> termseq SEQMARK .
+
+    CLOSE           reduce using rule 66 (termseq -> termseq SEQMARK .)
+    SEQMARK         reduce using rule 66 (termseq -> termseq SEQMARK .)
+    OPEN            reduce using rule 66 (termseq -> termseq SEQMARK .)
+    NUMERAL         reduce using rule 66 (termseq -> termseq SEQMARK .)
+    QUOTEDSTRING    reduce using rule 66 (termseq -> termseq SEQMARK .)
+    NAMECHARSEQUENCE reduce using rule 66 (termseq -> termseq SEQMARK .)
+    ENCLOSEDNAME    reduce using rule 66 (termseq -> termseq SEQMARK .)
+
+
+state 107
+
+    (80) interpretablename -> OPEN COMMENT . QUOTEDSTRING interpretablename CLOSE
+
+    QUOTEDSTRING    shift and go to state 142
+
+
+state 108
+
+    (26) importation -> OPEN IMPORTS interpretablename CLOSE .
+
+    OPEN            reduce using rule 26 (importation -> OPEN IMPORTS interpretablename CLOSE .)
+    $end            reduce using rule 26 (importation -> OPEN IMPORTS interpretablename CLOSE .)
+    CLOSE           reduce using rule 26 (importation -> OPEN IMPORTS interpretablename CLOSE .)
+
+
+state 109
+
+    (32) titling -> OPEN TITLING interpretablename text . CLOSE
+
+    CLOSE           shift and go to state 143
+
+
+state 110
+
+    (61) bvar -> OPEN . interpretablename term CLOSE
+    (62) bvar -> OPEN . cseqmark term CLOSE
+    (80) interpretablename -> OPEN . COMMENT QUOTEDSTRING interpretablename CLOSE
+    (82) cseqmark -> OPEN . COMMENT QUOTEDSTRING SEQMARK CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+    (81) cseqmark -> . SEQMARK
+    (82) cseqmark -> . OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE
+
+    COMMENT         shift and go to state 147
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+    OPEN            shift and go to state 144
+    SEQMARK         shift and go to state 115
+
+    interpretablename              shift and go to state 145
+    cseqmark                       shift and go to state 146
+
+state 111
+
+    (56) existential_quantsent -> OPEN EXISTS OPEN bvar_list . CLOSE sentence CLOSE
+
+    CLOSE           shift and go to state 148
+
+
+state 112
+
+    (57) bvar_list -> bvar . bvar_list
+    (58) bvar_list -> bvar .
+    (57) bvar_list -> . bvar bvar_list
+    (58) bvar_list -> . bvar
+    (59) bvar -> . interpretablename
+    (60) bvar -> . cseqmark
+    (61) bvar -> . OPEN interpretablename term CLOSE
+    (62) bvar -> . OPEN cseqmark term CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+    (81) cseqmark -> . SEQMARK
+    (82) cseqmark -> . OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE
+
+    CLOSE           reduce using rule 58 (bvar_list -> bvar .)
+    OPEN            shift and go to state 110
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+    SEQMARK         shift and go to state 115
+
+    bvar                           shift and go to state 112
+    bvar_list                      shift and go to state 149
+    interpretablename              shift and go to state 113
+    cseqmark                       shift and go to state 114
+
+state 113
+
+    (59) bvar -> interpretablename .
+
+    OPEN            reduce using rule 59 (bvar -> interpretablename .)
+    NAMECHARSEQUENCE reduce using rule 59 (bvar -> interpretablename .)
+    ENCLOSEDNAME    reduce using rule 59 (bvar -> interpretablename .)
+    SEQMARK         reduce using rule 59 (bvar -> interpretablename .)
+    CLOSE           reduce using rule 59 (bvar -> interpretablename .)
+
+
+state 114
+
+    (60) bvar -> cseqmark .
+
+    OPEN            reduce using rule 60 (bvar -> cseqmark .)
+    NAMECHARSEQUENCE reduce using rule 60 (bvar -> cseqmark .)
+    ENCLOSEDNAME    reduce using rule 60 (bvar -> cseqmark .)
+    SEQMARK         reduce using rule 60 (bvar -> cseqmark .)
+    CLOSE           reduce using rule 60 (bvar -> cseqmark .)
+
+
+state 115
+
+    (81) cseqmark -> SEQMARK .
+
+    OPEN            reduce using rule 81 (cseqmark -> SEQMARK .)
+    NAMECHARSEQUENCE reduce using rule 81 (cseqmark -> SEQMARK .)
+    ENCLOSEDNAME    reduce using rule 81 (cseqmark -> SEQMARK .)
+    SEQMARK         reduce using rule 81 (cseqmark -> SEQMARK .)
+    CLOSE           reduce using rule 81 (cseqmark -> SEQMARK .)
+    NUMERAL         reduce using rule 81 (cseqmark -> SEQMARK .)
+    QUOTEDSTRING    reduce using rule 81 (cseqmark -> SEQMARK .)
+
+
+state 116
+
+    (55) universal_quantsent -> OPEN FORALL OPEN bvar_list . CLOSE sentence CLOSE
+
+    CLOSE           shift and go to state 150
+
+
+state 117
+
+    (23) indiscourse -> OPEN INDISCOURSE terms CLOSE .
+
+    OPEN            reduce using rule 23 (indiscourse -> OPEN INDISCOURSE terms CLOSE .)
+    $end            reduce using rule 23 (indiscourse -> OPEN INDISCOURSE terms CLOSE .)
+    CLOSE           reduce using rule 23 (indiscourse -> OPEN INDISCOURSE terms CLOSE .)
+
+
+state 118
+
+    (63) terms -> term terms .
+
+    CLOSE           reduce using rule 63 (terms -> term terms .)
+
+
+state 119
+
+    (24) outdiscourse -> OPEN OUTDISCOURSE terms CLOSE .
+
+    OPEN            reduce using rule 24 (outdiscourse -> OPEN OUTDISCOURSE terms CLOSE .)
+    $end            reduce using rule 24 (outdiscourse -> OPEN OUTDISCOURSE terms CLOSE .)
+    CLOSE           reduce using rule 24 (outdiscourse -> OPEN OUTDISCOURSE terms CLOSE .)
+
+
+state 120
+
+    (53) equation -> OPEN EQUAL term term . CLOSE
+
+    CLOSE           shift and go to state 151
+
+
+state 121
+
+    (45) and_sent -> OPEN AND sentences CLOSE .
+
+    OPEN            reduce using rule 45 (and_sent -> OPEN AND sentences CLOSE .)
+    $end            reduce using rule 45 (and_sent -> OPEN AND sentences CLOSE .)
+    CLOSE           reduce using rule 45 (and_sent -> OPEN AND sentences CLOSE .)
+
+
+state 122
+
+    (46) or_sent -> OPEN OR sentences CLOSE .
+
+    OPEN            reduce using rule 46 (or_sent -> OPEN OR sentences CLOSE .)
+    $end            reduce using rule 46 (or_sent -> OPEN OR sentences CLOSE .)
+    CLOSE           reduce using rule 46 (or_sent -> OPEN OR sentences CLOSE .)
+
+
+state 123
+
+    (47) if_sent -> OPEN IF sentence sentence . CLOSE
+
+    CLOSE           shift and go to state 152
+
+
+state 124
+
+    (48) iff_sent -> OPEN IFF sentence sentence . CLOSE
+
+    CLOSE           shift and go to state 153
+
+
+state 125
+
+    (49) not_sent -> OPEN NOT sentence CLOSE .
+
+    OPEN            reduce using rule 49 (not_sent -> OPEN NOT sentence CLOSE .)
+    $end            reduce using rule 49 (not_sent -> OPEN NOT sentence CLOSE .)
+    CLOSE           reduce using rule 49 (not_sent -> OPEN NOT sentence CLOSE .)
+
+
+state 126
+
+    (31) prefixdeclaration -> OPEN . PREFIX QUOTEDSTRING interpretablename CLOSE
+    (10) textconstruction -> OPEN . TEXT constructed_texts CLOSE
+    (25) domainrestriction -> OPEN . RESTRICT term text CLOSE
+    (26) importation -> OPEN . IMPORTS interpretablename CLOSE
+    (27) commenttext -> OPEN . COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> OPEN . COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+
+    PREFIX          shift and go to state 133
+    TEXT            shift and go to state 38
+    RESTRICT        shift and go to state 39
+    IMPORTS         shift and go to state 41
+    COMMENT         shift and go to state 59
+
+
+state 127
+
+    (70) term -> OPEN term termseq CLOSE .
+
+    SEQMARK         reduce using rule 70 (term -> OPEN term termseq CLOSE .)
+    OPEN            reduce using rule 70 (term -> OPEN term termseq CLOSE .)
+    NUMERAL         reduce using rule 70 (term -> OPEN term termseq CLOSE .)
+    QUOTEDSTRING    reduce using rule 70 (term -> OPEN term termseq CLOSE .)
+    NAMECHARSEQUENCE reduce using rule 70 (term -> OPEN term termseq CLOSE .)
+    ENCLOSEDNAME    reduce using rule 70 (term -> OPEN term termseq CLOSE .)
+    CLOSE           reduce using rule 70 (term -> OPEN term termseq CLOSE .)
+
+
+state 128
+
+    (70) term -> OPEN . term termseq CLOSE
+    (71) term -> OPEN . COMMENT QUOTEDSTRING term CLOSE
+    (80) interpretablename -> OPEN . COMMENT QUOTEDSTRING interpretablename CLOSE
+    (76) interpretedname -> OPEN . COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> OPEN . COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    COMMENT         shift and go to state 154
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 62
+    interpretablename              shift and go to state 42
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+
+state 129
+
+    (77) interpretedname -> OPEN COMMENT QUOTEDSTRING QUOTEDSTRING . CLOSE
+    (75) interpretedname -> QUOTEDSTRING .
+
+  ! shift/reduce conflict for CLOSE resolved as shift
+    CLOSE           shift and go to state 155
+
+  ! CLOSE           [ reduce using rule 75 (interpretedname -> QUOTEDSTRING .) ]
+
+
+state 130
+
+    (71) term -> OPEN COMMENT QUOTEDSTRING term . CLOSE
+
+    CLOSE           shift and go to state 156
+
+
+state 131
+
+    (76) interpretedname -> OPEN COMMENT QUOTEDSTRING NUMERAL . CLOSE
+    (74) interpretedname -> NUMERAL .
+
+  ! shift/reduce conflict for CLOSE resolved as shift
+    CLOSE           shift and go to state 157
+
+  ! CLOSE           [ reduce using rule 74 (interpretedname -> NUMERAL .) ]
+
+
+state 132
+
+    (80) interpretablename -> OPEN COMMENT QUOTEDSTRING interpretablename . CLOSE
+    (73) name -> interpretablename .
+
+  ! shift/reduce conflict for CLOSE resolved as shift
+    CLOSE           shift and go to state 158
+
+  ! CLOSE           [ reduce using rule 73 (name -> interpretablename .) ]
+
+
+state 133
+
+    (31) prefixdeclaration -> OPEN PREFIX . QUOTEDSTRING interpretablename CLOSE
+
+    QUOTEDSTRING    shift and go to state 159
+
+
+state 134
+
+    (20) statement -> OPEN COMMENT QUOTEDSTRING statement CLOSE .
+
+    OPEN            reduce using rule 20 (statement -> OPEN COMMENT QUOTEDSTRING statement CLOSE .)
+    $end            reduce using rule 20 (statement -> OPEN COMMENT QUOTEDSTRING statement CLOSE .)
+    CLOSE           reduce using rule 20 (statement -> OPEN COMMENT QUOTEDSTRING statement CLOSE .)
+
+
+state 135
+
+    (27) commenttext -> OPEN COMMENT QUOTEDSTRING texts CLOSE .
+
+    OPEN            reduce using rule 27 (commenttext -> OPEN COMMENT QUOTEDSTRING texts CLOSE .)
+    $end            reduce using rule 27 (commenttext -> OPEN COMMENT QUOTEDSTRING texts CLOSE .)
+    CLOSE           reduce using rule 27 (commenttext -> OPEN COMMENT QUOTEDSTRING texts CLOSE .)
+
+
+state 136
+
+    (28) commenttext -> OPEN COMMENT QUOTEDSTRING prefixdeclarations texts . CLOSE
+
+    CLOSE           shift and go to state 160
+
+
+state 137
+
+    (50) commentsent -> OPEN COMMENT QUOTEDSTRING sentence CLOSE .
+
+    OPEN            reduce using rule 50 (commentsent -> OPEN COMMENT QUOTEDSTRING sentence CLOSE .)
+    $end            reduce using rule 50 (commentsent -> OPEN COMMENT QUOTEDSTRING sentence CLOSE .)
+    CLOSE           reduce using rule 50 (commentsent -> OPEN COMMENT QUOTEDSTRING sentence CLOSE .)
+
+
+state 138
+
+    (29) prefixdeclarations -> prefixdeclaration prefixdeclarations .
+
+    OPEN            reduce using rule 29 (prefixdeclarations -> prefixdeclaration prefixdeclarations .)
+
+
+state 139
+
+    (31) prefixdeclaration -> OPEN . PREFIX QUOTEDSTRING interpretablename CLOSE
+
+    PREFIX          shift and go to state 133
+
+
+state 140
+
+    (20) statement -> OPEN COMMENT QUOTEDSTRING . statement CLOSE
+    (50) commentsent -> OPEN COMMENT QUOTEDSTRING . sentence CLOSE
+    (27) commenttext -> OPEN COMMENT QUOTEDSTRING . texts CLOSE
+    (28) commenttext -> OPEN COMMENT QUOTEDSTRING . prefixdeclarations texts CLOSE
+    (18) statement -> . titling
+    (19) statement -> . discoursestatement
+    (20) statement -> . OPEN COMMENT QUOTEDSTRING statement CLOSE
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (4) texts -> . text texts
+    (5) texts -> . text
+    (29) prefixdeclarations -> . prefixdeclaration prefixdeclarations
+    (30) prefixdeclarations -> . prefixdeclaration
+    (32) titling -> . OPEN TITLING interpretablename text CLOSE
+    (21) discoursestatement -> . indiscourse
+    (22) discoursestatement -> . outdiscourse
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (6) text -> . textconstruction
+    (7) text -> . domainrestriction
+    (8) text -> . importation
+    (9) text -> . commenttext
+    (31) prefixdeclaration -> . OPEN PREFIX QUOTEDSTRING interpretablename CLOSE
+    (23) indiscourse -> . OPEN INDISCOURSE terms CLOSE
+    (24) outdiscourse -> . OPEN OUTDISCOURSE terms CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+    (10) textconstruction -> . OPEN TEXT constructed_texts CLOSE
+    (25) domainrestriction -> . OPEN RESTRICT term text CLOSE
+    (26) importation -> . OPEN IMPORTS interpretablename CLOSE
+    (27) commenttext -> . OPEN COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> . OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+
+    OPEN            shift and go to state 161
+
+    statement                      shift and go to state 95
+    sentence                       shift and go to state 98
+    texts                          shift and go to state 96
+    prefixdeclarations             shift and go to state 97
+    titling                        shift and go to state 12
+    discoursestatement             shift and go to state 13
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    text                           shift and go to state 5
+    prefixdeclaration              shift and go to state 99
+    indiscourse                    shift and go to state 20
+    outdiscourse                   shift and go to state 21
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+    textconstruction               shift and go to state 8
+    domainrestriction              shift and go to state 9
+    importation                    shift and go to state 10
+    commenttext                    shift and go to state 11
+
+state 141
+
+    (25) domainrestriction -> OPEN RESTRICT term text CLOSE .
+
+    OPEN            reduce using rule 25 (domainrestriction -> OPEN RESTRICT term text CLOSE .)
+    $end            reduce using rule 25 (domainrestriction -> OPEN RESTRICT term text CLOSE .)
+    CLOSE           reduce using rule 25 (domainrestriction -> OPEN RESTRICT term text CLOSE .)
+
+
+state 142
+
+    (80) interpretablename -> OPEN COMMENT QUOTEDSTRING . interpretablename CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+    OPEN            shift and go to state 75
+
+    interpretablename              shift and go to state 162
+
+state 143
+
+    (32) titling -> OPEN TITLING interpretablename text CLOSE .
+
+    OPEN            reduce using rule 32 (titling -> OPEN TITLING interpretablename text CLOSE .)
+    $end            reduce using rule 32 (titling -> OPEN TITLING interpretablename text CLOSE .)
+    CLOSE           reduce using rule 32 (titling -> OPEN TITLING interpretablename text CLOSE .)
+
+
+state 144
+
+    (80) interpretablename -> OPEN . COMMENT QUOTEDSTRING interpretablename CLOSE
+    (82) cseqmark -> OPEN . COMMENT QUOTEDSTRING SEQMARK CLOSE
+
+    COMMENT         shift and go to state 147
+
+
+state 145
+
+    (61) bvar -> OPEN interpretablename . term CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    interpretablename              shift and go to state 42
+    term                           shift and go to state 163
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+
+state 146
+
+    (62) bvar -> OPEN cseqmark . term CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 164
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+    interpretablename              shift and go to state 42
+
+state 147
+
+    (80) interpretablename -> OPEN COMMENT . QUOTEDSTRING interpretablename CLOSE
+    (82) cseqmark -> OPEN COMMENT . QUOTEDSTRING SEQMARK CLOSE
+
+    QUOTEDSTRING    shift and go to state 165
+
+
+state 148
+
+    (56) existential_quantsent -> OPEN EXISTS OPEN bvar_list CLOSE . sentence CLOSE
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    OPEN            shift and go to state 34
+
+    sentence                       shift and go to state 166
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 149
+
+    (57) bvar_list -> bvar bvar_list .
+
+    CLOSE           reduce using rule 57 (bvar_list -> bvar bvar_list .)
+
+
+state 150
+
+    (55) universal_quantsent -> OPEN FORALL OPEN bvar_list CLOSE . sentence CLOSE
+    (33) sentence -> . atomsent
+    (34) sentence -> . boolsent
+    (35) sentence -> . existential_quantsent
+    (36) sentence -> . universal_quantsent
+    (37) sentence -> . commentsent
+    (38) atomsent -> . equation
+    (39) atomsent -> . atom
+    (40) boolsent -> . and_sent
+    (41) boolsent -> . or_sent
+    (42) boolsent -> . if_sent
+    (43) boolsent -> . iff_sent
+    (44) boolsent -> . not_sent
+    (56) existential_quantsent -> . OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> . OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> . OPEN COMMENT QUOTEDSTRING sentence CLOSE
+    (53) equation -> . OPEN EQUAL term term CLOSE
+    (54) atom -> . OPEN term termseq CLOSE
+    (45) and_sent -> . OPEN AND sentences CLOSE
+    (46) or_sent -> . OPEN OR sentences CLOSE
+    (47) if_sent -> . OPEN IF sentence sentence CLOSE
+    (48) iff_sent -> . OPEN IFF sentence sentence CLOSE
+    (49) not_sent -> . OPEN NOT sentence CLOSE
+
+    OPEN            shift and go to state 34
+
+    sentence                       shift and go to state 167
+    atomsent                       shift and go to state 15
+    boolsent                       shift and go to state 16
+    existential_quantsent          shift and go to state 17
+    universal_quantsent            shift and go to state 18
+    commentsent                    shift and go to state 19
+    equation                       shift and go to state 22
+    atom                           shift and go to state 23
+    and_sent                       shift and go to state 24
+    or_sent                        shift and go to state 25
+    if_sent                        shift and go to state 26
+    iff_sent                       shift and go to state 27
+    not_sent                       shift and go to state 28
+
+state 151
+
+    (53) equation -> OPEN EQUAL term term CLOSE .
+
+    OPEN            reduce using rule 53 (equation -> OPEN EQUAL term term CLOSE .)
+    $end            reduce using rule 53 (equation -> OPEN EQUAL term term CLOSE .)
+    CLOSE           reduce using rule 53 (equation -> OPEN EQUAL term term CLOSE .)
+
+
+state 152
+
+    (47) if_sent -> OPEN IF sentence sentence CLOSE .
+
+    OPEN            reduce using rule 47 (if_sent -> OPEN IF sentence sentence CLOSE .)
+    $end            reduce using rule 47 (if_sent -> OPEN IF sentence sentence CLOSE .)
+    CLOSE           reduce using rule 47 (if_sent -> OPEN IF sentence sentence CLOSE .)
+
+
+state 153
+
+    (48) iff_sent -> OPEN IFF sentence sentence CLOSE .
+
+    OPEN            reduce using rule 48 (iff_sent -> OPEN IFF sentence sentence CLOSE .)
+    $end            reduce using rule 48 (iff_sent -> OPEN IFF sentence sentence CLOSE .)
+    CLOSE           reduce using rule 48 (iff_sent -> OPEN IFF sentence sentence CLOSE .)
+
+
+state 154
+
+    (71) term -> OPEN COMMENT . QUOTEDSTRING term CLOSE
+    (80) interpretablename -> OPEN COMMENT . QUOTEDSTRING interpretablename CLOSE
+    (76) interpretedname -> OPEN COMMENT . QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> OPEN COMMENT . QUOTEDSTRING QUOTEDSTRING CLOSE
+
+    QUOTEDSTRING    shift and go to state 168
+
+
+state 155
+
+    (77) interpretedname -> OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE .
+
+    SEQMARK         reduce using rule 77 (interpretedname -> OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE .)
+    OPEN            reduce using rule 77 (interpretedname -> OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE .)
+    NUMERAL         reduce using rule 77 (interpretedname -> OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE .)
+    QUOTEDSTRING    reduce using rule 77 (interpretedname -> OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE .)
+    NAMECHARSEQUENCE reduce using rule 77 (interpretedname -> OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE .)
+    ENCLOSEDNAME    reduce using rule 77 (interpretedname -> OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE .)
+    CLOSE           reduce using rule 77 (interpretedname -> OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE .)
+
+
+state 156
+
+    (71) term -> OPEN COMMENT QUOTEDSTRING term CLOSE .
+
+    SEQMARK         reduce using rule 71 (term -> OPEN COMMENT QUOTEDSTRING term CLOSE .)
+    OPEN            reduce using rule 71 (term -> OPEN COMMENT QUOTEDSTRING term CLOSE .)
+    NUMERAL         reduce using rule 71 (term -> OPEN COMMENT QUOTEDSTRING term CLOSE .)
+    QUOTEDSTRING    reduce using rule 71 (term -> OPEN COMMENT QUOTEDSTRING term CLOSE .)
+    NAMECHARSEQUENCE reduce using rule 71 (term -> OPEN COMMENT QUOTEDSTRING term CLOSE .)
+    ENCLOSEDNAME    reduce using rule 71 (term -> OPEN COMMENT QUOTEDSTRING term CLOSE .)
+    CLOSE           reduce using rule 71 (term -> OPEN COMMENT QUOTEDSTRING term CLOSE .)
+
+
+state 157
+
+    (76) interpretedname -> OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE .
+
+    SEQMARK         reduce using rule 76 (interpretedname -> OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE .)
+    OPEN            reduce using rule 76 (interpretedname -> OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE .)
+    NUMERAL         reduce using rule 76 (interpretedname -> OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE .)
+    QUOTEDSTRING    reduce using rule 76 (interpretedname -> OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE .)
+    NAMECHARSEQUENCE reduce using rule 76 (interpretedname -> OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE .)
+    ENCLOSEDNAME    reduce using rule 76 (interpretedname -> OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE .)
+    CLOSE           reduce using rule 76 (interpretedname -> OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE .)
+
+
+state 158
+
+    (80) interpretablename -> OPEN COMMENT QUOTEDSTRING interpretablename CLOSE .
+
+    SEQMARK         reduce using rule 80 (interpretablename -> OPEN COMMENT QUOTEDSTRING interpretablename CLOSE .)
+    OPEN            reduce using rule 80 (interpretablename -> OPEN COMMENT QUOTEDSTRING interpretablename CLOSE .)
+    NUMERAL         reduce using rule 80 (interpretablename -> OPEN COMMENT QUOTEDSTRING interpretablename CLOSE .)
+    QUOTEDSTRING    reduce using rule 80 (interpretablename -> OPEN COMMENT QUOTEDSTRING interpretablename CLOSE .)
+    NAMECHARSEQUENCE reduce using rule 80 (interpretablename -> OPEN COMMENT QUOTEDSTRING interpretablename CLOSE .)
+    ENCLOSEDNAME    reduce using rule 80 (interpretablename -> OPEN COMMENT QUOTEDSTRING interpretablename CLOSE .)
+    CLOSE           reduce using rule 80 (interpretablename -> OPEN COMMENT QUOTEDSTRING interpretablename CLOSE .)
+
+
+state 159
+
+    (31) prefixdeclaration -> OPEN PREFIX QUOTEDSTRING . interpretablename CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+    OPEN            shift and go to state 75
+
+    interpretablename              shift and go to state 169
+
+state 160
+
+    (28) commenttext -> OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE .
+
+    OPEN            reduce using rule 28 (commenttext -> OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE .)
+    $end            reduce using rule 28 (commenttext -> OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE .)
+    CLOSE           reduce using rule 28 (commenttext -> OPEN COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE .)
+
+
+state 161
+
+    (20) statement -> OPEN . COMMENT QUOTEDSTRING statement CLOSE
+    (32) titling -> OPEN . TITLING interpretablename text CLOSE
+    (56) existential_quantsent -> OPEN . EXISTS OPEN bvar_list CLOSE sentence CLOSE
+    (55) universal_quantsent -> OPEN . FORALL OPEN bvar_list CLOSE sentence CLOSE
+    (50) commentsent -> OPEN . COMMENT QUOTEDSTRING sentence CLOSE
+    (31) prefixdeclaration -> OPEN . PREFIX QUOTEDSTRING interpretablename CLOSE
+    (23) indiscourse -> OPEN . INDISCOURSE terms CLOSE
+    (24) outdiscourse -> OPEN . OUTDISCOURSE terms CLOSE
+    (53) equation -> OPEN . EQUAL term term CLOSE
+    (54) atom -> OPEN . term termseq CLOSE
+    (45) and_sent -> OPEN . AND sentences CLOSE
+    (46) or_sent -> OPEN . OR sentences CLOSE
+    (47) if_sent -> OPEN . IF sentence sentence CLOSE
+    (48) iff_sent -> OPEN . IFF sentence sentence CLOSE
+    (49) not_sent -> OPEN . NOT sentence CLOSE
+    (10) textconstruction -> OPEN . TEXT constructed_texts CLOSE
+    (25) domainrestriction -> OPEN . RESTRICT term text CLOSE
+    (26) importation -> OPEN . IMPORTS interpretablename CLOSE
+    (27) commenttext -> OPEN . COMMENT QUOTEDSTRING texts CLOSE
+    (28) commenttext -> OPEN . COMMENT QUOTEDSTRING prefixdeclarations texts CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    COMMENT         shift and go to state 100
+    TITLING         shift and go to state 43
+    EXISTS          shift and go to state 44
+    FORALL          shift and go to state 45
+    PREFIX          shift and go to state 133
+    INDISCOURSE     shift and go to state 46
+    OUTDISCOURSE    shift and go to state 47
+    EQUAL           shift and go to state 48
+    AND             shift and go to state 49
+    OR              shift and go to state 50
+    IF              shift and go to state 51
+    IFF             shift and go to state 52
+    NOT             shift and go to state 53
+    TEXT            shift and go to state 38
+    RESTRICT        shift and go to state 39
+    IMPORTS         shift and go to state 41
+    OPEN            shift and go to state 35
+    NUMERAL         shift and go to state 56
+    QUOTEDSTRING    shift and go to state 37
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    interpretablename              shift and go to state 42
+    term                           shift and go to state 40
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+
+state 162
+
+    (80) interpretablename -> OPEN COMMENT QUOTEDSTRING interpretablename . CLOSE
+
+    CLOSE           shift and go to state 158
+
+
+state 163
+
+    (61) bvar -> OPEN interpretablename term . CLOSE
+
+    CLOSE           shift and go to state 170
+
+
+state 164
+
+    (62) bvar -> OPEN cseqmark term . CLOSE
+
+    CLOSE           shift and go to state 171
+
+
+state 165
+
+    (80) interpretablename -> OPEN COMMENT QUOTEDSTRING . interpretablename CLOSE
+    (82) cseqmark -> OPEN COMMENT QUOTEDSTRING . SEQMARK CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+
+    SEQMARK         shift and go to state 172
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+    OPEN            shift and go to state 75
+
+    interpretablename              shift and go to state 162
+
+state 166
+
+    (56) existential_quantsent -> OPEN EXISTS OPEN bvar_list CLOSE sentence . CLOSE
+
+    CLOSE           shift and go to state 173
+
+
+state 167
+
+    (55) universal_quantsent -> OPEN FORALL OPEN bvar_list CLOSE sentence . CLOSE
+
+    CLOSE           shift and go to state 174
+
+
+state 168
+
+    (71) term -> OPEN COMMENT QUOTEDSTRING . term CLOSE
+    (80) interpretablename -> OPEN COMMENT QUOTEDSTRING . interpretablename CLOSE
+    (76) interpretedname -> OPEN COMMENT QUOTEDSTRING . NUMERAL CLOSE
+    (77) interpretedname -> OPEN COMMENT QUOTEDSTRING . QUOTEDSTRING CLOSE
+    (69) term -> . name
+    (70) term -> . OPEN term termseq CLOSE
+    (71) term -> . OPEN COMMENT QUOTEDSTRING term CLOSE
+    (78) interpretablename -> . NAMECHARSEQUENCE
+    (79) interpretablename -> . ENCLOSEDNAME
+    (80) interpretablename -> . OPEN COMMENT QUOTEDSTRING interpretablename CLOSE
+    (72) name -> . interpretedname
+    (73) name -> . interpretablename
+    (74) interpretedname -> . NUMERAL
+    (75) interpretedname -> . QUOTEDSTRING
+    (76) interpretedname -> . OPEN COMMENT QUOTEDSTRING NUMERAL CLOSE
+    (77) interpretedname -> . OPEN COMMENT QUOTEDSTRING QUOTEDSTRING CLOSE
+
+    NUMERAL         shift and go to state 131
+    QUOTEDSTRING    shift and go to state 129
+    OPEN            shift and go to state 128
+    NAMECHARSEQUENCE shift and go to state 57
+    ENCLOSEDNAME    shift and go to state 58
+
+    term                           shift and go to state 130
+    interpretablename              shift and go to state 132
+    name                           shift and go to state 54
+    interpretedname                shift and go to state 55
+
+state 169
+
+    (31) prefixdeclaration -> OPEN PREFIX QUOTEDSTRING interpretablename . CLOSE
+
+    CLOSE           shift and go to state 175
+
+
+state 170
+
+    (61) bvar -> OPEN interpretablename term CLOSE .
+
+    OPEN            reduce using rule 61 (bvar -> OPEN interpretablename term CLOSE .)
+    NAMECHARSEQUENCE reduce using rule 61 (bvar -> OPEN interpretablename term CLOSE .)
+    ENCLOSEDNAME    reduce using rule 61 (bvar -> OPEN interpretablename term CLOSE .)
+    SEQMARK         reduce using rule 61 (bvar -> OPEN interpretablename term CLOSE .)
+    CLOSE           reduce using rule 61 (bvar -> OPEN interpretablename term CLOSE .)
+
+
+state 171
+
+    (62) bvar -> OPEN cseqmark term CLOSE .
+
+    OPEN            reduce using rule 62 (bvar -> OPEN cseqmark term CLOSE .)
+    NAMECHARSEQUENCE reduce using rule 62 (bvar -> OPEN cseqmark term CLOSE .)
+    ENCLOSEDNAME    reduce using rule 62 (bvar -> OPEN cseqmark term CLOSE .)
+    SEQMARK         reduce using rule 62 (bvar -> OPEN cseqmark term CLOSE .)
+    CLOSE           reduce using rule 62 (bvar -> OPEN cseqmark term CLOSE .)
+
+
+state 172
+
+    (82) cseqmark -> OPEN COMMENT QUOTEDSTRING SEQMARK . CLOSE
+
+    CLOSE           shift and go to state 176
+
+
+state 173
+
+    (56) existential_quantsent -> OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE .
+
+    OPEN            reduce using rule 56 (existential_quantsent -> OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE .)
+    $end            reduce using rule 56 (existential_quantsent -> OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE .)
+    CLOSE           reduce using rule 56 (existential_quantsent -> OPEN EXISTS OPEN bvar_list CLOSE sentence CLOSE .)
+
+
+state 174
+
+    (55) universal_quantsent -> OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE .
+
+    OPEN            reduce using rule 55 (universal_quantsent -> OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE .)
+    $end            reduce using rule 55 (universal_quantsent -> OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE .)
+    CLOSE           reduce using rule 55 (universal_quantsent -> OPEN FORALL OPEN bvar_list CLOSE sentence CLOSE .)
+
+
+state 175
+
+    (31) prefixdeclaration -> OPEN PREFIX QUOTEDSTRING interpretablename CLOSE .
+
+    OPEN            reduce using rule 31 (prefixdeclaration -> OPEN PREFIX QUOTEDSTRING interpretablename CLOSE .)
+
+
+state 176
+
+    (82) cseqmark -> OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE .
+
+    OPEN            reduce using rule 82 (cseqmark -> OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE .)
+    NAMECHARSEQUENCE reduce using rule 82 (cseqmark -> OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE .)
+    ENCLOSEDNAME    reduce using rule 82 (cseqmark -> OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE .)
+    SEQMARK         reduce using rule 82 (cseqmark -> OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE .)
+    CLOSE           reduce using rule 82 (cseqmark -> OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE .)
+    NUMERAL         reduce using rule 82 (cseqmark -> OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE .)
+    QUOTEDSTRING    reduce using rule 82 (cseqmark -> OPEN COMMENT QUOTEDSTRING SEQMARK CLOSE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for OPEN in state 99 resolved as shift
+WARNING: shift/reduce conflict for CLOSE in state 129 resolved as shift
+WARNING: shift/reduce conflict for CLOSE in state 131 resolved as shift
+WARNING: shift/reduce conflict for CLOSE in state 132 resolved as shift
