@@ -86,7 +86,7 @@ def __iterate_through_predicates(
                                       extended_theory_id)
                                 RelativeCommitments(committing_predicate=unary_predicate1, committed_predicate=unary_predicate2, definition=relative_commitment_definition)
                                 # relative_commitments_graph.add_edge(unary_predicate1, unary_predicate2)
-                                if len(RelativeCommitments.registry) > 3:
+                                if len(RelativeCommitments.registry) > 7:
                                     return
                             
                             if result == ProverResult.UNDECIDED:
