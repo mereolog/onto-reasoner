@@ -22,7 +22,7 @@ def find_subsumptions(
     cl_theory = Theory(parts=cl_theory_axioms)
     unary_predicates = set(cl_theory.get_n_ary_predicates_map()[1])
     
-    for unary_predicate_1 in tqdm(unary_predicates, position=0, desc='potentially subsumed predicates'):
+    for unary_predicate_1 in tqdm(unary_predicates, position=0, desc='checked potentially subsumed predicates'):
         for unary_predicate_2 in unary_predicates:
             if unary_predicate_1 == unary_predicate_2:
                 continue

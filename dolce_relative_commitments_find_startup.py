@@ -23,12 +23,6 @@ dolce_subsumptions = (
 
 filter_out_apparent_relative_commitments(subsumptions=dolce_subsumptions)
 
+
+
 pickle.dump(RelativeCommitments.registry, open('relative_commitments.pickle', 'wb'))
-
-
-# pickle.dump(relative_commitment_graph, open('relative_commitment_graph.pickle', 'wb'))
-# relative_commitment_graph
-# transitievly_reduced_relative_commitment_graph = networkx.transitive_reduction(relative_commitment_graph)
-# pickle.dump(transitievly_reduced_relative_commitment_graph, open('transitievly_reduced_relative_commitment_graph.pickle', 'wb'))
-# transitievly_closed_relative_commitment_graph = networkx.transitive_closure(relative_commitment_graph)
-# pickle.dump(transitievly_closed_relative_commitment_graph, open('transitievly_closed_relative_commitment_graph.pickle', 'wb'))

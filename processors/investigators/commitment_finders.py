@@ -12,6 +12,7 @@ from objects.fol_logic.objects.negation import Negation
 from objects.fol_logic.objects.quantifying_formula import QuantifyingFormula, Quantifier
 from objects.fol_logic.objects.theory import Theory
 from objects.fol_logic.objects.variable import Variable
+from processors.investigators.predicates_finder import find_n_ary_predicates, find_all_predicates
 from processors.readers.parsers.extended_clif_parser import extended_parse_clif
 from processors.reasoners.consistency_result import ProverResult
 from processors.reasoners.vampire_decider import decide_whether_theory_is_consistent
@@ -80,26 +81,21 @@ def __iterate_through_predicates(
                             result, time = (
                                 decide_whether_theory_is_consistent(
                                     vampire_input_file_path=vampire_input_file_path,
-                                    vampire_output_file_path=vampire_output_file_path))
+                                    vampire_output_file_path=vampire_output_file_path,
+                                    time=60))
                             if result == ProverResult.INCONSISTENT:
-                                print(str(unary_predicate1), 'commits to', str(unary_predicate2), 'See:',
-                                      extended_theory_id)
                                 RelativeCommitments(committing_predicate=unary_predicate1, committed_predicate=unary_predicate2, definition=relative_commitment_definition)
-                                # relative_commitments_graph.add_edge(unary_predicate1, unary_predicate2)
-                                if len(RelativeCommitments.registry) > 7:
-                                    return
-                            
+                                
                             if result == ProverResult.UNDECIDED:
                                 print('I spent in vain', str(time), 'seconds', 'checking if', str(unary_predicate1),
-                                      'commits to', str(unary_predicate2))
+                                      'commits to', str(unary_predicate2), 'using', str(relative_commitment_definition), '. See:', extended_theory_id)
 
 
 def find_absolute_commitments(theory_file_path: str, reasoner_artifacts_path: str):
     with open(theory_file_path) as cl_theory_file:
         cl_theory_text = cl_theory_file.read()
     cl_theory_axioms = extended_parse_clif(cl_theory_text)
-    cl_theory = Theory(parts=cl_theory_axioms)
-    unary_predicates = cl_theory.get_n_ary_predicates_map()[1]
+    unary_predicates = find_n_ary_predicates(theory_file_path=theory_file_path, arity=1)
     for unary_predicate in tqdm(unary_predicates, desc='checked predicates'):
         extended_cl_theory_axioms = cl_theory_axioms.copy()
         variable = Variable.get_next_variable()
@@ -135,11 +131,11 @@ def find_relative_commitments(
     with open(theory_file_path) as cl_theory_file:
         cl_theory_text = cl_theory_file.read()
     cl_theory_axioms = extended_parse_clif(cl_theory_text)
-    cl_theory = Theory(parts=cl_theory_axioms)
-    n_ary_predicates_map = cl_theory.get_n_ary_predicates_map()
+    unary_predicates = find_n_ary_predicates(theory_file_path=theory_file_path, arity=1)
     if not unary_predicates:
-        unary_predicates = n_ary_predicates_map[1]
-    non_unary_predicates = n_ary_predicates_map[2].union(n_ary_predicates_map[2])
+        unary_predicates = find_n_ary_predicates(theory_file_path=theory_file_path, arity=1)
+    all_predicates = find_all_predicates(theory_file_path=theory_file_path)
+    non_unary_predicates = all_predicates.difference(unary_predicates)
     
     __iterate_through_predicates(
         subsumption_leaf_predicates=unary_predicates,
