@@ -15,14 +15,11 @@ reasoner_artifacts_path='resources/midputs/reasoner_artifacts/'
 find_relative_commitments(
     theory_file_path=dolce_file_path,
     reasoner_artifacts_path=reasoner_artifacts_path)
+pickle.dump(RelativeCommitments.registry, open('dolce_genuine_and_emergent_relative_commitments.pickle', 'wb'))
 
 dolce_subsumptions = (
     find_subsumptions(
         theory_file_path=dolce_file_path,
         reasoner_artifacts_path=reasoner_artifacts_path))
-
 filter_out_apparent_relative_commitments(subsumptions=dolce_subsumptions)
-
-
-
-pickle.dump(RelativeCommitments.registry, open('relative_commitments.pickle', 'wb'))
+pickle.dump(RelativeCommitments.registry, open('dolce_genuine_only_relative_commitments.pickle', 'wb'))

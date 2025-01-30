@@ -16,3 +16,8 @@ class RelativeCommitments:
         
         RelativeCommitments.registry.add(self)
         
+    def __repr__(self):
+        return 'Predicate ' + self.committing_predicate + ' commits to ' + self.committed_predicate + ' because of ' + self.definition
+    
+    def __str__(self):
+        return 'Predicate ' + self.committing_predicate + ' commits to ' + self.committed_predicate + ' because of ' + self.definition

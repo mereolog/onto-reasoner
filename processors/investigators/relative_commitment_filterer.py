@@ -8,14 +8,25 @@ def filter_out_apparent_relative_commitments(subsumptions: list):
         for relative_commitment_2 in RelativeCommitments.registry:
             if relative_commitment_1 == relative_commitment_2:
                 continue
-            if not relative_commitment_1.committing_predicate == relative_commitment_2.committing_predicate:
-                continue
-            commited_predicate_1 = relative_commitment_1.committed_predicate
-            commited_predicate_2 = relative_commitment_2.committed_predicate
-            if [commited_predicate_1, commited_predicate_2] in subsumptions:
+            if __relative_commitment_2_can_be_reduced_to_relative_commitment_1(relative_commitment_1=relative_commitment_1, relative_commitment_2=relative_commitment_2, subsumptions=subsumptions):
                 if relative_commitment_2 in relative_commitments:
                     relative_commitments.remove(relative_commitment_2)
                     print('Removing', relative_commitment_2.definition)
                     
     RelativeCommitments.registry = relative_commitments
+    
+    
+def __relative_commitment_2_can_be_reduced_to_relative_commitment_1(
+        relative_commitment_1: RelativeCommitments,
+        relative_commitment_2: RelativeCommitments,
+        subsumptions: list) -> bool:
+    if relative_commitment_1.committing_predicate == relative_commitment_2.committing_predicate and relative_commitment_1.committed_predicate == relative_commitment_2.committed_predicate:
+        return False
+    if relative_commitment_1.committing_predicate == relative_commitment_2.committing_predicate and [relative_commitment_1.committed_predicate, relative_commitment_2.committed_predicate] in subsumptions:
+        return True
+    if relative_commitment_1.committed_predicate == relative_commitment_2.committed_predicate and [relative_commitment_2.committing_predicate, relative_commitment_1.committing_predicate] in subsumptions:
+        return True
+    if [relative_commitment_1.committed_predicate, relative_commitment_2.committed_predicate] in subsumptions and [relative_commitment_2.committing_predicate, relative_commitment_1.committing_predicate] in subsumptions:
+        return True
+    return False
     
