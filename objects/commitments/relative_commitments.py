@@ -9,10 +9,14 @@ class RelativeCommitments:
             self,
             committing_predicate: Predicate,
             committed_predicate: Predicate,
-            definition: Formula):
+            ground: Predicate,
+            definition: Formula,
+            evidence_id: str):
         self.committing_predicate = committing_predicate
         self.committed_predicate = committed_predicate
+        self.ground = ground
         self.definition = definition
+        self.evidence_id = evidence_id
         
         RelativeCommitments.registry.add(self)
         

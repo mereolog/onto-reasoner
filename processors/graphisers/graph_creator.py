@@ -1,10 +1,10 @@
 import pickle
 
-from networkx.classes import DiGraph
+from networkx.classes import DiGraph, MultiDiGraph
 
 
-def create_graph_from_relative_commitments(relative_commitments_file_path: str) -> DiGraph:
-    graph = DiGraph()
+def create_graph_from_relative_commitments(relative_commitments_file_path: str) -> MultiDiGraph:
+    graph = MultiDiGraph()
     relative_commitments = pickle.load(open(relative_commitments_file_path, 'rb'))
     for relative_commitment in relative_commitments:
         graph.add_edge(

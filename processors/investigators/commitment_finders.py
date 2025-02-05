@@ -8,6 +8,7 @@ from objects.fol_logic.objects.identity import Identity
 from objects.fol_logic.objects.identity_formula import IdentityFormula
 from objects.fol_logic.objects.implication import Implication
 from objects.fol_logic.objects.negation import Negation
+from objects.fol_logic.objects.predicate import Predicate
 
 from objects.fol_logic.objects.quantifying_formula import QuantifyingFormula, Quantifier
 from objects.fol_logic.objects.theory import Theory
@@ -35,7 +36,8 @@ def find_absolute_commitments(theory_file_path: str, reasoner_artifacts_path: st
 def find_relative_commitments(
         theory_file_path: str,
         reasoner_artifacts_path: str,
-        unary_predicates: set = None):
+        unary_predicates: set = None,
+        subsumptions: list = None):
     with open(theory_file_path) as cl_theory_file:
         cl_theory_text = cl_theory_file.read()
     cl_theory_axioms = extended_parse_clif(cl_theory_text)
@@ -49,14 +51,16 @@ def find_relative_commitments(
         unary_predicates=unary_predicates,
         non_unary_predicates=non_unary_predicates,
         reasoner_artifacts_path=reasoner_artifacts_path,
-        cl_theory_axioms=cl_theory_axioms)
+        cl_theory_axioms=cl_theory_axioms,
+        subsumptions=subsumptions)
 
 
 def __iterate_through_predicates_in_search_for_relative_commitments(
         unary_predicates: set,
         non_unary_predicates: set,
         cl_theory_axioms: list,
-        reasoner_artifacts_path: str):
+        reasoner_artifacts_path: str,
+        subsumptions: list):
     for unary_predicate1 in unary_predicates:
         for unary_predicate2 in unary_predicates:
             if unary_predicate1 == unary_predicate2:
@@ -64,6 +68,9 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
             for n_ary_predicate in non_unary_predicates:
                 if isinstance(n_ary_predicate, Identity):
                     continue
+                if subsumptions:
+                    if __check_if_relative_commitment_is_inferrable(wouldbe_committing_predicate=unary_predicate1, wouldbe_committed_predicate=unary_predicate2,subsumptions=subsumptions):
+                        continue
                 for index in range(n_ary_predicate.arity):
                     Variable.clear_used_variable_letters()
                     prevariables = list()
@@ -118,9 +125,9 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                             if result == ProverResult.INCONSISTENT:
                                 RelativeCommitments(committing_predicate=unary_predicate1,
                                                     committed_predicate=unary_predicate2,
-                                                    definition=relative_commitment_definition)
-                                if len(RelativeCommitments.registry) > 6:
-                                    return
+                                                    ground=n_ary_predicate,
+                                                    definition=relative_commitment_definition,
+                                                    evidence_id=extended_theory_id)
                             if result == ProverResult.UNDECIDED:
                                 print('I was not able to ascertain whether',
                                       str(unary_predicate1),
@@ -165,3 +172,20 @@ def __iterate_through_predicates_in_search_for_absolute_commitments(
                 'I was not able to ascertain whether the theory commits to instances of',
                 str(unary_predicate),
                 'See:', extended_theory_id)
+
+
+def __check_if_relative_commitment_is_inferrable(
+        wouldbe_committed_predicate: Predicate,
+        wouldbe_committing_predicate: Predicate,
+        subsumptions: list) -> bool:
+    for relative_commitment in RelativeCommitments.registry:
+        committed_predicate = relative_commitment.committed_predicate
+        committing_predicate = relative_commitment.committing_predicate
+        if wouldbe_committing_predicate == committing_predicate and [committed_predicate, wouldbe_committed_predicate] in subsumptions:
+            return True
+        if wouldbe_committed_predicate == committed_predicate and [wouldbe_committing_predicate, committing_predicate] in subsumptions:
+            return True
+        if [committed_predicate, wouldbe_committed_predicate] in subsumptions and [wouldbe_committing_predicate, committing_predicate] in subsumptions:
+            return True
+    return False
+    
