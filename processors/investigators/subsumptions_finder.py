@@ -11,6 +11,7 @@ from processors.reasoners.consistency_result import ProverResult
 from processors.reasoners.vampire_decider import decide_whether_theory_is_consistent
 from wip.theory_processors.helpers import get_theory_id
 
+
 def find_subsumptions(
         theory_file_path: str,
         reasoner_artifacts_path: str) -> list:

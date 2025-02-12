@@ -18,6 +18,10 @@ class Equivalence(PropositionalFormula):
         cl_axiom = '(' + 'iff ' + ' '.join([argument.to_cl() for argument in self.arguments]) + ')'
         return cl_axiom
     
+    def to_latex(self) -> str:
+        latex_formula = self.arguments[0].to_latex() + r' \equiv ' + self.arguments[1].to_latex()
+        return self.get_selfstanding_latex_if_needed(latex_formula=latex_formula)
+    
     def __repr__(self):
         return Equivalence.bracketise(self.arguments[0].__repr__() + ' iff ' + self.arguments[1].__repr__())
 

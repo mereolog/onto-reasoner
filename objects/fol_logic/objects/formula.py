@@ -33,6 +33,14 @@ class Formula:
     def to_cl(self) -> str:
         pass
     
+    def to_latex(self) -> str:
+        pass
+    
+    def get_selfstanding_latex_if_needed(self, latex_formula: str):
+        if self.is_self_standing:
+            return '$'+latex_formula+'$'
+        else:
+            return latex_formula
     
     def get_tptp_axiom(self, bound_variables: list) -> str:
         pass

@@ -17,10 +17,13 @@ class Negation(PropositionalFormula):
         tptp_axiom = self.bracketise('~' + self.arguments[0].get_tptp_axiom(bound_variables))
         return tptp_axiom
     
-    
     def to_cl(self) -> str:
         cl_axiom = '(' + 'not ' + ' '.join([argument.to_cl() for argument in self.arguments]) + ')'
         return cl_axiom
+    
+    def to_latex(self) -> str:
+        latex_formula = r'\neg ' + self.arguments[0].to_latex()
+        return self.get_selfstanding_latex_if_needed(latex_formula=latex_formula)
 
 
     def make_stronger(self, inverse_strength: bool) -> Formula:

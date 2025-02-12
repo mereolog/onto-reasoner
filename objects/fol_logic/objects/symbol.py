@@ -16,6 +16,11 @@ class Symbol:
     def to_cl(self):
         pass
     
+    def to_latex(self, is_self_standing=False) -> str:
+        if is_self_standing:
+            return '$'+self.value+'$'
+        return self.value
+    
     @staticmethod
     def escape_tptp_chars(text: str):
         text = text.replace('-', '_')

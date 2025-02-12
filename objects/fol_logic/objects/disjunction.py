@@ -15,6 +15,10 @@ class Disjunction(PropositionalFormula):
     def to_cl(self) -> str:
         cl_axiom = '(' + 'or ' + ' '.join([argument.to_cl() for argument in self.arguments]) + ')'
         return cl_axiom
+    
+    def to_latex(self) -> str:
+        latex_formula = r' \lor '.join([argument.to_latex() for argument in self.arguments])
+        return self.get_selfstanding_latex_if_needed(latex_formula=latex_formula)
         
     def __repr__(self):
         return Disjunction.bracketise(' or '.join([argument.__repr__() for argument in self.arguments]))

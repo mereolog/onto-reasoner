@@ -19,3 +19,5 @@ class Term(Symbol):
     
     def to_cl(self):
         return self.value
+
+    

@@ -1,9 +1,9 @@
 import logging
 
-from wip.ml_preparers.ml_data_creator_from_scratch import create_ml_training_data_from_axioms
 from processors.preparers.bfo_preparer import prepare_clif_bfo
 from processors.readers.parsers.extended_clif_parser import extended_parse_clif
 from processors.reasoners import ProverResult
+from wip.ml_preparers.ml_data_creator_from_scratch import create_ml_training_data_from_axioms
 
 logging.basicConfig(format='%(levelname)s %(asctime)s %(message)s', level=logging.INFO,datefmt='%m/%d/%Y %I:%M:%S %p')
 with open('midputs/subtheories/cl/-2902263708894172198.cl') as bfo_file:

@@ -2,8 +2,8 @@ import logging
 
 from processors.preparers.bfo_preparer import prepare_clif_bfo
 from processors.readers.parsers.extended_clif_parser import extended_parse_clif
-from wip.theory_processors.helpers import create_cl_theory_signature
 from wip.theory_processors import check_direct_supertheories_depthwise
+from wip.theory_processors.helpers import create_cl_theory_signature
 
 logging.basicConfig(format='%(levelname)s %(asctime)s %(message)s', level=logging.INFO,datefmt='%m/%d/%Y %I:%M:%S %p')
 

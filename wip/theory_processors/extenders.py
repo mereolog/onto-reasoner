@@ -1,10 +1,10 @@
 from random import choice
 from string import ascii_lowercase
 
+from objects.fol_logic import Negation
 from objects.fol_logic.objects.conjunction import Conjunction
 from objects.fol_logic.objects.disjunction import Disjunction
 from objects.fol_logic.objects.identity_formula import IdentityFormula
-from objects.fol_logic import Negation
 from objects.fol_logic.objects.quantifying_formula import QuantifyingFormula, Quantifier
 from objects.fol_logic.objects.variable import Variable
 

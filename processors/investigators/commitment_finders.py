@@ -1,4 +1,4 @@
-from networkx.classes import Graph, DiGraph
+import pandas
 from tqdm import tqdm
 
 from objects.commitments.relative_commitments import RelativeCommitments
@@ -9,15 +9,12 @@ from objects.fol_logic.objects.identity_formula import IdentityFormula
 from objects.fol_logic.objects.implication import Implication
 from objects.fol_logic.objects.negation import Negation
 from objects.fol_logic.objects.predicate import Predicate
-
 from objects.fol_logic.objects.quantifying_formula import QuantifyingFormula, Quantifier
-from objects.fol_logic.objects.theory import Theory
 from objects.fol_logic.objects.variable import Variable
 from processors.investigators.predicates_finder import find_n_ary_predicates, find_all_predicates
 from processors.readers.parsers.extended_clif_parser import extended_parse_clif
 from processors.reasoners.consistency_result import ProverResult
 from processors.reasoners.vampire_decider import decide_whether_theory_is_consistent
-
 from wip.theory_processors.helpers import get_theory_id
 
 
@@ -36,8 +33,8 @@ def find_absolute_commitments(theory_file_path: str, reasoner_artifacts_path: st
 def find_relative_commitments(
         theory_file_path: str,
         reasoner_artifacts_path: str,
-        unary_predicates: set = None,
-        subsumptions: list = None):
+        report_file_path: str,
+        unary_predicates: set = None):
     with open(theory_file_path) as cl_theory_file:
         cl_theory_text = cl_theory_file.read()
     cl_theory_axioms = extended_parse_clif(cl_theory_text)
@@ -52,7 +49,7 @@ def find_relative_commitments(
         non_unary_predicates=non_unary_predicates,
         reasoner_artifacts_path=reasoner_artifacts_path,
         cl_theory_axioms=cl_theory_axioms,
-        subsumptions=subsumptions)
+        report_file_path=report_file_path)
 
 
 def __iterate_through_predicates_in_search_for_relative_commitments(
@@ -60,7 +57,9 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
         non_unary_predicates: set,
         cl_theory_axioms: list,
         reasoner_artifacts_path: str,
-        subsumptions: list):
+        report_file_path: str):
+    report_dict = dict()
+    report_count = 0
     for unary_predicate1 in unary_predicates:
         for unary_predicate2 in unary_predicates:
             if unary_predicate1 == unary_predicate2:
@@ -68,9 +67,6 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
             for n_ary_predicate in non_unary_predicates:
                 if isinstance(n_ary_predicate, Identity):
                     continue
-                if subsumptions:
-                    if __check_if_relative_commitment_is_inferrable(wouldbe_committing_predicate=unary_predicate1, wouldbe_committed_predicate=unary_predicate2,subsumptions=subsumptions):
-                        continue
                 for index in range(n_ary_predicate.arity):
                     Variable.clear_used_variable_letters()
                     prevariables = list()
@@ -121,13 +117,15 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                                 decide_whether_theory_is_consistent(
                                     vampire_input_file_path=vampire_input_file_path,
                                     vampire_output_file_path=vampire_output_file_path,
-                                    time=360))
+                                    time=3600))
+                            is_relative_commitment = False
                             if result == ProverResult.INCONSISTENT:
                                 RelativeCommitments(committing_predicate=unary_predicate1,
                                                     committed_predicate=unary_predicate2,
                                                     ground=n_ary_predicate,
                                                     definition=relative_commitment_definition,
                                                     evidence_id=extended_theory_id)
+                                is_relative_commitment = True
                             if result == ProverResult.UNDECIDED:
                                 print('I was not able to ascertain whether',
                                       str(unary_predicate1),
@@ -136,6 +134,26 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                                       'using',
                                       str(relative_commitment_definition),
                                       'See:', extended_theory_id)
+                                is_relative_commitment = None
+                            relative_commitment_definition.is_self_standing = True
+                            report = \
+                                {
+                                    'committing predicate': unary_predicate1,
+                                    'committed predicate': unary_predicate2,
+                                    'ground': n_ary_predicate,
+                                    'is relative commitment': is_relative_commitment,
+                                    'definition': relative_commitment_definition,
+                                    'evidence_id': extended_theory_id,
+                                    'elapsed time': str(time),
+                                    'committing predicate in LaTeX': unary_predicate1.to_latex(True),
+                                    'committed predicate  in LaTeX': unary_predicate2.to_latex(True),
+                                    'ground in LaTeX': n_ary_predicate.to_latex(True),
+                                    'definition in LaTeX': relative_commitment_definition.to_latex(),
+                                }
+                            report_dict[report_count] = report
+                            report_count += 1
+                            report_dataframe = pandas.DataFrame.from_dict(data=report_dict, orient='index')
+                            report_dataframe.to_excel(report_file_path, index=False)
 
 
 def __iterate_through_predicates_in_search_for_absolute_commitments(

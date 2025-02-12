@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from enum import Enum
+
 from objects.fol_logic.objects.formula import Formula
 
 
@@ -53,6 +54,25 @@ class QuantifyingFormula(Formula):
                     self.quantified_formula.to_cl(),
                 ])
         return self.bracketise(cl_axiom)
+    
+    def to_latex(self) -> str:
+        if self.quantifier == Quantifier.UNIVERSAL:
+            latex_quantifier = r'\forall'
+        else:
+            latex_quantifier = r'\exists'
+        latex_formula = \
+            ''.join(
+                [
+                    '(',
+                    latex_quantifier,
+                    ' ',
+                    ','.join([variable.to_latex() for variable in self.bound_variables]),
+                    '~',
+                    ' ',
+                    self.quantified_formula.to_latex(),
+                    ')'
+                ])
+        return self.get_selfstanding_latex_if_needed(latex_formula=latex_formula)
     
     def __reset_free_variables(self):
         free_variables = set(self.quantified_formula.free_variables)

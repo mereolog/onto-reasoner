@@ -25,7 +25,7 @@ class Predicate(Symbol):
     
     def to_cl(self) -> str:
         return self.value
-
+    
 
     def create_instantiation(self):
         from objects.fol_logic.objects.atomic_formula import AtomicFormula

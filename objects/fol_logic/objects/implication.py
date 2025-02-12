@@ -18,6 +18,10 @@ class Implication(PropositionalFormula):
     def to_cl(self) -> str:
         cl_axiom = '(' + 'if' + ' ' + ' '.join([argument.to_cl() for argument in self.arguments]) + ')'
         return cl_axiom
+    
+    def to_latex(self) -> str:
+        latex_formula = self.arguments[0].to_latex() + r' \to ' + self.arguments[1].to_latex()
+        return self.get_selfstanding_latex_if_needed(latex_formula=latex_formula)
         
     def __repr__(self):
         return Implication.bracketise('if ' + self.arguments[0].__repr__() + ' then ' + self.arguments[1].__repr__())

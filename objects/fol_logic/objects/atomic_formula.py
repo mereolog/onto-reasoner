@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+
 from objects.fol_logic.objects.formula import Formula
 from objects.fol_logic.objects.predicate import Predicate
 from objects.fol_logic.objects.term import Term
@@ -71,6 +72,10 @@ class AtomicFormula(Formula):
     def to_cl(self) -> str:
         cl_axiom = '(' + self.predicate.to_cl() + ' ' + ' '.join([argument.to_cl() for argument in self.arguments]) + ')'
         return cl_axiom
+    
+    def to_latex(self) -> str:
+        latex_formula = self.predicate.to_latex() + '(' + ','.join([argument.to_latex() for argument in self.arguments]) + ')'
+        return self.get_selfstanding_latex_if_needed(latex_formula=latex_formula)
     
     def replace_variable(self, old_variable: Variable, new_variable: Variable):
         arguments_copy = self.arguments.copy()
