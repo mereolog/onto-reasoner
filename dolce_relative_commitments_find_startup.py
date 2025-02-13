@@ -3,9 +3,7 @@ import pickle
 from objects.commitments.relative_commitments import RelativeCommitments
 from processors.investigators.commitment_finders import find_relative_commitments
 from processors.investigators.subsumptions_finder import find_subsumptions
-
-dolce_file_path='resources/midputs/dolce.cl'
-reasoner_artifacts_path='resources/midputs/reasoner_artifacts/'
+from startup_commons import dolce_file_path, reasoner_artifacts_path
 
 dolce_subsumptions = (
     find_subsumptions(
@@ -17,4 +15,4 @@ find_relative_commitments(
     reasoner_artifacts_path=reasoner_artifacts_path,
     report_file_path='dolce_ri_report.xlsx')
 
-pickle.dump(RelativeCommitments.registry, open('dolce_all_relative_commitments.pickle', 'wb'))
+pickle.dump(RelativeCommitments.registry, open('resources/outputs/dolce_all_relative_commitments.pickle', 'wb'))

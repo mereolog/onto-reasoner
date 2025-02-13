@@ -4,7 +4,7 @@ from networkx.classes import DiGraph
 from processors.graphisers.graph_creator import create_graph_from_relative_commitments
 from processors.graphisers.graph_helpers import get_transitive_reduction_for_graph
 
-dolce_relative_commitments_graph = create_graph_from_relative_commitments(relative_commitments_file_path='dolce_relative_commitments.pickle')
+dolce_relative_commitments_graph = create_graph_from_relative_commitments(relative_commitments_file_path='../resources/outputs/pickles/dolce_relative_commitments.pickle')
 transitively_closed_dolce_relative_commitments_graph = networkx.transitive_closure(DiGraph(dolce_relative_commitments_graph))
 transitively_reduced_dolce_relative_commitments_graph = get_transitive_reduction_for_graph(graph=DiGraph(dolce_relative_commitments_graph))
 # print(len(transitively_closed_dolce_relative_commitments_graph.edges))

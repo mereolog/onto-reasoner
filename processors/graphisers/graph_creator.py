@@ -9,6 +9,6 @@ def create_graph_from_relative_commitments(relative_commitments_file_path: str) 
     for relative_commitment in relative_commitments:
         graph.add_edge(
             relative_commitment.committing_predicate,
-            relative_commitment.committed_predicate,
-            ground=relative_commitment.ground)
+            relative_commitment.committed_predicate)
+            # ground=relative_commitment.ground)
     return graph
