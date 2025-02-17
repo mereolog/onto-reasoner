@@ -232,7 +232,6 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                                       str(relative_commitment_definition),
                                       'See:', extended_theory_id)
                                 is_relative_commitment = None
-                                return
                             relative_commitment_definition.is_self_standing = True
                             report = \
                                 {
