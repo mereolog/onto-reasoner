@@ -15,7 +15,7 @@ def decide_whether_theory_is_consistent(
         try_other_reasoner_modes = False) -> tuple:
     vampire_modes = default_vampire_modes.copy()
     while len(vampire_modes) > 0:
-        cmd_to_run_vampire = 'resources/vampire --mode ' + vampire_modes[0] + ' --ignore_missing on -t ' + str(time) + ' --cores 32 "' + vampire_input_file_path + '" > "' + vampire_output_file_path + '"'
+        cmd_to_run_vampire = 'resources/vampire --mode ' + vampire_modes[0] + ' --ignore_missing on -t ' + str(time) + ' --cores 24 "' + vampire_input_file_path + '" > "' + vampire_output_file_path + '"'
         time_regex = re.compile(pattern=r'Success in time\s+(\d+\.\d+)\s+s')
         vampire_process = subprocess.Popen(cmd_to_run_vampire, shell=True)
         try:

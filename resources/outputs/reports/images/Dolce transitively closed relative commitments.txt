@@ -1,0 +1,34 @@
+acc  &  tl  \\
+ach  &  tl  \\
+apo  &  pd, sl, t  \\
+aq  &  nped  \\
+arc  &  aq, ds, pd, t  \\
+as  &  pd, t  \\
+aso  &  aq, pd, t  \\
+c  &  aq, ds, pd, t  \\
+ds  &  aq, c, pd, t  \\
+ed  &  pd, t  \\
+ev  &  tl  \\
+f  &  pd, sl, t  \\
+fd  &  aq, ds, pd, t  \\
+m  &  pd, sl, t  \\
+mob  &  aq, pd, t  \\
+napo  &  pd, sl, t  \\
+naso  &  aq, pd, t  \\
+nped  &  aq, pd, t  \\
+npob  &  aq, pd, t  \\
+pd  &  tl  \\
+ped  &  pd, sl, t  \\
+pob  &  pd, sl, t  \\
+pq  &  ped  \\
+pro  &  tl  \\
+q  &  pt  \\
+rl  &  aq, ds, pd, t  \\
+sag  &  aq, pd, t  \\
+sc  &  aq, pd, t  \\
+sl  &  ped  \\
+sob  &  aq, pd, t  \\
+st  &  tl  \\
+stv  &  tl  \\
+tl  &  pd, t  \\
+tq  &  pd, tr  \\

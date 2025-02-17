@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2025-02-15">
+    <creator>NetworkX 3.4.2</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <nodes>
+      <node id="fd" label="fd" />
+      <node id="ds" label="ds" />
+      <node id="sag" label="sag" />
+      <node id="t" label="t" />
+      <node id="sc" label="sc" />
+      <node id="f" label="f" />
+      <node id="sl" label="sl" />
+      <node id="c" label="c" />
+      <node id="aq" label="aq" />
+      <node id="napo" label="napo" />
+      <node id="m" label="m" />
+      <node id="acc" label="acc" />
+      <node id="tl" label="tl" />
+      <node id="npob" label="npob" />
+      <node id="aso" label="aso" />
+      <node id="tq" label="tq" />
+      <node id="tr" label="tr" />
+      <node id="nped" label="nped" />
+      <node id="rl" label="rl" />
+      <node id="pro" label="pro" />
+      <node id="as" label="as" />
+      <node id="naso" label="naso" />
+      <node id="arc" label="arc" />
+      <node id="apo" label="apo" />
+      <node id="sob" label="sob" />
+      <node id="ev" label="ev" />
+      <node id="ach" label="ach" />
+      <node id="pob" label="pob" />
+      <node id="pd" label="pd" />
+      <node id="ped" label="ped" />
+      <node id="mob" label="mob" />
+      <node id="q" label="q" />
+      <node id="pt" label="pt" />
+      <node id="ed" label="ed" />
+      <node id="st" label="st" />
+      <node id="stv" label="stv" />
+      <node id="pq" label="pq" />
+      <node id="pr" label="pr" />
+      <node id="s" label="s" />
+      <node id="ab" label="ab" />
+      <node id="at" label="at" />
+      <node id="ar" label="ar" />
+      <node id="r" label="r" />
+    </nodes>
+    <edges>
+      <edge source="fd" target="ds" id="0" />
+      <edge source="fd" target="t" id="1" />
+      <edge source="fd" target="aq" id="2" />
+      <edge source="fd" target="pd" id="3" />
+      <edge source="ds" target="t" id="4" />
+      <edge source="ds" target="c" id="5" />
+      <edge source="ds" target="aq" id="6" />
+      <edge source="ds" target="pd" id="7" />
+      <edge source="sag" target="t" id="8" />
+      <edge source="sag" target="pd" id="9" />
+      <edge source="sag" target="aq" id="10" />
+      <edge source="sc" target="t" id="11" />
+      <edge source="sc" target="pd" id="12" />
+      <edge source="sc" target="aq" id="13" />
+      <edge source="f" target="sl" id="14" />
+      <edge source="f" target="t" id="15" />
+      <edge source="f" target="pd" id="16" />
+      <edge source="sl" target="ped" id="17" />
+      <edge source="c" target="aq" id="18" />
+      <edge source="c" target="ds" id="19" />
+      <edge source="c" target="t" id="20" />
+      <edge source="c" target="pd" id="21" />
+      <edge source="aq" target="nped" id="22" />
+      <edge source="napo" target="t" id="23" />
+      <edge source="napo" target="sl" id="24" />
+      <edge source="napo" target="pd" id="25" />
+      <edge source="m" target="t" id="26" />
+      <edge source="m" target="sl" id="27" />
+      <edge source="m" target="pd" id="28" />
+      <edge source="acc" target="tl" id="29" />
+      <edge source="tl" target="t" id="30" />
+      <edge source="tl" target="pd" id="31" />
+      <edge source="npob" target="t" id="32" />
+      <edge source="npob" target="pd" id="33" />
+      <edge source="npob" target="aq" id="34" />
+      <edge source="aso" target="t" id="35" />
+      <edge source="aso" target="aq" id="36" />
+      <edge source="aso" target="pd" id="37" />
+      <edge source="tq" target="tr" id="38" />
+      <edge source="tq" target="pd" id="39" />
+      <edge source="nped" target="t" id="40" />
+      <edge source="nped" target="aq" id="41" />
+      <edge source="nped" target="pd" id="42" />
+      <edge source="rl" target="ds" id="43" />
+      <edge source="rl" target="t" id="44" />
+      <edge source="rl" target="aq" id="45" />
+      <edge source="rl" target="pd" id="46" />
+      <edge source="pro" target="tl" id="47" />
+      <edge source="as" target="t" id="48" />
+      <edge source="as" target="pd" id="49" />
+      <edge source="naso" target="t" id="50" />
+      <edge source="naso" target="pd" id="51" />
+      <edge source="naso" target="aq" id="52" />
+      <edge source="arc" target="t" id="53" />
+      <edge source="arc" target="pd" id="54" />
+      <edge source="arc" target="ds" id="55" />
+      <edge source="arc" target="aq" id="56" />
+      <edge source="apo" target="t" id="57" />
+      <edge source="apo" target="pd" id="58" />
+      <edge source="apo" target="sl" id="59" />
+      <edge source="sob" target="t" id="60" />
+      <edge source="sob" target="aq" id="61" />
+      <edge source="sob" target="pd" id="62" />
+      <edge source="ev" target="tl" id="63" />
+      <edge source="ach" target="tl" id="64" />
+      <edge source="pob" target="t" id="65" />
+      <edge source="pob" target="pd" id="66" />
+      <edge source="pob" target="sl" id="67" />
+      <edge source="pd" target="tl" id="68" />
+      <edge source="ped" target="t" id="69" />
+      <edge source="ped" target="sl" id="70" />
+      <edge source="ped" target="pd" id="71" />
+      <edge source="mob" target="t" id="72" />
+      <edge source="mob" target="pd" id="73" />
+      <edge source="mob" target="aq" id="74" />
+      <edge source="q" target="pt" id="75" />
+      <edge source="ed" target="t" id="76" />
+      <edge source="ed" target="pd" id="77" />
+      <edge source="st" target="tl" id="78" />
+      <edge source="stv" target="tl" id="79" />
+      <edge source="pq" target="ped" id="80" />
+    </edges>
+  </graph>
+</gexf>

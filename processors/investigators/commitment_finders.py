@@ -1,3 +1,6 @@
+import logging
+
+import numpy
 import pandas
 from tqdm import tqdm
 
@@ -12,7 +15,7 @@ from objects.fol_logic.objects.predicate import Predicate
 from objects.fol_logic.objects.quantifying_formula import QuantifyingFormula, Quantifier
 from objects.fol_logic.objects.variable import Variable
 from processors.investigators.predicates_finder import find_n_ary_predicates, find_all_predicates
-from processors.readers.parsers.extended_clif_parser import extended_parse_clif
+from processors.readers.parsers.extended_clif_parser import extended_parse_clif, p_name
 from processors.reasoners.consistency_result import ProverResult
 from processors.reasoners.vampire_decider import decide_whether_theory_is_consistent
 from wip.theory_processors.helpers import get_theory_id
@@ -30,7 +33,7 @@ def find_absolute_commitments(theory_file_path: str, reasoner_artifacts_path: st
         reasoner_artifacts_path=reasoner_artifacts_path)
 
 
-def find_relative_commitments(
+def find_relative_commitments_using_grounds(
         theory_file_path: str,
         reasoner_artifacts_path: str,
         report_file_path: str,
@@ -50,6 +53,100 @@ def find_relative_commitments(
         reasoner_artifacts_path=reasoner_artifacts_path,
         cl_theory_axioms=cl_theory_axioms,
         report_file_path=report_file_path)
+
+
+def find_remaining_relative_commitments_without_grounds(
+        reasoner_artifacts_path: str,
+        relative_commitments_with_ground_report_file_path: str,
+        theory_file_path: str,
+        report_file_path: str):
+    report_dict = dict()
+    report_count = 0
+    Variable.clear_used_variable_letters()
+    
+    report = pandas.read_excel(relative_commitments_with_ground_report_file_path)
+    truncated_report = report.copy()
+    truncated_report = truncated_report[['committing predicate','committed predicate', 'is relative commitment']]
+    undecided_cases = truncated_report[truncated_report['is relative commitment'].isnull()]
+    undecided_cases.drop_duplicates(inplace=True)
+    v=pandas.DataFrame()
+    
+    with open(theory_file_path) as cl_theory_file:
+        cl_theory_text = cl_theory_file.read()
+    cl_theory_axioms = extended_parse_clif(cl_theory_text)
+    
+    for undecided_case_tuple in undecided_cases.itertuples():
+        commiting_predicate_string = undecided_case_tuple[1]
+        commited_predicate_string = undecided_case_tuple[2]
+        variable_1 = Variable.get_next_variable()
+        variable_2 = Variable.get_next_variable()
+        commiting_predicate = Predicate(arity=1, origin_value=commiting_predicate_string)
+        commited_predicate = Predicate(arity=1, origin_value=commited_predicate_string)
+        committing_formula = (
+            QuantifyingFormula(
+                quantified_formula=AtomicFormula(predicate=commiting_predicate, arguments=[variable_1]),
+                bound_variables=[variable_1],
+                quantifier=Quantifier.EXISTENTIAL))
+        committed_formula = (
+            QuantifyingFormula(
+                quantified_formula=AtomicFormula(predicate=commited_predicate,arguments=[variable_2]),
+                bound_variables=[variable_2],
+                quantifier=Quantifier.EXISTENTIAL))
+        relative_commitment_definition = Implication(arguments=[committing_formula, committed_formula])
+        negation_relative_commitment_definition = Negation(arguments=[relative_commitment_definition])
+        extended_cl_theory_axioms = cl_theory_axioms.copy()
+        extended_cl_theory_axioms.append(negation_relative_commitment_definition)
+        
+        extended_theory_id = get_theory_id(theory=extended_cl_theory_axioms)
+        vampire_input_file_path = reasoner_artifacts_path + extended_theory_id + '.tptp'
+        vampire_output_file_path = reasoner_artifacts_path + extended_theory_id + '.szs'
+        with open(file=vampire_input_file_path, mode='w') as tptp_file:
+            for axiom in extended_cl_theory_axioms:
+                axiom.is_self_standing = True
+                tptp_file.write(axiom.to_tptp())
+                tptp_file.write('\n')
+        result, time = (
+            decide_whether_theory_is_consistent(
+                vampire_input_file_path=vampire_input_file_path,
+                vampire_output_file_path=vampire_output_file_path,
+                time=60))
+        is_relative_commitment = False
+        if result == ProverResult.INCONSISTENT:
+            RelativeCommitments(committing_predicate=commiting_predicate,
+                                committed_predicate=commited_predicate,
+                                ground=None,
+                                definition=relative_commitment_definition,
+                                evidence_id=extended_theory_id)
+            is_relative_commitment = True
+        if result == ProverResult.UNDECIDED:
+            print('I was not able to ascertain whether',
+                  str(commiting_predicate),
+                  'commits to',
+                  str(commited_predicate),
+                  'using',
+                  str(relative_commitment_definition),
+                  'See:', extended_theory_id)
+            is_relative_commitment = None
+        relative_commitment_definition.is_self_standing = True
+        report = \
+            {
+                'committing predicate': commiting_predicate,
+                'committed predicate': commited_predicate,
+                'ground': None,
+                'is relative commitment': is_relative_commitment,
+                'definition': '$$',
+                'evidence_id': extended_theory_id,
+                'elapsed time': str(time),
+                'committing predicate in LaTeX': commiting_predicate.to_latex(True),
+                'committed predicate  in LaTeX': commited_predicate.to_latex(True),
+                'ground in LaTeX': '$$',
+                'definition in LaTeX': '$$',
+            }
+        report_dict[report_count] = report
+        report_count += 1
+        report_dataframe = pandas.DataFrame.from_dict(data=report_dict, orient='index')
+        report_dataframe.to_excel(report_file_path, index=False)
+        
 
 
 def __iterate_through_predicates_in_search_for_relative_commitments(
@@ -117,7 +214,7 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                                 decide_whether_theory_is_consistent(
                                     vampire_input_file_path=vampire_input_file_path,
                                     vampire_output_file_path=vampire_output_file_path,
-                                    time=3600))
+                                    time=60))
                             is_relative_commitment = False
                             if result == ProverResult.INCONSISTENT:
                                 RelativeCommitments(committing_predicate=unary_predicate1,
@@ -135,6 +232,7 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                                       str(relative_commitment_definition),
                                       'See:', extended_theory_id)
                                 is_relative_commitment = None
+                                return
                             relative_commitment_definition.is_self_standing = True
                             report = \
                                 {

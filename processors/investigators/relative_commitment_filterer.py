@@ -11,7 +11,7 @@ def filter_out_apparent_relative_commitments(subsumptions: list):
             if __relative_commitment_1_can_be_reduced_to_relative_commitment_2(relative_commitment_1=relative_commitment_1, relative_commitment_2=relative_commitment_2, subsumptions=subsumptions):
                 if relative_commitment_1 in filtered_relative_commitments:
                     filtered_relative_commitments.remove(relative_commitment_1)
-                    # print('Filtering out', relative_commitment_1.definition, 'because of', relative_commitment_2.definition)
+                    print('Filtering out', relative_commitment_1.definition, 'because of', relative_commitment_2.definition)
                     break
                     
     RelativeCommitments.registry = filtered_relative_commitments
