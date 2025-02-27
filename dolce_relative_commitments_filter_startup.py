@@ -1,7 +1,6 @@
 import pickle
 
 from objects.commitments.relative_commitments import RelativeCommitments
-from processors.investigators.commitment_finders import find_relative_commitments_using_grounds
 from processors.investigators.relative_commitment_filterer import filter_out_apparent_relative_commitments
 from processors.investigators.subsumptions_finder import find_subsumptions
 from startup_commons import dolce_file_path, reasoner_artifacts_path

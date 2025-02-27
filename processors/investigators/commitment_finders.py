@@ -37,13 +37,12 @@ def find_relative_commitments_using_grounds(
         theory_file_path: str,
         reasoner_artifacts_path: str,
         report_file_path: str,
-        unary_predicates: set = None):
+        skipped_predicate_couples: list = None):
     with open(theory_file_path) as cl_theory_file:
         cl_theory_text = cl_theory_file.read()
     cl_theory_axioms = extended_parse_clif(cl_theory_text)
     
-    if not unary_predicates:
-        unary_predicates = find_n_ary_predicates(theory_file_path=theory_file_path, arity=1)
+    unary_predicates = find_n_ary_predicates(theory_file_path=theory_file_path, arity=1)
     all_predicates = find_all_predicates(theory_file_path=theory_file_path)
     non_unary_predicates = all_predicates.difference(unary_predicates)
     
@@ -52,7 +51,8 @@ def find_relative_commitments_using_grounds(
         non_unary_predicates=non_unary_predicates,
         reasoner_artifacts_path=reasoner_artifacts_path,
         cl_theory_axioms=cl_theory_axioms,
-        report_file_path=report_file_path)
+        report_file_path=report_file_path,
+        skipped_predicate_couples=skipped_predicate_couples)
 
 
 def find_remaining_relative_commitments_without_grounds(
@@ -69,7 +69,6 @@ def find_remaining_relative_commitments_without_grounds(
     truncated_report = truncated_report[['committing predicate','committed predicate', 'is relative commitment']]
     undecided_cases = truncated_report[truncated_report['is relative commitment'].isnull()]
     undecided_cases.drop_duplicates(inplace=True)
-    v=pandas.DataFrame()
     
     with open(theory_file_path) as cl_theory_file:
         cl_theory_text = cl_theory_file.read()
@@ -146,12 +145,76 @@ def find_remaining_relative_commitments_without_grounds(
         report_count += 1
         report_dataframe = pandas.DataFrame.from_dict(data=report_dict, orient='index')
         report_dataframe.to_excel(report_file_path, index=False)
-        
 
+
+def prefilter_out_relative_commitments(
+        reasoner_artifacts_path: str,
+        theory_file_path: str,
+        report_file_path: str):
+    report_dict = dict()
+    report_count = 0
+    Variable.clear_used_variable_letters()
+    
+    with open(theory_file_path) as cl_theory_file:
+        cl_theory_text = cl_theory_file.read()
+    cl_theory_axioms = extended_parse_clif(cl_theory_text)
+    unary_predicates = find_n_ary_predicates(theory_file_path=theory_file_path, arity=1)
+    for unary_predicate1 in unary_predicates:
+        for unary_predicate2 in unary_predicates:
+            if unary_predicate1 == unary_predicate2:
+                continue
+            variable_1 = Variable.get_next_variable()
+            variable_2 = Variable.get_next_variable()
+            committing_formula = (
+                QuantifyingFormula(
+                    quantified_formula=AtomicFormula(predicate=unary_predicate1, arguments=[variable_1]),
+                    bound_variables=[variable_1],
+                    quantifier=Quantifier.EXISTENTIAL))
+            committed_formula = (
+                QuantifyingFormula(
+                    quantified_formula=AtomicFormula(predicate=unary_predicate2, arguments=[variable_2]),
+                    bound_variables=[variable_2],
+                    quantifier=Quantifier.EXISTENTIAL))
+            relative_commitment_definition = Implication(arguments=[committing_formula, committed_formula])
+            negation_relative_commitment_definition = Negation(arguments=[relative_commitment_definition])
+            extended_cl_theory_axioms = cl_theory_axioms.copy()
+            extended_cl_theory_axioms.append(negation_relative_commitment_definition)
+            
+            extended_theory_id = get_theory_id(theory=extended_cl_theory_axioms)
+            vampire_input_file_path = reasoner_artifacts_path + extended_theory_id + '.tptp'
+            vampire_output_file_path = reasoner_artifacts_path + extended_theory_id + '.szs'
+            with open(file=vampire_input_file_path, mode='w') as tptp_file:
+                for axiom in extended_cl_theory_axioms:
+                    axiom.is_self_standing = True
+                    tptp_file.write(axiom.to_tptp())
+                    tptp_file.write('\n')
+            result, time = (
+                decide_whether_theory_is_consistent(
+                    vampire_input_file_path=vampire_input_file_path,
+                    vampire_output_file_path=vampire_output_file_path,
+                    time=60))
+            if result == ProverResult.CONSISTENT:
+                report = \
+                    {
+                        'non-committing predicate': unary_predicate1,
+                        'non-committed predicate': unary_predicate2,
+                        'elapsed time': str(time),
+                        'non-committing predicate in LaTeX': unary_predicate1.to_latex(True),
+                        'non-committed predicate  in LaTeX': unary_predicate2.to_latex(True),
+                    }
+                report_dict[report_count] = report
+                report_count += 1
+                if report_count % 100 == 0:
+                    report_dataframe = pandas.DataFrame.from_dict(data=report_dict, orient='index')
+                    report_dataframe.to_excel(report_file_path, index=False)
+    
+    report_dataframe = pandas.DataFrame.from_dict(data=report_dict, orient='index')
+    report_dataframe.to_excel(report_file_path, index=False)
 
 def __iterate_through_predicates_in_search_for_relative_commitments(
         unary_predicates: set,
         non_unary_predicates: set,
+        skipped_predicate_couples: list,
         cl_theory_axioms: list,
         reasoner_artifacts_path: str,
         report_file_path: str):
@@ -163,6 +226,8 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                 continue
             for n_ary_predicate in non_unary_predicates:
                 if isinstance(n_ary_predicate, Identity):
+                    continue
+                if [str(unary_predicate1), str(unary_predicate2)] in skipped_predicate_couples:
                     continue
                 for index in range(n_ary_predicate.arity):
                     Variable.clear_used_variable_letters()
@@ -249,9 +314,12 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                                 }
                             report_dict[report_count] = report
                             report_count += 1
-                            report_dataframe = pandas.DataFrame.from_dict(data=report_dict, orient='index')
-                            report_dataframe.to_excel(report_file_path, index=False)
-
+                            if report_count % 10000 == 0:
+                                report_dataframe = pandas.DataFrame.from_dict(data=report_dict, orient='index')
+                                report_dataframe.to_excel(report_file_path, index=False)
+    
+    report_dataframe = pandas.DataFrame.from_dict(data=report_dict, orient='index')
+    report_dataframe.to_excel(report_file_path, index=False)
 
 def __iterate_through_predicates_in_search_for_absolute_commitments(
         unary_predicates: set,
