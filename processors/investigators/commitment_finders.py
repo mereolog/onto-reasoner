@@ -1,6 +1,3 @@
-import logging
-
-import numpy
 import pandas
 from tqdm import tqdm
 
@@ -15,7 +12,7 @@ from objects.fol_logic.objects.predicate import Predicate
 from objects.fol_logic.objects.quantifying_formula import QuantifyingFormula, Quantifier
 from objects.fol_logic.objects.variable import Variable
 from processors.investigators.predicates_finder import find_n_ary_predicates, find_all_predicates
-from processors.readers.parsers.extended_clif_parser import extended_parse_clif, p_name
+from processors.readers.parsers.extended_clif_parser import extended_parse_clif
 from processors.reasoners.consistency_result import ProverResult
 from processors.reasoners.vampire_decider import decide_whether_theory_is_consistent
 from wip.theory_processors.helpers import get_theory_id
@@ -192,7 +189,7 @@ def prefilter_out_relative_commitments(
                 decide_whether_theory_is_consistent(
                     vampire_input_file_path=vampire_input_file_path,
                     vampire_output_file_path=vampire_output_file_path,
-                    time=60))
+                    time=600))
             if result == ProverResult.CONSISTENT:
                 report = \
                     {
@@ -279,7 +276,7 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                                 decide_whether_theory_is_consistent(
                                     vampire_input_file_path=vampire_input_file_path,
                                     vampire_output_file_path=vampire_output_file_path,
-                                    time=60))
+                                    time=1800))
                             is_relative_commitment = False
                             if result == ProverResult.INCONSISTENT:
                                 RelativeCommitments(committing_predicate=unary_predicate1,
