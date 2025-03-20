@@ -1,16 +1,16 @@
 import logging
 
 from processors.preparers.bfo_preparer import prepare_clif_bfo
-from processors.readers.parsers.extended_clif_parser import extended_parse_clif
-from wip.theory_processors import check_direct_supertheories_depthwise
+from processors.readers.parsers.clif_parser import parse_clif
 from wip.theory_processors.helpers import create_cl_theory_signature
+from wip.theory_processors.supertheories_checker import check_direct_supertheories_depthwise
 
 logging.basicConfig(format='%(levelname)s %(asctime)s %(message)s', level=logging.INFO,datefmt='%m/%d/%Y %I:%M:%S %p')
 
 with open('midputs/bfo_small.cl') as bfo_file:
     bfo_clif = bfo_file.read()
 prepared_bfo = prepare_clif_bfo(bfo_clif=bfo_clif)
-bfo_theory = extended_parse_clif(text=prepared_bfo)
+bfo_theory = parse_clif(text=prepared_bfo)
 base_theory = list()
 for bfo_axiom in bfo_theory:
     if '[mbf-1]' in bfo_axiom.comment:

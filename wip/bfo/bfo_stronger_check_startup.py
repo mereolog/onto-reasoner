@@ -1,5 +1,5 @@
 from processors.preparers.bfo_preparer import prepare_clif_bfo
-from processors.readers.parsers.extended_clif_parser import extended_parse_clif
+from processors.readers.parsers.clif_parser import parse_clif
 from processors.reasoners.vampire_decider import decide_whether_theory_is_consistent
 from wip.theory_processors.helpers import get_theory_id
 
@@ -13,7 +13,7 @@ from wip.theory_processors.helpers import get_theory_id
 with open('midputs/bfo.cl') as bfo_file:
     bfo_clif = bfo_file.read()
 prepared_bfo = prepare_clif_bfo(bfo_clif=bfo_clif)
-bfo_theory = extended_parse_clif(text=prepared_bfo)
+bfo_theory = parse_clif(text=prepared_bfo)
 bfo_theory.sort()
 stronger_axioms = set()
 with open('midputs/test.tptp', mode='w') as bfo_tptp:

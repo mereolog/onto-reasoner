@@ -1,7 +1,7 @@
-from networkx.classes import DiGraph
+from networkx.classes import Graph
 
 
-def report_edge_aggregations_as_tabular(graph: DiGraph, report_file_path: str, cast_to_latex=True):
+def report_edge_aggregations_as_tabular(graph: Graph, report_file_path: str, cast_to_latex=True):
     report_map = dict()
     for edge in graph.edges:
         source_node = edge[0]

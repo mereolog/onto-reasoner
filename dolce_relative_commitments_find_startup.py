@@ -25,6 +25,8 @@ find_relative_commitments_using_grounds(
 
 pickle.dump(RelativeCommitments.registry, open('resources/outputs/pickles/dolce_all_relative_commitments.pickle', 'wb'))
 
+RelativeCommitments.registry = pickle.load(open('resources/outputs/pickles/dolce_all_relative_commitments.pickle', 'rb'))
+
 dolce_subsumptions = (
     find_subsumptions(
         theory_file_path=dolce_file_path,

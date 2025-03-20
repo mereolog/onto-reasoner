@@ -3,10 +3,9 @@ from networkx.classes import DiGraph
 
 from processors.graphisers.graph_creator import create_graph_from_relative_commitments
 from processors.graphisers.graph_helpers import get_transitive_reduction_for_graph, report_cycles_in_graph
-from processors.investigators.predicates_finder import find_n_ary_predicates, \
-    calculate_theory_signature_count
+from processors.investigators.predicates_finder import find_n_ary_predicates
 from processors.reporters.graph_reporter import report_edge_aggregations_as_tabular
-from startup_commons import dolce_file_path
+
 
 def stringizer(object) -> str:
     return str(object)

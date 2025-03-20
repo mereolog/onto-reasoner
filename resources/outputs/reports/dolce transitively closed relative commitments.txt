@@ -1,0 +1,34 @@
+$acc$  &  $pd$, $t$, $tl$  \\
+$ach$  &  $pd$, $t$, $tl$  \\
+$apo$  &  $pd$, $ped$, $sl$, $t$, $tl$  \\
+$aq$  &  $aq$, $nped$, $pd$, $t$, $tl$  \\
+$arc$  &  $aq$, $c$, $ds$, $nped$, $pd$, $t$, $tl$  \\
+$as$  &  $pd$, $t$, $tl$  \\
+$aso$  &  $aq$, $nped$, $pd$, $t$, $tl$  \\
+$c$  &  $aq$, $c$, $ds$, $nped$, $pd$, $t$, $tl$  \\
+$ds$  &  $aq$, $c$, $ds$, $nped$, $pd$, $t$, $tl$  \\
+$ed$  &  $pd$, $t$, $tl$  \\
+$ev$  &  $pd$, $t$, $tl$  \\
+$f$  &  $pd$, $ped$, $sl$, $t$, $tl$  \\
+$fd$  &  $aq$, $c$, $ds$, $nped$, $pd$, $t$, $tl$  \\
+$m$  &  $pd$, $ped$, $sl$, $t$, $tl$  \\
+$mob$  &  $aq$, $nped$, $pd$, $t$, $tl$  \\
+$napo$  &  $pd$, $ped$, $sl$, $t$, $tl$  \\
+$naso$  &  $aq$, $nped$, $pd$, $t$, $tl$  \\
+$nped$  &  $aq$, $nped$, $pd$, $t$, $tl$  \\
+$npob$  &  $aq$, $nped$, $pd$, $t$, $tl$  \\
+$pd$  &  $pd$, $t$, $tl$  \\
+$ped$  &  $pd$, $ped$, $sl$, $t$, $tl$  \\
+$pob$  &  $pd$, $ped$, $sl$, $t$, $tl$  \\
+$pq$  &  $pd$, $ped$, $sl$, $t$, $tl$  \\
+$pro$  &  $pd$, $t$, $tl$  \\
+$q$  &  $pt$  \\
+$rl$  &  $aq$, $c$, $ds$, $nped$, $pd$, $t$, $tl$  \\
+$sag$  &  $aq$, $nped$, $pd$, $t$, $tl$  \\
+$sc$  &  $aq$, $nped$, $pd$, $t$, $tl$  \\
+$sl$  &  $pd$, $ped$, $sl$, $t$, $tl$  \\
+$sob$  &  $aq$, $nped$, $pd$, $t$, $tl$  \\
+$st$  &  $pd$, $t$, $tl$  \\
+$stv$  &  $pd$, $t$, $tl$  \\
+$tl$  &  $pd$, $t$, $tl$  \\
+$tq$  &  $pd$, $t$, $tl$, $tr$  \\

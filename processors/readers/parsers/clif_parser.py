@@ -109,6 +109,15 @@ def t_RESERVED(t):
     t.type = reserved.get(t.value)
     return t
 
+
+def p_extended_texts(p):
+    """
+    extended_text : texts
+        | statements
+        | sentences
+    """
+    p[0] = p[1]
+
 def p_texts(p):
     """
     texts : text texts
@@ -557,6 +566,6 @@ def parse_clif(text: str):
     lexer = lex.lex()
     parser = yacc.yacc()
     lexer.input(text)
-    parsed_text = parser.parse(text)
-    return parsed_text
-
+    parseds = parser.parse(text)
+    return parseds
+    

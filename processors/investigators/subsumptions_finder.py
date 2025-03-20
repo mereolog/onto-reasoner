@@ -6,7 +6,7 @@ from objects.fol_logic.objects.negation import Negation
 from objects.fol_logic.objects.quantifying_formula import QuantifyingFormula, Quantifier
 from objects.fol_logic.objects.theory import Theory
 from objects.fol_logic.objects.variable import Variable
-from processors.readers.parsers.extended_clif_parser import extended_parse_clif
+from processors.readers.parsers.clif_parser import parse_clif
 from processors.reasoners.consistency_result import ProverResult
 from processors.reasoners.vampire_decider import decide_whether_theory_is_consistent
 from wip.theory_processors.helpers import get_theory_id
@@ -19,7 +19,7 @@ def find_subsumptions(
     
     with open(theory_file_path) as cl_theory_file:
         cl_theory_text = cl_theory_file.read()
-    cl_theory_axioms = extended_parse_clif(cl_theory_text)
+    cl_theory_axioms = parse_clif(cl_theory_text)
     cl_theory = Theory(parts=cl_theory_axioms)
     unary_predicates = set(cl_theory.get_n_ary_predicates_map()[1])
     
@@ -62,7 +62,7 @@ def find_subsumption_leaf_predicates(
         reasoner_artifacts_path: str) -> set:
     with open(theory_file_path) as cl_theory_file:
         cl_theory_text = cl_theory_file.read()
-    cl_theory_axioms = extended_parse_clif(cl_theory_text)
+    cl_theory_axioms = parse_clif(cl_theory_text)
     cl_theory = Theory(parts=cl_theory_axioms)
     unary_predicates = set(cl_theory.get_n_ary_predicates_map()[1])
     subsumption_leaf_predicates = unary_predicates.copy()

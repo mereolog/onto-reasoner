@@ -1,4 +1,4 @@
-from processors.readers.parsers import parse_tptp
+from processors.readers.parsers.tptp_parser import parse_tptp
 
 
 def translate_tptp_2_cl_theory(tptp_file_path: str, cl_file_path: str):

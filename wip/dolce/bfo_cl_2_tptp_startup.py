@@ -1,4 +1,4 @@
-from processors.readers.parsers.extended_clif_parser import extended_parse_clif
+from processors.readers.parsers.clif_parser import parse_clif
 
 # clone_repo(repo_github_url='https://github.com/BFO-ontology/BFO-2020.git', clone_folder='bfo')
 
@@ -9,7 +9,7 @@ from processors.readers.parsers.extended_clif_parser import extended_parse_clif
 
 with open('midputs/instantiated_dolce.cl') as bfo_file:
     instantiated_dolce_text = bfo_file.read()
-dolce_theory = extended_parse_clif(instantiated_dolce_text)
+dolce_theory = parse_clif(instantiated_dolce_text)
 dolce_theory.sort()
 with open('midputs/instantiated_dolce.tptp', mode='w') as dolce_tptp_file:
     for axiom in dolce_theory:

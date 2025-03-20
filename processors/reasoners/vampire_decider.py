@@ -12,7 +12,7 @@ def decide_whether_theory_is_consistent(
         vampire_input_file_path: str,
         vampire_output_file_path: str,
         time: int=180,
-        try_other_reasoner_modes = False) -> tuple:
+        try_other_reasoner_modes=False) -> tuple:
     vampire_modes = default_vampire_modes.copy()
     while len(vampire_modes) > 0:
         cmd_to_run_vampire = 'resources/vampire --mode ' + vampire_modes[0] + ' -t ' + str(time) + ' --cores 32 "' + vampire_input_file_path + '" > "' + vampire_output_file_path + '"'

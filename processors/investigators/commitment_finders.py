@@ -12,7 +12,7 @@ from objects.fol_logic.objects.predicate import Predicate
 from objects.fol_logic.objects.quantifying_formula import QuantifyingFormula, Quantifier
 from objects.fol_logic.objects.variable import Variable
 from processors.investigators.predicates_finder import find_n_ary_predicates, find_all_predicates
-from processors.readers.parsers.extended_clif_parser import extended_parse_clif
+from processors.readers.parsers.clif_parser import parse_clif
 from processors.reasoners.consistency_result import ProverResult
 from processors.reasoners.vampire_decider import decide_whether_theory_is_consistent
 from wip.theory_processors.helpers import get_theory_id
@@ -21,7 +21,7 @@ from wip.theory_processors.helpers import get_theory_id
 def find_absolute_commitments(theory_file_path: str, reasoner_artifacts_path: str):
     with open(theory_file_path) as cl_theory_file:
         cl_theory_text = cl_theory_file.read()
-    cl_theory_axioms = extended_parse_clif(cl_theory_text)
+    cl_theory_axioms = parse_clif(cl_theory_text)
     unary_predicates = find_n_ary_predicates(theory_file_path=theory_file_path, arity=1)
     
     __iterate_through_predicates_in_search_for_absolute_commitments(
@@ -37,7 +37,7 @@ def find_relative_commitments_using_grounds(
         skipped_predicate_couples: list = None):
     with open(theory_file_path) as cl_theory_file:
         cl_theory_text = cl_theory_file.read()
-    cl_theory_axioms = extended_parse_clif(cl_theory_text)
+    cl_theory_axioms = parse_clif(cl_theory_text)
     
     unary_predicates = find_n_ary_predicates(theory_file_path=theory_file_path, arity=1)
     all_predicates = find_all_predicates(theory_file_path=theory_file_path)
@@ -69,7 +69,7 @@ def find_remaining_relative_commitments_without_grounds(
     
     with open(theory_file_path) as cl_theory_file:
         cl_theory_text = cl_theory_file.read()
-    cl_theory_axioms = extended_parse_clif(cl_theory_text)
+    cl_theory_axioms = parse_clif(cl_theory_text)
     
     for undecided_case_tuple in undecided_cases.itertuples():
         commiting_predicate_string = undecided_case_tuple[1]
@@ -154,7 +154,7 @@ def prefilter_out_relative_commitments(
     
     with open(theory_file_path) as cl_theory_file:
         cl_theory_text = cl_theory_file.read()
-    cl_theory_axioms = extended_parse_clif(cl_theory_text)
+    cl_theory_axioms = parse_clif(cl_theory_text)
     unary_predicates = find_n_ary_predicates(theory_file_path=theory_file_path, arity=1)
     for unary_predicate1 in unary_predicates:
         for unary_predicate2 in unary_predicates:
@@ -276,7 +276,8 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                                 decide_whether_theory_is_consistent(
                                     vampire_input_file_path=vampire_input_file_path,
                                     vampire_output_file_path=vampire_output_file_path,
-                                    time=1800))
+                                    time=1200,
+                                    try_other_reasoner_modes=True))
                             is_relative_commitment = False
                             if result == ProverResult.INCONSISTENT:
                                 RelativeCommitments(committing_predicate=unary_predicate1,
