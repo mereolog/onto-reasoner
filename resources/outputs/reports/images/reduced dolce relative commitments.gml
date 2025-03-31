@@ -150,7 +150,7 @@ graph [
   ]
   node [
     id 37
-    label "ab"
+    label "ar"
   ]
   node [
     id 38
@@ -158,15 +158,15 @@ graph [
   ]
   node [
     id 39
-    label "at"
+    label "pr"
   ]
   node [
     id 40
-    label "ar"
+    label "at"
   ]
   node [
     id 41
-    label "pr"
+    label "ab"
   ]
   node [
     id 42
@@ -178,51 +178,43 @@ graph [
   ]
   edge [
     source 2
-    target 14
-  ]
-  edge [
-    source 2
-    target 1
-  ]
-  edge [
-    source 2
     target 16
+  ]
+  edge [
+    source 2
+    target 14
   ]
   edge [
     source 3
     target 20
   ]
   edge [
+    source 3
+    target 14
+  ]
+  edge [
     source 4
     target 16
   ]
   edge [
     source 4
-    target 1
-  ]
-  edge [
-    source 4
     target 14
   ]
   edge [
     source 5
     target 14
-  ]
-  edge [
-    source 5
-    target 1
   ]
   edge [
     source 6
     target 20
   ]
   edge [
-    source 7
-    target 8
+    source 6
+    target 14
   ]
   edge [
-    source 8
-    target 14
+    source 7
+    target 8
   ]
   edge [
     source 8
@@ -234,51 +226,43 @@ graph [
   ]
   edge [
     source 10
-    target 14
-  ]
-  edge [
-    source 10
-    target 1
-  ]
-  edge [
-    source 10
     target 16
+  ]
+  edge [
+    source 10
+    target 14
   ]
   edge [
     source 11
     target 20
   ]
   edge [
-    source 12
+    source 11
     target 14
   ]
   edge [
     source 12
-    target 1
+    target 16
   ]
   edge [
     source 12
-    target 16
+    target 14
   ]
   edge [
     source 13
     target 16
-  ]
-  edge [
-    source 13
-    target 1
   ]
   edge [
     source 13
     target 14
   ]
   edge [
-    source 15
-    target 16
+    source 14
+    target 8
   ]
   edge [
     source 15
-    target 1
+    target 16
   ]
   edge [
     source 15
@@ -289,32 +273,32 @@ graph [
     target 20
   ]
   edge [
-    source 18
+    source 17
     target 14
-  ]
-  edge [
-    source 18
-    target 1
   ]
   edge [
     source 18
     target 16
   ]
   edge [
-    source 19
+    source 18
     target 14
   ]
   edge [
     source 19
-    target 1
+    target 20
   ]
   edge [
-    source 20
-    target 19
+    source 19
+    target 14
   ]
   edge [
     source 21
     target 20
+  ]
+  edge [
+    source 21
+    target 14
   ]
   edge [
     source 22
@@ -322,23 +306,15 @@ graph [
   ]
   edge [
     source 24
-    target 14
-  ]
-  edge [
-    source 24
-    target 1
-  ]
-  edge [
-    source 24
     target 16
   ]
   edge [
-    source 25
+    source 24
     target 14
   ]
   edge [
     source 25
-    target 1
+    target 14
   ]
   edge [
     source 26
@@ -354,23 +330,19 @@ graph [
   ]
   edge [
     source 29
-    target 14
-  ]
-  edge [
-    source 29
-    target 1
-  ]
-  edge [
-    source 29
     target 16
   ]
   edge [
-    source 30
+    source 29
     target 14
   ]
   edge [
     source 30
     target 34
+  ]
+  edge [
+    source 30
+    target 14
   ]
   edge [
     source 31

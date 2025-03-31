@@ -129,36 +129,3 @@ fof(TPTP_FORMULA,axiom,! [X271] : ! [X272] : ! [X273] : (us(X271,X272) => (pre(X
 fof(TPTP_FORMULA,axiom,! [X274] : ! [X275] : ! [X276] : (df(X274,X275) => (pre(X274,X276) => pre(X275,X276)))).
 fof(TPTP_FORMULA,axiom,! [X277] : (fd(X277) <=> ? [X278] : ? [X279] : (df(X277,X279) & (us(X278,X279) & ! [X280] : ! [X281] : (cf(X280,X277,X281) => ? [X282] : (cf(X282,X278,X281) & (~ tp(X280,X282,X281) & ~ tp(X282,X280,X281)))))))).
 fof(TPTP_FORMULA,axiom,! [X283] : (rl(X283) <=> (arc(X283) & fd(X283)))).
-fof(TPTP_FORMULA,axiom,ped(iped1)).
-fof(TPTP_FORMULA,axiom,ped(iped2)).
-fof(TPTP_FORMULA,axiom,nped(inped1)).
-fof(TPTP_FORMULA,axiom,nped(inped2)).
-fof(TPTP_FORMULA,axiom,nped(inped3)).
-fof(TPTP_FORMULA,axiom,ev(ie1)).
-fof(TPTP_FORMULA,axiom,ev(ie2)).
-fof(TPTP_FORMULA,axiom,ev(ie3)).
-fof(TPTP_FORMULA,axiom,tq(itq1)).
-fof(TPTP_FORMULA,axiom,aq(iaq1)).
-fof(TPTP_FORMULA,axiom,pq(ipq1)).
-fof(TPTP_FORMULA,axiom,t(it1)).
-fof(TPTP_FORMULA,axiom,r(ir1)).
-fof(TPTP_FORMULA,axiom,ar(iar1)).
-fof(TPTP_FORMULA,axiom,arc(c1)).
-fof(TPTP_FORMULA,axiom,c(c1)).
-fof(TPTP_FORMULA,axiom,fd(c1)).
-fof(TPTP_FORMULA,axiom,rl(c1)).
-fof(TPTP_FORMULA,axiom,cf(inped1,c1,t1)).
-fof(TPTP_FORMULA,axiom,p(ie1,ie2)).
-fof(TPTP_FORMULA,axiom,sum(ie2,ie3,ie1)).
-fof(TPTP_FORMULA,axiom,dif(i4,i5,i6)).
-fof(TPTP_FORMULA,axiom,tpp(inped1,inped3,it1)).
-fof(TPTP_FORMULA,axiom,tatp(inped1,inped3,it1)).
-fof(TPTP_FORMULA,axiom,k(ie1,ie4,it1)).
-fof(TPTP_FORMULA,axiom,k(iped1,iped2,it1)).
-fof(TPTP_FORMULA,axiom,k(inped1,inped2,it1)).
-fof(TPTP_FORMULA,axiom,pc(iped1,ie1,it1)).
-fof(TPTP_FORMULA,axiom,dqt(itq1,ie1)).
-fof(TPTP_FORMULA,axiom,ql(it1,itq1)).
-fof(TPTP_FORMULA,axiom,sd(iped1,iped2)).
-fof(TPTP_FORMULA,axiom,tql(iar1,iaq1,it1)).
-fof(TPTP_FORMULA,axiom,temporalPart(ie4,ie5)).

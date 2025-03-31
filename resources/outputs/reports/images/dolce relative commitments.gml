@@ -150,7 +150,7 @@ graph [
   ]
   node [
     id 37
-    label "ab"
+    label "ar"
   ]
   node [
     id 38
@@ -158,15 +158,15 @@ graph [
   ]
   node [
     id 39
-    label "at"
+    label "pr"
   ]
   node [
     id 40
-    label "ar"
+    label "at"
   ]
   node [
     id 41
-    label "pr"
+    label "ab"
   ]
   node [
     id 42
