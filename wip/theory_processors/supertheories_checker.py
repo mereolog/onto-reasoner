@@ -8,7 +8,7 @@ from wip.theory_processors.helpers import get_theory_id
 
 def powerset_of_size(iterable, size: int) -> set:
     s = list(iterable)
-    return combinations(s, size)
+    return set(combinations(s, size))
 
 
 def check_direct_supertheories_depthwise(

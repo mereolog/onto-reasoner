@@ -24,19 +24,6 @@ for committing_category, commited_categories in commitments_map.items():
     commited_categories_string = ', '.join(commited_categories)
     print(committing_category, r' & ', commited_categories_string, r' \\')
     
-# # relative_commitment_reports = dict()
-# # for edge, edge_attributes in networkx.get_edge_attributes(dolce_relative_commitments_graph, name='ground').items():
-# #     if [edge[0], edge[1]] in relative_commitment_reports:
-# #         relative_commitment_reports[[edge[0], edge[1]]].append(edge_attributes)
-# #     else:
-# #         relative_commitment_reports[[edge[0], edge[1]]] = [edge_attributes]
-# out_degrees = dolce_relative_commitments_graph.out_degree()
-# print(list(out_degrees))
-# # v=0
-# # pos = networkx.planar_layout(transitively_reduced_dolce_relative_commitments_graph)
-# # networkx.draw(transitively_reduced_dolce_relative_commitments_graph, with_labels=True, pos=pos)
-# # plt.show()
-#
 out_degrees = transitively_closed_dolce_relative_commitments_graph.out_degree()
 out_degree_map = dict()
 for category, out_degree in out_degrees:

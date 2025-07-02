@@ -10,7 +10,6 @@ from processors.reporters.graph_reporter import report_edge_aggregations_as_tabu
 def stringizer(object) -> str:
     return str(object)
 
-
 dolce_unary_predicates = find_n_ary_predicates('resources/midputs/dolce.cl', arity=1)
 
 dolce_relative_commitments_multigraph = (
