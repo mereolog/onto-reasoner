@@ -1,6 +1,8 @@
 import logging
+import os.path
 
 from processors.reasoners.consistency_result import ProverResult
+from processors.utils.root_finder import find_project_root
 from wip.theory_processors.check_helper import check_theory
 from wip.theory_processors.helpers import get_theory_id
 
@@ -11,7 +13,9 @@ def check_direct_subtheories_depthwise(
         checked_theory_ids: set,
         report_dict: dict,
         report_file_path: str = None,
-        time_limit=180):
+        time_limit_offset=180):
+    project_root = find_project_root()
+    
     consistent_count = 0
     undecided_count = 0
     theory_id = get_theory_id(theory)
@@ -25,9 +29,9 @@ def check_direct_subtheories_depthwise(
             continue
         
         checked_theory_ids.add(subtheory_id)
-        tptp_file_path = 'midputs/subtheories/tptp/' + subtheory_id + '.tptp'
-        szs_file_path = 'midputs/subtheories/szs/' + subtheory_id + '.szs'
-        cl_file_path = 'midputs/subtheories/cl/' + subtheory_id + '.cl'
+        tptp_file_path = os.path.join(project_root,'resources/midputs/subtheories/tptp/') + subtheory_id + '.tptp'
+        szs_file_path = os.path.join(project_root, 'resources/midputs/subtheories/szs/') + subtheory_id + '.szs'
+        cl_file_path = os.path.join(project_root,'resources/midputs/subtheories/cl/') + subtheory_id + '.cl'
         tptp_subtheory = str()
         cl_subtheory_axioms = list()
         cl_subtheory = str()
@@ -42,7 +46,7 @@ def check_direct_subtheories_depthwise(
             tptp_theory_file.write(tptp_subtheory)
         with open(file=cl_file_path, mode='w') as cl_theory_file:
             cl_theory_file.write(cl_subtheory)
-
+        
         check_result = (
             __check_subtheory(
                 subtheory_axioms=subtheory_axioms,
@@ -50,7 +54,7 @@ def check_direct_subtheories_depthwise(
                 tptp_subtheory_string=tptp_subtheory,
                 tptp_file_path=tptp_file_path,
                 szs_file_path=szs_file_path,
-                time_limit=time_limit,
+                time_limit=time_limit_offset,
                 checked_theory_ids=checked_theory_ids,
                 cl_theory_axioms_to_ids=theory_axioms_to_ids,
                 report_dict=report_dict,
@@ -60,9 +64,9 @@ def check_direct_subtheories_depthwise(
         if check_result == ProverResult.UNDECIDED:
             undecided_count += 1
     
-    logging.info(msg='All subtheories of theory ' + theory_id + ' have been checked.')
-    logging.info(msg='There are ' + str(consistent_count) + ' consistent subtheories.')
-    logging.info(msg='There are ' + str(undecided_count) + ' undecided subtheories.')
+    # logging.info(msg='All subtheories of theory ' + theory_id + ' have been checked.')
+    # logging.info(msg='There are ' + str(consistent_count) + ' consistent subtheories.')
+    # logging.info(msg='There are ' + str(undecided_count) + ' undecided subtheories.')
 
 
 def __check_subtheory(
@@ -83,17 +87,17 @@ def __check_subtheory(
             theory_id=subtheory_id,
             tptp_file_path=tptp_file_path,
             szs_file_path=szs_file_path,
-            time_limit=time_limit,
+            time_limit_offset=time_limit,
             theory_axioms_to_ids=cl_theory_axioms_to_ids,
             report_dict=report_dict,
             report_file_path=report_file_path,
             tptp_theory_string=tptp_subtheory_string))
 
-    # if check_result == ProverResult.UNDECIDED:
-    #     check_direct_subtheories_depthwise(
-    #         theory=subtheory_axioms,
-    #         theory_axioms_to_ids=cl_theory_axioms_to_ids,
-    #         checked_theory_ids=checked_theory_ids,
-    #         report_dict=report_dict,
-    #         report_file_path=report_file_path)
+    if check_result == ProverResult.UNDECIDED:
+        check_direct_subtheories_depthwise(
+            theory=subtheory_axioms,
+            theory_axioms_to_ids=cl_theory_axioms_to_ids,
+            checked_theory_ids=checked_theory_ids,
+            report_dict=report_dict,
+            report_file_path=report_file_path)
 

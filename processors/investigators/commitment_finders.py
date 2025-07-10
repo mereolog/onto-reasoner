@@ -105,7 +105,7 @@ def find_remaining_relative_commitments_without_grounds(
             decide_whether_theory_is_consistent(
                 vampire_input_file_path=vampire_input_file_path,
                 vampire_output_file_path=vampire_output_file_path,
-                time=60))
+                time_limit=60))
         is_relative_commitment = False
         if result == ProverResult.INCONSISTENT:
             RelativeCommitments(committing_predicate=commiting_predicate,
@@ -132,7 +132,7 @@ def find_remaining_relative_commitments_without_grounds(
                 'is relative commitment': is_relative_commitment,
                 'definition': '$$',
                 'evidence_id': extended_theory_id,
-                'elapsed time': str(time),
+                'elapsed time_limit': str(time),
                 'committing predicate in LaTeX': commiting_predicate.to_latex(True),
                 'committed predicate  in LaTeX': commited_predicate.to_latex(True),
                 'ground in LaTeX': '$$',
@@ -189,13 +189,13 @@ def prefilter_out_relative_commitments(
                 decide_whether_theory_is_consistent(
                     vampire_input_file_path=vampire_input_file_path,
                     vampire_output_file_path=vampire_output_file_path,
-                    time=600))
+                    time_limit=600))
             if result == ProverResult.CONSISTENT:
                 report = \
                     {
                         'non-committing predicate': unary_predicate1,
                         'non-committed predicate': unary_predicate2,
-                        'elapsed time': str(time),
+                        'elapsed time_limit': str(time),
                         'non-committing predicate in LaTeX': unary_predicate1.to_latex(True),
                         'non-committed predicate  in LaTeX': unary_predicate2.to_latex(True),
                     }
@@ -276,7 +276,7 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                                 decide_whether_theory_is_consistent(
                                     vampire_input_file_path=vampire_input_file_path,
                                     vampire_output_file_path=vampire_output_file_path,
-                                    time=1200,
+                                    time_limit=1200,
                                     try_other_reasoner_modes=True))
                             is_relative_commitment = False
                             if result == ProverResult.INCONSISTENT:
@@ -304,7 +304,7 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                                     'is relative commitment': is_relative_commitment,
                                     'definition': relative_commitment_definition,
                                     'evidence_id': extended_theory_id,
-                                    'elapsed time': str(time),
+                                    'elapsed time_limit': str(time),
                                     'committing predicate in LaTeX': unary_predicate1.to_latex(True),
                                     'committed predicate  in LaTeX': unary_predicate2.to_latex(True),
                                     'ground in LaTeX': n_ary_predicate.to_latex(True),
@@ -345,7 +345,7 @@ def __iterate_through_predicates_in_search_for_absolute_commitments(
             decide_whether_theory_is_consistent(
                 vampire_input_file_path=vampire_input_file_path,
                 vampire_output_file_path=vampire_output_file_path,
-                time=0))
+                time_limit=0))
         if result == ProverResult.INCONSISTENT:
             print('Predicate', str(unary_predicate), 'is found as commiting.')
         if result == ProverResult.UNDECIDED:

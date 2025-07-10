@@ -42,7 +42,7 @@ def check_neighbours(
             szs_file_path=szs_file_path,
             report_dict=report_dict,
             report_file_path=report_file_path,
-            time_limit=time_limit,
+            time_limit_offset=time_limit,
             theory_axioms_to_ids=theory_axioms_to_ids,
             tptp_theory_string=tptp_subtheory_string))
 

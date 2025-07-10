@@ -1,28 +1,36 @@
 import logging
+import os.path
 import sys
 from glob import glob
 from itertools import chain, combinations
 from os import path
+from pathlib import Path
 
 import pandas
 
 from processors.reasoners.consistency_result import ProverResult
 from processors.reasoners.vampire_decider import decide_whether_theory_is_consistent
+from processors.utils.root_finder import find_project_root
 
 MODULE_IDS_SEPARATOR = '+'
 
 def find_n_undecided_supermodules(
-        cl_theory_path: str,
+        cl_theory_folder: str,
         prepare_cl_theory,
         parse_cl_theory,
-        cl_module_path: str,
+        cl_supermodule_folder: str,
         n: int,
         report_dict: dict,
-        report_file_path: str = None):
+        report_file: str = None):
     logging.basicConfig(format='%(levelname)s %(asctime)s %(message)s', level=logging.WARN, datefmt='%m/%d/%Y %I:%M:%S %p')
+    
+    project_root = find_project_root()
+    
     undecided_supermodule_ids = set()
     theory_files = set()
-    for filename in glob(pathname=cl_theory_path, recursive=True):
+    
+    cl_theory_folder_path = os.path.join(project_root, cl_theory_folder)
+    for filename in glob(pathname=cl_theory_folder_path, recursive=True):
         theory_files.add(filename)
     theory_files = list(theory_files)
     theory_files_subsets = chain.from_iterable(combinations(theory_files, r) for r in range(len(theory_files) + 1))
@@ -32,7 +40,7 @@ def find_n_undecided_supermodules(
         for theory_file_path in theory_files_subset:
             with open(theory_file_path) as subtheory_file:
                 supermodule += subtheory_file.read()
-                supermodule_id += theory_file_path.replace('./inputs/bfo/src/common-logic/', '').replace('/','_').replace('.cl', '') + MODULE_IDS_SEPARATOR
+                supermodule_id += theory_file_path.split('/')[-1].replace('.cl','') + MODULE_IDS_SEPARATOR
         if len(theory_files_subset) > 0:
             supermodule_id = supermodule_id[:-1]
             ignore_supermodule = False
@@ -47,9 +55,13 @@ def find_n_undecided_supermodules(
                 continue
             prepared_supermodule = prepare_cl_theory(bfo_clif=supermodule)
             supermodule_axioms = parse_cl_theory(text=prepared_supermodule)
-            tptp_file_path = './midputs/supermodules/tptp/' + supermodule_id + '.tptp'
-            szs_file_path = './midputs/supermodules/szs/' + supermodule_id + '.szs'
-            with open(file=tptp_file_path, mode='w') as tptp_file, open(file=path.join(cl_module_path, supermodule_id), mode='w') as cl_file:
+            
+            tptp_file_relative_path = 'resources/midputs/supermodules/tptp/' + supermodule_id + '.tptp'
+            tptp_file_path = os.path.join(project_root, tptp_file_relative_path)
+            szs_file__relative_path = 'resources/midputs/supermodules/szs/' + supermodule_id + '.szs'
+            szs_file_path = os.path.join(project_root, szs_file__relative_path)
+            
+            with open(file=tptp_file_path, mode='w') as tptp_file, open(file=path.join(cl_supermodule_folder, supermodule_id), mode='w') as cl_file:
                 for axiom in supermodule_axioms:
                     axiom.is_self_standing = True
                     tptp_file.write(axiom.to_tptp())
@@ -60,15 +72,16 @@ def find_n_undecided_supermodules(
                 decide_whether_theory_is_consistent(
                     vampire_input_file_path=tptp_file_path,
                     vampire_output_file_path=szs_file_path,
-                    time=60+len(supermodule_axioms)))
+                    time_limit=300 + len(supermodule_axioms)))
             report_dict[len(report_dict)] = \
                 {
                     'theory_id': supermodule_id,
                     'theory_size': str(len(supermodule_axioms)),
                     'theory_status': str(prover_result),
-                    'time': time
+                    'time_limit': time
                 }
-            if report_file_path:
+            if report_file:
+                report_file_path = os.path.join(project_root, report_file)
                 bfo_report_dataframe = pandas.DataFrame.from_dict(data=report_dict, orient='index')
                 bfo_report_dataframe.to_excel(report_file_path, index=False)
             if prover_result == ProverResult.CONSISTENT:

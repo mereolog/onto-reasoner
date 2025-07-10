@@ -55,7 +55,7 @@ def create_ml_training_data_from_axioms(cl_theory_axioms: list, results_intended
             decide_whether_theory_is_consistent(
                 vampire_input_file_path=tptp_file_path,
                 vampire_output_file_path=szs_file_path,
-                time=60 + len(subtheory_axioms)))
+                time_limit=60 + len(subtheory_axioms)))
         logging.info(msg=subtheory_id + ' is ' + str(prover_result) + '. Checking this took ' + str(time) + ' seconds.')
         
         subtheory['ProverResult'] = str(prover_result)

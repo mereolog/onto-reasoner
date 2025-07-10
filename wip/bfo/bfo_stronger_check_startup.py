@@ -35,7 +35,7 @@ for stronger_axiom in stronger_axioms:
         decide_whether_theory_is_consistent(
             vampire_input_file_path='midputs/stronger/'+stronger_bfo_theory_id+'.tptp',
             vampire_output_file_path='midputs/stronger/'+stronger_bfo_theory_id+'.szs',
-            time=360))
+            time_limit=360))
     print(stronger_bfo_theory_id, 'is found', check_result, 'after', str(time), 'seconds.')
 
 

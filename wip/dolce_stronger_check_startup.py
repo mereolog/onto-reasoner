@@ -32,7 +32,7 @@ for stronger_axiom in stronger_axioms:
         decide_whether_theory_is_consistent(
             vampire_input_file_path='midputs/stronger/dolce/'+stronger_dolce_theory_id+'.tptp',
             vampire_output_file_path='midputs/stronger/dolce/'+stronger_dolce_theory_id+'.szs',
-            time=60))
+            time_limit=60))
     if not check_result == ProverResult.INCONSISTENT:
         print('Theory', stronger_dolce_theory_id, 'with axiom', str(stronger_axiom), 'is found', check_result, 'after', str(time), 'seconds.')
 

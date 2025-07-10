@@ -84,7 +84,7 @@ def __check_supertheory(
             theory_id=supertheory_id,
             tptp_file_path=tptp_file_path,
             szs_file_path=szs_file_path,
-            time_limit=time_limit,
+            time_limit_offset=time_limit,
             theory_axioms_to_ids=cl_theory_axioms_to_ids,
             report_dict=report_dict,
             report_file_path=report_file_path,
