@@ -9,17 +9,19 @@ from processors.reasoners.vampire_decider import decide_whether_theory_is_consis
 from processors.utils.root_finder import find_project_root
 
 
-def check_theory(theory: list,
-                 theory_id: str,
-                 tptp_file_path: str,
-                 szs_file_path: str,
-                 time_limit_offset: int,
-                 theory_axioms_to_ids: dict,
-                 report_dict: dict,
-                 report_file_path: str,
-                 tptp_theory_string: str,
-                 try_other_reasoner_modes = False) -> tuple:
-    logging.info(msg='Checking theory ' + theory_id + ' of size: ' + str(len(theory)))
+def check_theory(
+        theory: list,
+         theory_id: str,
+         tptp_file_path: str,
+         szs_file_path: str,
+         time_limit_offset: int,
+         theory_axioms_to_ids: dict,
+         report_dict: dict,
+         report_file_path: str,
+         tptp_theory_string: str,
+         try_other_reasoner_modes = True,
+         parent_theory_id=str()) -> tuple:
+    logging.info(msg=f'Checking theory {theory_id} (subtheory of {parent_theory_id}) of size {str(len(theory))}')
     
     project_root = find_project_root()
 
@@ -28,31 +30,15 @@ def check_theory(theory: list,
             vampire_input_file_path=tptp_file_path,
             vampire_output_file_path=szs_file_path,
             time_limit=time_limit_offset + len(theory),
-            try_other_reasoner_modes=True))
-
-    new_time_limit_offset = time_limit_offset * 4
-    if check_result == ProverResult.UNDECIDED:
-        if new_time_limit_offset <= 1:
-            logging.info(msg='Rechecking ' + theory_id + ' with time_limit offset of ' + str(new_time_limit_offset) + ' seconds.')
-            check_result, time = (
-                check_theory(
-                    theory=theory,
-                    theory_id=theory_id,
-                    tptp_file_path=tptp_file_path,
-                    szs_file_path=szs_file_path,
-                    time_limit_offset=new_time_limit_offset,
-                    theory_axioms_to_ids=theory_axioms_to_ids,
-                    report_dict=report_dict,
-                    report_file_path=report_file_path,
-                    tptp_theory_string=tptp_theory_string,
-                    try_other_reasoner_modes=True))
+            try_other_reasoner_modes=try_other_reasoner_modes))
 
     report_result = \
         {
             'theory_id': theory_id,
+            'parent_theory_id': parent_theory_id,
             'theory_size': str(len(theory)),
             'theory_status': str(check_result),
-            'time_limit': time
+            'time': time
         }
 
     for cl_axiom, cl_axiom_id in theory_axioms_to_ids.items():

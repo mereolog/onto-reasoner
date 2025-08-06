@@ -78,7 +78,7 @@ def find_n_undecided_supermodules(
                     'theory_id': supermodule_id,
                     'theory_size': str(len(supermodule_axioms)),
                     'theory_status': str(prover_result),
-                    'time_limit': time
+                    'time_limit_offset': time
                 }
             if report_file:
                 report_file_path = os.path.join(project_root, report_file)

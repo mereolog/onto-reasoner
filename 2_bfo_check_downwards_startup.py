@@ -9,7 +9,7 @@ from wip.theory_processors.subtheories_checker import check_direct_subtheories_d
 
 # from theory_processors.subtheories_checker import check_half_split_subtheories_depthwise
 
-logging.basicConfig(format='%(levelname)s %(asctime)s %(message)s', level=logging.INFO,datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.basicConfig(format='%(levelname)s %(asctime)s %(message)s', level=logging.INFO,datefmt='%m/%d/%Y %I:%M:%S %p', filename='logger.log')
 
 project_root = find_project_root()
 
@@ -26,5 +26,5 @@ bfo_report = (
         checked_theory_ids=set(),
         report_dict=dict(),
         report_file_path='resources/outputs/bfo_submodules_downward_generation_report.xlsx',
-        time_limit_offset=1))
+        time_limit_offset=180))
 

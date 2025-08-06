@@ -132,7 +132,7 @@ def find_remaining_relative_commitments_without_grounds(
                 'is relative commitment': is_relative_commitment,
                 'definition': '$$',
                 'evidence_id': extended_theory_id,
-                'elapsed time_limit': str(time),
+                'elapsed time_limit_offset': str(time),
                 'committing predicate in LaTeX': commiting_predicate.to_latex(True),
                 'committed predicate  in LaTeX': commited_predicate.to_latex(True),
                 'ground in LaTeX': '$$',
@@ -195,7 +195,7 @@ def prefilter_out_relative_commitments(
                     {
                         'non-committing predicate': unary_predicate1,
                         'non-committed predicate': unary_predicate2,
-                        'elapsed time_limit': str(time),
+                        'elapsed time_limit_offset': str(time),
                         'non-committing predicate in LaTeX': unary_predicate1.to_latex(True),
                         'non-committed predicate  in LaTeX': unary_predicate2.to_latex(True),
                     }
@@ -304,7 +304,7 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
                                     'is relative commitment': is_relative_commitment,
                                     'definition': relative_commitment_definition,
                                     'evidence_id': extended_theory_id,
-                                    'elapsed time_limit': str(time),
+                                    'elapsed time_limit_offset': str(time),
                                     'committing predicate in LaTeX': unary_predicate1.to_latex(True),
                                     'committed predicate  in LaTeX': unary_predicate2.to_latex(True),
                                     'ground in LaTeX': n_ary_predicate.to_latex(True),
