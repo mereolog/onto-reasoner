@@ -219,8 +219,8 @@ def __iterate_through_predicates_in_search_for_relative_commitments(
     report_count = 0
     for unary_predicate1 in unary_predicates:
         for unary_predicate2 in unary_predicates:
-            if unary_predicate1 == unary_predicate2:
-                continue
+            # if unary_predicate1 == unary_predicate2:
+            #     continue
             for n_ary_predicate in non_unary_predicates:
                 if isinstance(n_ary_predicate, Identity):
                     continue

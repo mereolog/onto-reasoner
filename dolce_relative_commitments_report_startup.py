@@ -31,7 +31,7 @@ networkx.write_gml(transitively_closed_dolce_relative_commitments_graph, 'resour
 networkx.write_gml(transitively_reduced_dolce_relative_commitments_graph, 'resources/outputs/reports/images/reduced dolce relative commitments.gml', stringizer=stringizer)
 
 report_edge_aggregations_as_tabular(
-    graph=transitively_closed_dolce_relative_commitments_graph,
+    graph=dolce_relative_commitments_multigraph,
     report_file_path='resources/outputs/reports/dolce transitively closed relative commitments.txt',
     cast_to_latex=True)
 
