@@ -2,7 +2,7 @@ import pickle
 
 from objects.commitments.relative_commitments import RelativeCommitments
 from processors.investigators.commitment_finders import find_relative_commitments_using_grounds, \
-    prefilter_out_relative_commitments
+    prefilter_out_relative_commitments, find_relative_commitments_using_grounds_for_same_predicates
 from processors.investigators.relative_commitment_filterer import filter_out_apparent_relative_commitments
 from processors.investigators.subsumptions_finder import find_subsumptions
 from processors.readers.prefiltered_report_reader import get_prefiletered_non_commiting_predicates
@@ -17,7 +17,7 @@ prefiltered_non_commiting_predicates = (
     get_prefiletered_non_commiting_predicates(
         prefiltered_non_relative_commitments_file_path='resources/outputs/reports/dolce_non-ri_report.xlsx'))
 
-find_relative_commitments_using_grounds(
+find_relative_commitments_using_grounds_for_same_predicates(
     theory_file_path=dolce_file_path,
     reasoner_artifacts_path=reasoner_artifacts_path,
     report_file_path='dolce_ri_report.xlsx',
